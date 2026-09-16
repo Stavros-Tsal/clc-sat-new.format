@@ -684,6 +684,20 @@
   }
   .bm-dot { display: none; }
   .qdot-bm .bm-dot { display: block; }
+  .qdots-skill-header {
+    flex-basis: 100%;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--gold); margin: 10px 0 6px; padding-top: 8px;
+    border-top: 1px dashed var(--border);
+  }
+  .qdots-skill-header:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .tag-skill {
+    display: inline-block;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+    background: #f1e6d3; color: var(--gold);
+    padding: 3px 10px; border-radius: 999px;
+    margin-bottom: 10px;
+  }
 
   /* ── BOOKMARK BUTTON IN CARD ── */
   .bm-btn {
@@ -2349,6 +2363,9 @@ const DRILL_SPLIT_SPEC = {
 
 let ORIGINAL_DRILL_QUESTIONS = null;
 let ORIGINAL_DRILL_ANSWERS = null;
+// Per-tab array of subchapter (skill) names, index-aligned with QUESTIONS[tabIdx].
+// Only populated for Prep (grouped by skill); null/empty for Resit (flat, chapter-only) and host/full view.
+const DRILL_SKILL_LABELS = {};
 
 function applyDrillDataForSection(section) {
   if (!ORIGINAL_DRILL_QUESTIONS) {
@@ -2364,6 +2381,7 @@ function applyDrillDataForSection(section) {
       const usedNums = new Set();
       const newQ = [];
       const newA = {};
+      const skillLabels = [];
       let n = 1;
       for (const skill in spec) {
         for (const origNum of spec[skill]) {
@@ -2371,11 +2389,13 @@ function applyDrillDataForSection(section) {
           usedNums.add(origNum);
           newQ.push(origQ[origNum - 1]);
           newA[String(n)] = origA[String(origNum)];
+          skillLabels.push(skill);
           n++;
         }
       }
       QUESTIONS[tabIdx] = newQ;
       ANSWERS[tabIdx] = newA;
+      DRILL_SKILL_LABELS[tabIdx] = skillLabels;
     } else if (section === 'resit') {
       const usedNums = new Set();
       for (const skill in spec) {
@@ -2392,10 +2412,12 @@ function applyDrillDataForSection(section) {
       }
       QUESTIONS[tabIdx] = newQ;
       ANSWERS[tabIdx] = newA;
+      DRILL_SKILL_LABELS[tabIdx] = null; // Resit: chapter-only, no subchapter grouping
     } else {
       // host / no section: restore full original bank
       QUESTIONS[tabIdx] = JSON.parse(JSON.stringify(origQ));
       ANSWERS[tabIdx] = JSON.parse(JSON.stringify(origA));
+      DRILL_SKILL_LABELS[tabIdx] = null;
     }
   }
   // Reset any in-progress quiz state so stale indices from a previous dataset don't linger
@@ -2640,6 +2662,7 @@ function renderQuestion(tabIdx) {
           ${s.bookmarks.has(qIdx) ? '🔖 Bookmarked' : '📌 Bookmark'}
         </button>
       </div>
+      ${DRILL_SKILL_LABELS[tabIdx] && DRILL_SKILL_LABELS[tabIdx][qIdx] ? `<div class="tag-skill">${DRILL_SKILL_LABELS[tabIdx][qIdx]}</div>` : ''}
       <div class="q-text">${escMath(q.q)}</div>
   `;
 
@@ -2723,8 +2746,19 @@ function renderQuestionDots(tabIdx) {
   if (!dotsEl) return;
   const s = state[tabIdx];
   const qs = QUESTIONS[tabIdx];
-  let dotsHtml = '<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">';
+  const labels = DRILL_SKILL_LABELS[tabIdx];
+  let dotsHtml = '';
+  let openGroup = false;
+  let lastLabel = null;
   for (let i = 0; i < qs.length; i++) {
+    const currentLabel = labels ? labels[i] : null;
+    if (i === 0 || currentLabel !== lastLabel) {
+      if (openGroup) dotsHtml += '</div>';
+      if (currentLabel) dotsHtml += `<div class="qdots-skill-header">${currentLabel}</div>`;
+      dotsHtml += '<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px;">';
+      openGroup = true;
+      lastLabel = currentLabel;
+    }
     const ans = s.answered[i];
     const answered = ans !== undefined;
     const correct = ans === true;
@@ -2738,7 +2772,7 @@ function renderQuestionDots(tabIdx) {
     const tooltip = `Q${i+1}${bookmarked?' 📌':''}${!answered?' (unanswered)':correct?' ✓':' ✗'}`;
     dotsHtml += `<button class="${cls}" onclick="goTo(${tabIdx},${i})" title="${tooltip}">${i+1}${bookmarked?'<span class="bm-dot"></span>':''}</button>`;
   }
-  dotsHtml += '</div>';
+  if (openGroup) dotsHtml += '</div>';
   dotsEl.innerHTML = dotsHtml;
 }
 

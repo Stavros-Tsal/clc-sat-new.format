@@ -2242,7 +2242,7 @@ function renderMathMenu() {
   cards.push({
     icon: '🎯', label: 'Modules / Drills',
     desc: 'Targeted exercises by topic — Algebra, Interpretation, Statistics',
-    onclick: 'goQuiz()'
+    onclick: 'goQuizSection()'
   });
   if (currentSection === 'prep' || currentSection === 'resit') {
     cards.push({
@@ -2339,6 +2339,78 @@ window.addEventListener('DOMContentLoaded', function() {
   const initialId = activeScreen ? activeScreen.id : 'screen-welcome';
   history.replaceState({ screenId: initialId, subject: null }, '', '#' + initialId);
 });
+
+// ── DRILL SPLIT: Prep (curated skill lists) vs Resit (remaining, renumbered) ──
+const DRILL_SPLIT_SPEC = {
+  0: {"Linear Equations":[9,12,24,42,72,74,103,105,106,117],"Linear Systems":[14,15,16,17,18,80,81,82,83,104,112,115],"Inequalities":[30,31,67,84,85,86,107,109,116],"Linear Functions":[21,26,75,76,77,78,79,108,111,120],"Quadratics":[41,50,52,53,57,87,88,89,91,92,95,100,123,128,129],"Other Functions":[46,54,55,61],"Polynomials & Factoring":[32,33,34,36,37,38,43,51,62,63,64,65,66,68,131],"Non-Linear Systems":[48,60,93,94,96],"Equivalent Expressions":[1,40,58,59,97,98,99,101,124,130],"Exponents":[23,28,29,69],"Exponential Functions":[39,44,47,49,56,70,71,90,121,122,125,126,127,132,134],"Word Problems":[2,3,4,5,6,7,8,10,11,13,19,20,22,25,27,35,45,73,102,110,113,114,118,119,133]},
+  2: {"Probabilities":[1,2,3,4,5,6,7,8,14,15,18,19,23,25,28,29,38,39,40,42,43,44,46,57],"Statistical Reviews":[9,10,12,16,17,52,53,56],"Statistics Measures":[11,13,20,21,24,26,27,30,31,45,48,49,50,51,54],"Percentages & Ratios":[22,32,33,34,35,36,37,41,55,58,59,60]},
+  3: {"2D-Shapes":[3,4,7,9,12,13,14,21,22,23,24,25,26,30,31,33,34,35,39,40,42],"3D-Shapes":[8,15,17,18,20,32,41,49,50,52,53,56],"Similarity":[16,19,38,43,51,57,58,59],"Circles":[5,6,29,36,47,48,55,60],"Trigonometry":[1,2,10,11,27,28,37,44,45,46],"Further Topics":[54]}
+};
+
+let ORIGINAL_DRILL_QUESTIONS = null;
+let ORIGINAL_DRILL_ANSWERS = null;
+
+function applyDrillDataForSection(section) {
+  if (!ORIGINAL_DRILL_QUESTIONS) {
+    ORIGINAL_DRILL_QUESTIONS = JSON.parse(JSON.stringify(QUESTIONS));
+    ORIGINAL_DRILL_ANSWERS = JSON.parse(JSON.stringify(ANSWERS));
+  }
+  const drillTabs = [0, 2, 3]; // Algebra, ProbStats, Geometry (tab 1 = Interpretation, unchanged)
+  for (const tabIdx of drillTabs) {
+    const origQ = ORIGINAL_DRILL_QUESTIONS[tabIdx];
+    const origA = ORIGINAL_DRILL_ANSWERS[tabIdx];
+    const spec = DRILL_SPLIT_SPEC[tabIdx];
+    if (section === 'prep') {
+      const usedNums = new Set();
+      const newQ = [];
+      const newA = {};
+      let n = 1;
+      for (const skill in spec) {
+        for (const origNum of spec[skill]) {
+          if (usedNums.has(origNum)) continue; // skip duplicate refs, keep first occurrence
+          usedNums.add(origNum);
+          newQ.push(origQ[origNum - 1]);
+          newA[String(n)] = origA[String(origNum)];
+          n++;
+        }
+      }
+      QUESTIONS[tabIdx] = newQ;
+      ANSWERS[tabIdx] = newA;
+    } else if (section === 'resit') {
+      const usedNums = new Set();
+      for (const skill in spec) {
+        for (const origNum of spec[skill]) usedNums.add(origNum);
+      }
+      const newQ = [];
+      const newA = {};
+      let n = 1;
+      for (let i = 1; i <= origQ.length; i++) {
+        if (usedNums.has(i)) continue;
+        newQ.push(origQ[i - 1]);
+        newA[String(n)] = origA[String(i)];
+        n++;
+      }
+      QUESTIONS[tabIdx] = newQ;
+      ANSWERS[tabIdx] = newA;
+    } else {
+      // host / no section: restore full original bank
+      QUESTIONS[tabIdx] = JSON.parse(JSON.stringify(origQ));
+      ANSWERS[tabIdx] = JSON.parse(JSON.stringify(origA));
+    }
+  }
+  // Reset any in-progress quiz state so stale indices from a previous dataset don't linger
+  for (let i = 0; i < state.length; i++) {
+    state[i].current = 0;
+    state[i].score = 0;
+    state[i].answered = {};
+    state[i].done = false;
+  }
+}
+
+function goQuizSection() {
+  applyDrillDataForSection(currentSection);
+  goQuiz();
+}
 
 function goQuiz() {
   goScreen('screen-quiz');

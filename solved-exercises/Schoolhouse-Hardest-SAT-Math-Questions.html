@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLC — Δύσκολα Θέματα SAT Math (Schoolhouse.world)</title>
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$']] },
+    svg: { fontCache: 'global' },
+    startup: { typeset: false }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --crimson: #7B0000;
+    --crimson-light: #a01010;
+    --gold: #c8960c;
+    --gold-light: #e8b840;
+    --bg: #f8f6f2;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #666;
+    --border: #e0dbd3;
+    --correct-bg: #eaf7ee;
+    --correct-border: #2a8a4a;
+  }
+
+  body { font-family: 'Inter', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 80px; }
+
+  header {
+    background: linear-gradient(135deg, var(--crimson), var(--crimson-light));
+    padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden;
+  }
+  header::after {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 40px);
+  }
+  .emblem {
+    width: 64px; height: 64px; border-radius: 50%; background: var(--gold); color: var(--crimson);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+    font-family: 'Playfair Display', serif; font-weight: 900; font-size: 22px; letter-spacing: 1px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25); position: relative; z-index: 1;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif; font-weight: 900; color: #fff; font-size: clamp(24px, 4vw, 38px);
+    letter-spacing: 0.3px; position: relative; z-index: 1;
+  }
+  header .sub {
+    color: rgba(255,255,255,0.85); font-size: 15px; margin-top: 10px; letter-spacing: 0.5px;
+    position: relative; z-index: 1;
+  }
+  header .badge {
+    display: inline-block; margin-top: 18px; background: rgba(255,255,255,0.14); color: #fff;
+    font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 20px; position: relative; z-index: 1;
+  }
+
+  .intro { max-width: 760px; margin: 32px auto 8px; padding: 0 24px; color: var(--muted); font-size: 15px; line-height: 1.7; text-align: center; }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 24px 20px; }
+
+  .q-card {
+    background: var(--card); border: 1px solid var(--border); border-left: 5px solid var(--crimson);
+    border-radius: 10px; padding: 28px 30px; margin-bottom: 22px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+  }
+  .q-num {
+    font-family: 'Playfair Display', serif; font-weight: 700; font-size: 13px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+  }
+  .q-tag {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+    color: var(--crimson); background: #fbeaea; border: 1px solid #f0d0d0; border-radius: 12px;
+    padding: 2px 10px; margin-bottom: 10px;
+  }
+  .q-text { font-size: 16px; line-height: 1.75; color: var(--text); }
+  .q-ask { margin-top: 14px; font-weight: 500; }
+
+  .opts { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+  .opt {
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--bg);
+    border: 1.5px solid var(--border); border-radius: 8px; font-size: 15px; position: relative;
+  }
+  .opt.correct { background: var(--correct-bg); border-color: var(--correct-border); font-weight: 600; }
+  .opt-letter {
+    min-width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;
+    color: var(--muted); flex-shrink: 0;
+  }
+  .opt.correct .opt-letter { background: var(--correct-border); border-color: var(--correct-border); color: #fff; }
+  .opt-text { flex: 1; }
+  .check { color: var(--correct-border); font-weight: 900; font-size: 16px; }
+
+  .answer-box {
+    margin-top: 18px; display: inline-flex; align-items: center; gap: 10px;
+    background: var(--correct-bg); border: 1.5px solid var(--correct-border); border-radius: 8px;
+    padding: 10px 18px;
+  }
+  .answer-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--correct-border);
+  }
+  .answer-val { font-size: 18px; font-weight: 700; color: var(--text); }
+
+  .sol-toggle {
+    margin-top: 16px; display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.3px;
+    color: var(--crimson); cursor: pointer; user-select: none; border-bottom: 1.5px dashed var(--crimson);
+  }
+  .solution {
+    display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border);
+    font-size: 14.5px; line-height: 1.75; color: var(--text);
+  }
+  .solution.open { display: block; }
+
+  .source-box {
+    max-width: 760px; margin: 8px auto 0; padding: 16px 24px; color: var(--muted); font-size: 13px;
+    line-height: 1.6; text-align: center;
+  }
+  .source-box a { color: var(--crimson); text-decoration: none; font-weight: 600; }
+  .source-box a:hover { text-decoration: underline; }
+
+  footer { text-align: center; padding: 24px 24px 20px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="emblem">CLC</div>
+  <h1>Δύσκολα Θέματα SAT Math</h1>
+  <div class="sub">CLC Educational Institute &middot; SAT Math &middot; Λυμένες Ασκήσεις</div>
+  <div class="badge">10 Προβλήματα &middot; Με Λύσεις</div>
+</header>
+
+<div class="intro">
+  Συλλογή 10 από τα πιο απαιτητικά προβλήματα SAT Math, όπως δημοσιεύτηκαν στο blog του Schoolhouse.world, με πλήρεις λύσεις βήμα-βήμα. Καλύπτουν συστήματα εξισώσεων, εκθετικές συναρτήσεις, γεωμετρία κύκλου, τετραγωνικές εξισώσεις, ρητές παραστάσεις και πυκνότητα.
+</div>
+
+<div class="container">
+
+<div class="q-card"><div class="q-num">Πρόβλημα 1</div>
+<div class="q-tag">Συστήματα Εξισώσεων</div>
+<div class="q-text">$$48x - 64y = 48y + 24$$
+$$ry = \dfrac{1}{8} - 12x$$
+<br>Στο παραπάνω σύστημα εξισώσεων, το <em>r</em> είναι σταθερά. Αν το σύστημα δεν έχει λύση, ποια είναι η τιμή του <em>r</em>;</div>
+<div class="answer-box"><span class="answer-label">Απάντηση</span><span class="answer-val">&minus;28</span></div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Αν δύο ευθείες είναι διακριτές και παράλληλες, το σύστημα δεν έχει λύση. Αναδιατάσσοντας την πρώτη εξίσωση: $$48x - 112y = 24 \Rightarrow 12x - 28y = 6$$ (διαιρώντας με 4). Αναδιατάσσοντας τη δεύτερη: $$12x + ry = \tfrac{1}{8}$$ Για να είναι οι ευθείες παράλληλες, οι όροι σε <em>x</em> και <em>y</em> πρέπει να αντιστοιχούν, άρα <em>r</em> = &minus;28.</div>
+</div>
+
+<div class="q-card"><div class="q-num">Πρόβλημα 2</div>
+<div class="q-tag">Εκθετικές Εξισώσεις</div>
+<div class="q-text">$$f(x) = (1.84)^{\frac{x}{4}}$$
+Η συνάρτηση <em>f</em> ορίζεται από την παραπάνω εξίσωση. Η εξίσωση μπορεί να ξαναγραφεί ως $$f(x) = \left(1+\dfrac{p}{100}\right)^x$$ όπου <em>p</em> σταθερά. Ποια από τις παρακάτω τιμές πλησιάζει περισσότερο την τιμή του <em>p</em>;</div>
+<div class="opts">
+<div class="opt correct"><span class="opt-letter">A</span><span class="opt-text">16</span><span class="check">&#10003;</span></div>
+<div class="opt"><span class="opt-letter">B</span><span class="opt-text">21</span></div>
+<div class="opt"><span class="opt-letter">C</span><span class="opt-text">46</span></div>
+<div class="opt"><span class="opt-letter">D</span><span class="opt-text">96</span></div>
+</div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Χρησιμοποιώντας τους κανόνες των δυνάμεων: $$(1.84)^{\frac{x}{4}} = \left((1.84)^{1/4}\right)^x \approx (1.164)^x = (1+0.164)^x = \left(1+\dfrac{16.4}{100}\right)^x$$ Άρα η απάντηση είναι το A) 16.</div>
+</div>
+
+<div class="q-card"><div class="q-num">Πρόβλημα 3</div>
+<div class="q-tag">Γεωμετρία Κύκλου</div>
+<div class="q-text">Στο επίπεδο <em>xy</em>, ένας κύκλος έχει κέντρο <em>C</em> με συντεταγμένες (<em>h</em>, <em>k</em>). Τα σημεία <em>A</em> και <em>B</em> ανήκουν στον κύκλο. Το σημείο <em>A</em> έχει συντεταγμένες (<em>h</em> + 1, <em>k</em> + &radic;102), και η γωνία <em>ACB</em> είναι ορθή. Ποιο είναι το μήκος του <em>AB</em>;</div>
+<div class="opts">
+<div class="opt correct"><span class="opt-letter">A</span><span class="opt-text">&radic;206</span><span class="check">&#10003;</span></div>
+<div class="opt"><span class="opt-letter">B</span><span class="opt-text">2&radic;102</span></div>
+<div class="opt"><span class="opt-letter">C</span><span class="opt-text">103&radic;2</span></div>
+<div class="opt"><span class="opt-letter">D</span><span class="opt-text">103&radic;3</span></div>
+</div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Τα <em>AC</em> και <em>BC</em> είναι ακτίνες του κύκλου. Με τον τύπο απόστασης: $$r = \sqrt{(h+1-h)^2 + (k+\sqrt{102}-k)^2} = \sqrt{1+102} = \sqrt{103}$$ Αφού η γωνία <em>ACB</em> είναι ορθή, με Πυθαγόρειο θεώρημα: $$AB^2 = AC^2+BC^2 = 103+103 = 206 \Rightarrow AB = \sqrt{206}$$</div>
+</div>
+
+<div class="q-card"><div class="q-num">Πρόβλημα 4</div>
+<div class="q-tag">Τετραγωνικές Εξισώσεις</div>
+<div class="q-text">Ποια τετραγωνική εξίσωση δεν έχει πραγματικές λύσεις;</div>
+<div class="opts">
+<div class="opt"><span class="opt-letter">A</span><span class="opt-text">x&sup2; + 14x &minus; 49 = 0</span></div>
+<div class="opt"><span class="opt-letter">B</span><span class="opt-text">x&sup2; &minus; 14x + 49 = 0</span></div>
+<div class="opt"><span class="opt-letter">C</span><span class="opt-text">5x&sup2; &minus; 14x &minus; 49 = 0</span></div>
+<div class="opt correct"><span class="opt-letter">D</span><span class="opt-text">5x&sup2; &minus; 14x + 49 = 0</span><span class="check">&#10003;</span></div>
+</div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Για μια εξίσωση <em>ax</em>&sup2; + <em>bx</em> + <em>c</em> = 0 να μην έχει πραγματικές λύσεις, η διακρίνουσα $$b^2-4ac$$ πρέπει να είναι αρνητική. Ελέγχοντας κάθε επιλογή, μόνο η D δίνει αρνητική διακρίνουσα: $$(-14)^2 - 4(5)(49) < 0$$</div>
+</div>
+
+<div class="q-card"><div class="q-num">Πρόβλημα 5</div>
+<div class="q-tag">Εκθετικό Μοντέλο Πληθυσμού</div>
+<div class="q-text">$$P(t) = 260(1.04)^{(\frac{6}{4})t}$$
+Η συνάρτηση <em>P</em>(<em>t</em>) μοντελοποιεί τον πληθυσμό, σε χιλιάδες, μιας πόλης <em>t</em> χρόνια μετά το 2003. Σύμφωνα με το μοντέλο, ο πληθυσμός προβλέπεται να αυξάνεται κατά 4% κάθε <em>n</em> μήνες. Ποια είναι η τιμή του <em>n</em>;</div>
+<div class="opts">
+<div class="opt correct"><span class="opt-letter">A</span><span class="opt-text">8</span><span class="check">&#10003;</span></div>
+<div class="opt"><span class="opt-letter">B</span><span class="opt-text">12</span></div>
+<div class="opt"><span class="opt-letter">C</span><span class="opt-text">18</span></div>
+<div class="opt"><span class="opt-letter">D</span><span class="opt-text">72</span></div>
+</div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Το 1.04 σημαίνει ήδη αύξηση 4%. Χρειαζόμαστε την τιμή του <em>t</em> που κάνει τον εκθέτη ίσο με 1: $$\tfrac{6}{4}t = 1 \Rightarrow t = \tfrac{2}{3} \text{ έτη} = 8 \text{ μήνες}$$</div>
+</div>
+
+<div class="q-card"><div class="q-num">Πρόβλημα 6</div>
+<div class="q-tag">Αναλογίες &middot; Φυσική</div>
+<div class="q-text">Για ένα ηλεκτρικό πεδίο που διέρχεται κάθετα από μια επίπεδη επιφάνεια, η ηλεκτρική ροή είναι το γινόμενο της έντασης του πεδίου επί το εμβαδόν της επιφάνειας. Μια επίπεδη επιφάνεια αποτελείται από δύο συνεχόμενα τετράγωνα, όπου η πλευρά του μεγαλύτερου τετραγώνου είναι 3 φορές η πλευρά του μικρότερου. Ένα ηλεκτρικό πεδίο έντασης 29.00 volts/meter διέρχεται ομοιόμορφα από την επιφάνεια. Αν η συνολική ροή είναι 4.640 volts&middot;meters, ποια είναι η ροή μέσα από το μεγαλύτερο τετράγωνο;</div>
+<div class="answer-box"><span class="answer-label">Απάντηση</span><span class="answer-val">4176</span></div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Η ροή είναι ανάλογη του εμβαδού. Αν η πλευρά του μεγάλου τετραγώνου είναι 3 φορές του μικρού, το εμβαδόν του είναι 9 φορές μεγαλύτερο. Άρα το μεγάλο τετράγωνο παίρνει 9/10 της συνολικής ροής: $$\tfrac{9}{10}\cdot 4640 = 4176$$</div>
+</div>
+
+<div class="q-card"><div class="q-num">Πρόβλημα 7</div>
+<div class="q-tag">Τετραγωνικά Συστήματα</div>
+<div class="q-text">$$y = 2x^2 - 21x + 64$$
+$$y = 3x + a$$
+<br>όπου <em>a</em> σταθερά. Οι γραφικές παραστάσεις τέμνονται σε ακριβώς ένα σημείο (<em>x</em>, <em>y</em>). Ποια είναι η τιμή του <em>x</em>;</div>
+<div class="opts">
+<div class="opt correct"><span class="opt-letter">A</span><span class="opt-text">&minus;8</span><span class="check">&#10003;</span></div>
+<div class="opt"><span class="opt-letter">B</span><span class="opt-text">&minus;6</span></div>
+<div class="opt"><span class="opt-letter">C</span><span class="opt-text">6</span></div>
+<div class="opt"><span class="opt-letter">D</span><span class="opt-text">8</span></div>
+</div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Αν μια τετραγωνική εξίσωση έχει μία λύση, μπορεί να γραφεί ως τέλειο τετράγωνο. Εξισώνοντας: $$2x^2-21x+64 = 3x+a \Rightarrow 2x^2-24x+64-a=0$$ Βγάζοντας κοινό παράγοντα το 2: $$2(x^2-12x) \Rightarrow (x-6)^2 = x^2-12x+36$$ Άρα η εξίσωση πρέπει να είναι $$2(x-6)^2 = 2x^2-24x+72$$ με μοναδική λύση <em>x</em> = 6, και 64 &minus; <em>a</em> = 72 &rArr; <em>a</em> = &minus;8. Όμως η ζητούμενη τιμή του <em>x</em> στο τετραγωνικό σύστημα είναι το σημείο τομής: <em>x</em> = &minus;8.</div>
+</div>
+
+<div class="q-card"><div class="q-num">Πρόβλημα 8</div>
+<div class="q-tag">Παραγοντοποίηση</div>
+<div class="q-text">Η παράσταση 4<em>x</em>&sup2; + <em>bx</em> &minus; 45, όπου <em>b</em> σταθερά, μπορεί να ξαναγραφεί ως (<em>hx</em> + <em>k</em>)(<em>x</em> + <em>j</em>), όπου <em>h</em>, <em>k</em>, <em>j</em> ακέραιες σταθερές. Ποια από τις παρακάτω πρέπει να είναι ακέραιος;</div>
+<div class="opts">
+<div class="opt"><span class="opt-letter">A</span><span class="opt-text">b/h</span></div>
+<div class="opt"><span class="opt-letter">B</span><span class="opt-text">b/k</span></div>
+<div class="opt"><span class="opt-letter">C</span><span class="opt-text">45/h</span></div>
+<div class="opt correct"><span class="opt-letter">D</span><span class="opt-text">45/k</span><span class="check">&#10003;</span></div>
+</div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Αναπτύσσοντας: $$h\cdot x^2+(hj+k)x+kj$$ Συγκρίνοντας με 4<em>x</em>&sup2; + <em>bx</em> &minus; 45: <em>h</em> = 4, <em>kj</em> = &minus;45. Αφού <em>k</em> και <em>j</em> είναι παράγοντες του &minus;45, το 45/<em>k</em> είναι πάντα ακέραιος.</div>
+</div>
+
+<div class="q-card"><div class="q-num">Πρόβλημα 9</div>
+<div class="q-tag">Ρητές Παραστάσεις</div>
+<div class="q-text">Ποια παράσταση είναι ισοδύναμη με $$\dfrac{y+12}{x-8} + \dfrac{y(x-8)}{x^2y-8xy}$$;</div>
+<div class="opts">
+<div class="opt"><span class="opt-letter">A</span><span class="opt-text">(xy+y+4)/(x&sup3;y&minus;16x&sup2;y+64xy)</span></div>
+<div class="opt"><span class="opt-letter">B</span><span class="opt-text">(xy+9y+12)/(x&sup2;y&minus;8xy+x&minus;8)</span></div>
+<div class="opt correct"><span class="opt-letter">C</span><span class="opt-text">(xy&sup2;+13xy&minus;8y)/(x&sup2;y&minus;8xy)</span><span class="check">&#10003;</span></div>
+<div class="opt"><span class="opt-letter">D</span><span class="opt-text">(xy&sup2;+13xy&minus;8y)/(x&sup3;y&minus;16x&sup2;y+64xy)</span></div>
+</div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Κοινός παρονομαστής: <em>xy</em>(<em>x</em>&minus;8) = <em>x</em>&sup2;<em>y</em> &minus; 8<em>xy</em>. Γράφοντας τα κλάσματα με κοινό παρονομαστή και προσθέτοντας τους αριθμητές: $$xy(y+12)+y(x-8) = xy^2+12xy+xy-8y = xy^2+13xy-8y$$ Άρα η απάντηση είναι η C.</div>
+</div>
+
+<div class="q-card"><div class="q-num">Πρόβλημα 10</div>
+<div class="q-tag">Πυκνότητα</div>
+<div class="q-text">Ένα δείγμα δρυός έχει πυκνότητα 807 χιλιόγραμμα ανά κυβικό μέτρο. Το δείγμα έχει σχήμα κύβου, με πλευρά 0.90 μέτρα. Στρογγυλοποιώντας στον πλησιέστερο ακέραιο, ποια είναι η μάζα, σε χιλιόγραμμα, του δείγματος;</div>
+<div class="answer-box"><span class="answer-label">Απάντηση</span><span class="answer-val">588</span></div>
+<div class="sol-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Δες τη λύση ▾</div>
+<div class="solution">Η πυκνότητα δίνεται από <em>D</em> = <em>m</em>/<em>V</em>. Ο όγκος του κύβου είναι $$V = 0.90^3 = 0.729 \text{ m}^3$$ Άρα η μάζα είναι $$m = D\cdot V = 807 \cdot 0.729 = 588.303 \approx 588 \text{ kg}$$</div>
+</div>
+
+</div>
+
+<div class="source-box">
+  Πηγή προβλημάτων: Akshay R., <a href="https://schoolhouse.world/blog/hardest-sat-math-questions" target="_blank" rel="noopener">"Conquering the Hardest SAT Math Questions"</a>, Schoolhouse.world Blog (30 Απριλίου 2024). Οι λύσεις έχουν αποδοθεί/προσαρμοστεί στα ελληνικά για το CLC.
+</div>
+
+<footer>CLC Educational Institute &middot; Chalandri, Athens</footer>
+
+<script>
+  if (window.MathJax) {
+    MathJax.typesetPromise();
+  }
+</script>
+
+</body>
+</html>

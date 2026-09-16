@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT Math Formula Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js"></script>
+<style>
+:root{
+  --ink:#1a1a1a;
+  --ink-soft:#4a4a48;
+  --paper:#f7f4ee;
+  --card:#fffdf9;
+  --accent:#b3431f;
+  --accent-soft:#e8d9c4;
+  --line:#dcd4c6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:
+    radial-gradient(circle at 20% 10%, #fbf8f2 0%, transparent 50%),
+    radial-gradient(circle at 85% 90%, #f2ece1 0%, transparent 55%),
+    var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:18px;
+  line-height:1.55;
+  padding:0 24px 80px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- Masthead ---------- */
+.masthead{
+  max-width:1080px;
+  margin:0 auto;
+  padding:64px 0 40px;
+  border-bottom:3px double var(--ink);
+  text-align:center;
+}
+.kicker{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.42em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:18px;
+}
+.masthead h1{
+  font-family:'Fraunces',serif;
+  font-weight:900;
+  font-size:clamp(2.4rem,7vw,4.6rem);
+  line-height:.95;
+  letter-spacing:-.02em;
+}
+.masthead .subtitle{
+  font-style:italic;
+  font-size:1.05rem;
+  color:var(--ink-soft);
+  margin-top:14px;
+}
+
+/* ---------- Layout ---------- */
+.sheet{
+  max-width:1080px;
+  margin:0 auto;
+  columns:2;
+  column-gap:40px;
+  padding-top:48px;
+}
+@media(max-width:820px){
+  .sheet{columns:1;}
+  body{font-size:17px;}
+}
+
+section{
+  break-inside:avoid;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:26px 28px 30px;
+  margin-bottom:36px;
+  box-shadow:0 1px 0 rgba(0,0,0,.04), 0 14px 30px -22px rgba(60,40,20,.35);
+  position:relative;
+}
+section::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:4px;
+  background:var(--accent);
+  border-radius:4px 4px 0 0;
+}
+
+h2{
+  font-family:'Fraunces',serif;
+  font-weight:900;
+  font-size:1.85rem;
+  letter-spacing:-.01em;
+  margin-bottom:20px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--line);
+}
+h2 .num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;
+  font-weight:500;
+  color:var(--accent);
+  vertical-align:super;
+  letter-spacing:.1em;
+  margin-right:8px;
+}
+
+h3{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:500;
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:var(--accent);
+  margin:22px 0 8px;
+}
+h3:first-of-type{margin-top:4px;}
+
+.formula{
+  font-size:1.15rem;
+  margin:7px 0;
+  padding-left:2px;
+}
+.label{
+  font-weight:500;
+  color:var(--ink);
+}
+.note{
+  font-size:.92rem;
+  font-style:italic;
+  color:var(--ink-soft);
+  display:block;
+  margin:4px 0 6px;
+}
+ul{list-style:none;margin:6px 0;}
+li{
+  padding:3px 0 3px 20px;
+  position:relative;
+  font-size:1rem;
+}
+li::before{
+  content:"›";
+  position:absolute;left:2px;
+  color:var(--accent);
+  font-weight:700;
+}
+.divider{
+  height:1px;
+  background:var(--line);
+  margin:18px 0;
+  border:none;
+}
+mjx-container{margin:0 !important;}
+
+/* ---------- Diagrams ---------- */
+.diagram{
+  margin:18px 0 6px;
+  text-align:center;
+}
+.diagram svg{
+  max-width:100%;
+  height:auto;
+}
+.shapes-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  justify-content:center;
+  align-items:flex-end;
+  margin:18px 0 6px;
+}
+.shape-item{
+  text-align:center;
+  flex:0 0 auto;
+}
+.shape-item .cap{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.62rem;
+  letter-spacing:.08em;
+  color:var(--ink-soft);
+  margin-top:4px;
+  display:block;
+}
+.relbox{
+  display:inline-block;
+  border:1.5px solid var(--accent);
+  border-radius:4px;
+  background:rgba(179,67,31,.05);
+  padding:10px 16px;
+  font-size:1.05rem;
+  vertical-align:middle;
+  margin-left:14px;
+}
+.angle-layout{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin:18px 0 6px;
+}
+.dia-line{stroke:var(--ink);stroke-width:1.6;fill:none;}
+.dia-fill{fill:var(--card);stroke:var(--ink);stroke-width:1.6;}
+.dia-dash{stroke:var(--ink-soft);stroke-width:1.3;fill:none;stroke-dasharray:4 3;}
+.dia-accent{stroke:var(--accent);stroke-width:1.8;fill:none;}
+.dia-pt{fill:var(--accent);}
+.dia-txt{font-family:'Newsreader',serif;font-size:13px;fill:var(--ink);font-style:italic;}
+.dia-txt-s{font-family:'Newsreader',serif;font-size:11px;fill:var(--ink-soft);font-style:italic;}
+
+footer{
+  max-width:1080px;
+  margin:30px auto 0;
+  text-align:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <h1>SAT FORMULAS</h1>
+  <div class="subtitle">Except for Problem Solving and Data Analysis</div>
+</header>
+
+<main class="sheet">
+
+  <!-- CIRCLES -->
+  <section>
+    <h2><span class="num">01</span>Circles</h2>
+    <p class="formula"><span class="label">Equation of a circle:</span> \((x - h)^2 + (y - k)^2 = r^2\)</p>
+    <p class="formula"><span class="label">Center:</span> \((h, k)\) &nbsp;&nbsp; <span class="label">Radius:</span> \(r\)</p>
+    <p class="formula"><span class="label">Circumference:</span> \(C = 2\pi r\)</p>
+    <p class="formula"><span class="label">Area:</span> \(A = \pi r^2\)</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 230 200" xmlns="http://www.w3.org/2000/svg" width="230" height="200">
+        <!-- axes -->
+        <line x1="20" y1="180" x2="215" y2="180" class="dia-line"/>
+        <line x1="35" y1="15" x2="35" y2="195" class="dia-line"/>
+        <polygon points="215,180 208,176 208,184" fill="var(--ink)"/>
+        <polygon points="35,15 31,22 39,22" fill="var(--ink)"/>
+        <text x="208" y="196" class="dia-txt-s">x</text>
+        <text x="22" y="22" class="dia-txt-s">y</text>
+        <!-- circle: center (h,k) -->
+        <circle cx="135" cy="100" r="58" class="dia-accent"/>
+        <!-- center point -->
+        <circle cx="135" cy="100" r="3" class="dia-pt"/>
+        <text x="118" y="95" class="dia-txt">(h, k)</text>
+        <!-- radius -->
+        <line x1="135" y1="100" x2="193" y2="100" class="dia-accent" stroke-dasharray="4 3"/>
+        <text x="158" y="93" class="dia-txt">r</text>
+      </svg>
+    </div>
+
+    <hr class="divider">
+    <h3>Radians ↔ Degrees</h3>
+    <p class="formula">\(\dfrac{\pi}{180} = 1^\circ\)</p>
+    <p class="formula">\(\dfrac{180}{\pi} = 1 \text{ radian}\)</p>
+    <p class="formula"><span class="label">Arc Length:</span> \(s = r\theta\)</p>
+    <hr class="divider">
+    <h3>Central Angle</h3>
+    <span class="note">Angle formed at the center by two radii.</span>
+    <h3>Inscribed Angle</h3>
+    <span class="note">Angle formed on the circle; it's half of the central angle.</span>
+
+    <div class="angle-layout">
+      <svg viewBox="0 0 170 170" xmlns="http://www.w3.org/2000/svg" width="170" height="170">
+        <circle cx="85" cy="85" r="64" class="dia-line"/>
+        <!-- center -->
+        <circle cx="85" cy="85" r="3" class="dia-pt"/>
+        <text x="60" y="92" class="dia-txt-s">O</text>
+        <!-- two points on circumference: P and Q -->
+        <!-- P at angle 200deg, Q at angle 340deg (lower arc) -->
+        <!-- P -->
+        <circle cx="25" cy="107" r="3" class="dia-pt"/>
+        <text x="10" y="112" class="dia-txt">P</text>
+        <!-- Q -->
+        <circle cx="145" cy="107" r="3" class="dia-pt"/>
+        <text x="150" y="112" class="dia-txt">Q</text>
+        <!-- inscribed vertex V at top, angle 90deg -->
+        <circle cx="85" cy="21" r="3" class="dia-pt"/>
+        <text x="78" y="16" class="dia-txt">V</text>
+        <!-- central angle: O to P and O to Q -->
+        <line x1="85" y1="85" x2="25" y2="107" class="dia-accent"/>
+        <line x1="85" y1="85" x2="145" y2="107" class="dia-accent"/>
+        <!-- inscribed angle: V to P and V to Q -->
+        <line x1="85" y1="21" x2="25" y2="107" class="dia-line"/>
+        <line x1="85" y1="21" x2="145" y2="107" class="dia-line"/>
+        <!-- small arc markers -->
+        <path d="M 70 96 A 18 18 0 0 0 100 96" class="dia-accent" stroke-width="1.4"/>
+        <path d="M 73 38 A 14 14 0 0 0 97 38" class="dia-line" stroke-width="1.2"/>
+        <text x="116" y="60" class="dia-txt-s">inscribed</text>
+        <text x="100" y="118" class="dia-txt-s">central</text>
+      </svg>
+      <span class="relbox">central \(= \dfrac{1}{2}\,\)inscribed</span>
+    </div>
+  </section>
+
+  <!-- DISTANCES -->
+  <section>
+    <h2><span class="num">02</span>Distances</h2>
+    <p class="formula"><span class="label">Distance formula:</span> \(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\)</p>
+    <p class="formula"><span class="label">Midpoint formula:</span> \(\left(\dfrac{x_1 + x_2}{2},\ \dfrac{y_1 + y_2}{2}\right)\)</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg" width="240" height="200">
+        <!-- axes -->
+        <line x1="20" y1="170" x2="225" y2="170" class="dia-line"/>
+        <line x1="40" y1="15" x2="40" y2="190" class="dia-line"/>
+        <polygon points="225,170 218,166 218,174" fill="var(--ink)"/>
+        <polygon points="40,15 36,22 44,22" fill="var(--ink)"/>
+        <text x="218" y="186" class="dia-txt-s">x</text>
+        <text x="27" y="22" class="dia-txt-s">y</text>
+        <!-- Point A (x1,y1) lower-left -->
+        <circle cx="80" cy="140" r="3.5" class="dia-pt"/>
+        <text x="55" y="155" class="dia-txt">A (x₁, y₁)</text>
+        <!-- Point B (x2,y2) upper-right -->
+        <circle cx="185" cy="55" r="3.5" class="dia-pt"/>
+        <text x="158" y="48" class="dia-txt">B (x₂, y₂)</text>
+        <!-- segment AB -->
+        <line x1="80" y1="140" x2="185" y2="55" class="dia-accent"/>
+        <!-- right-triangle helper legs -->
+        <line x1="80" y1="140" x2="185" y2="140" class="dia-dash"/>
+        <line x1="185" y1="140" x2="185" y2="55" class="dia-dash"/>
+        <text x="120" y="92" class="dia-txt">d</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SURFACE AREA / VOLUME -->
+  <section>
+    <h2><span class="num">03</span>Surface Area / Volume</h2>
+    <p class="formula"><span class="label">Surface Area of Cube:</span> \(6s^2\)</p>
+    <p class="formula"><span class="label">Surface Area of Rectangular Prism:</span> \(2lw + 2lh + 2wh\)</p>
+    <p class="formula"><span class="label">Surface Area of Cylinder:</span> \(2\pi rh + 2\pi r^2\)</p>
+    <hr class="divider">
+    <p class="formula"><span class="label">Volume of Cube:</span> \(s^3\)</p>
+    <p class="formula"><span class="label">Volume of Cylinder:</span> \(\pi r^2 h\)</p>
+    <p class="formula"><span class="label">Volume of Sphere:</span> \(V = \dfrac{4}{3}\pi r^3\)</p>
+    <p class="formula"><span class="label">Volume of Rectangular Prism:</span> \(V = lwh\)</p>
+    <p class="formula"><span class="label">Volume of Triangular Prism:</span> \(V = \dfrac{1}{2}bhl\)</p>
+
+    <div class="shapes-row">
+      <!-- Cube -->
+      <div class="shape-item">
+        <svg viewBox="0 0 80 80" width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="26" width="40" height="40" class="dia-fill"/>
+          <polygon points="14,26 30,12 70,12 54,26" class="dia-fill"/>
+          <polygon points="54,26 70,12 70,52 54,66" class="dia-fill"/>
+          <line x1="14" y1="66" x2="30" y2="52" class="dia-dash"/>
+          <line x1="30" y1="52" x2="70" y2="52" class="dia-dash"/>
+          <line x1="30" y1="52" x2="30" y2="12" class="dia-dash"/>
+        </svg>
+        <span class="cap">Cube</span>
+      </div>
+      <!-- Rectangular Prism -->
+      <div class="shape-item">
+        <svg viewBox="0 0 96 80" width="96" height="80" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="30" width="54" height="34" class="dia-fill"/>
+          <polygon points="12,30 28,16 82,16 66,30" class="dia-fill"/>
+          <polygon points="66,30 82,16 82,50 66,64" class="dia-fill"/>
+          <line x1="12" y1="64" x2="28" y2="50" class="dia-dash"/>
+          <line x1="28" y1="50" x2="82" y2="50" class="dia-dash"/>
+          <line x1="28" y1="50" x2="28" y2="16" class="dia-dash"/>
+        </svg>
+        <span class="cap">Prism</span>
+      </div>
+      <!-- Cylinder -->
+      <div class="shape-item">
+        <svg viewBox="0 0 70 80" width="70" height="80" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="35" cy="16" rx="24" ry="9" class="dia-fill"/>
+          <line x1="11" y1="16" x2="11" y2="62" class="dia-line"/>
+          <line x1="59" y1="16" x2="59" y2="62" class="dia-line"/>
+          <path d="M 11 62 A 24 9 0 0 0 59 62" class="dia-line"/>
+          <path d="M 11 62 A 24 9 0 0 1 59 62" class="dia-dash"/>
+        </svg>
+        <span class="cap">Cylinder</span>
+      </div>
+      <!-- Sphere -->
+      <div class="shape-item">
+        <svg viewBox="0 0 76 80" width="76" height="80" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="38" cy="40" r="30" class="dia-fill"/>
+          <ellipse cx="38" cy="40" rx="30" ry="10" class="dia-dash"/>
+          <ellipse cx="38" cy="40" rx="10" ry="30" class="dia-dash"/>
+          <circle cx="38" cy="40" r="2.5" class="dia-pt"/>
+          <line x1="38" y1="40" x2="66" y2="40" class="dia-accent" stroke-dasharray="3 2"/>
+          <text x="48" y="36" class="dia-txt-s">r</text>
+        </svg>
+        <span class="cap">Sphere</span>
+      </div>
+      <!-- Triangular Prism -->
+      <div class="shape-item">
+        <svg viewBox="0 0 96 80" width="96" height="80" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="16,60 40,20 40,60" class="dia-fill"/>
+          <polygon points="40,20 78,20 78,60 40,60" class="dia-fill"/>
+          <line x1="16" y1="60" x2="54" y2="60" class="dia-dash"/>
+          <line x1="54" y1="60" x2="78" y2="60" class="dia-line"/>
+          <line x1="16" y1="60" x2="54" y2="20" class="dia-dash"/>
+          <line x1="54" y1="20" x2="78" y2="20" class="dia-line"/>
+          <line x1="54" y1="20" x2="54" y2="60" class="dia-dash"/>
+        </svg>
+        <span class="cap">Tri. Prism</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIANGLES -->
+  <section>
+    <h2><span class="num">04</span>Triangles</h2>
+    <h3>Similar Triangles</h3>
+    <p class="formula"><span class="label">Ratio of sides:</span> \(\dfrac{a_1}{a_2} = \dfrac{b_1}{b_2} = \dfrac{c_1}{c_2}\)</p>
+    <p class="formula"><span class="label">Ratio of areas:</span> \(\left(\dfrac{a_1}{a_2}\right)^2 = \dfrac{\text{Area}_1}{\text{Area}_2}\)</p>
+    <p class="formula"><span class="label">Ratio of volumes (3D):</span> \(\left(\dfrac{a_1}{a_2}\right)^3 = \dfrac{\text{Vol}_1}{\text{Vol}_2}\)</p>
+    <hr class="divider">
+    <p class="formula"><span class="label">Congruent Triangles →</span> Same angles and lengths</p>
+    <p class="formula"><span class="label">Similar Triangles →</span> Same angles only and common ratio on their lengths</p>
+    <span class="note">Κριτηρια Ισοτητας Τριγωνων: Π-Π-Π, Π-Γ-Π (περιεχομενη γωνια), Γ-Π-Γ (προσπιπτουσες γωνιες στην πλευρα).</span>
+    <span class="note">Κριτηριο Ομοιων Τριγωνων: 2 ισες γωνιες αρκουν.</span>
+    <hr class="divider">
+    <h3>Special Triangles</h3>
+    <p class="formula">\(45^\circ\text{–}45^\circ\text{–}90^\circ \rightarrow\) sides: \(x,\ x,\ x\sqrt{2}\)</p>
+    <div class="diagram">
+      <svg viewBox="0 0 180 130" width="180" height="130" xmlns="http://www.w3.org/2000/svg">
+        <!-- right isosceles: right angle bottom-left -->
+        <polygon points="30,110 130,110 30,30" class="dia-fill"/>
+        <!-- right-angle marker at bottom-left -->
+        <rect x="30" y="98" width="12" height="12" class="dia-line" fill="none"/>
+        <!-- 45 deg angle markers -->
+        <path d="M 112 110 A 18 18 0 0 0 119 96" class="dia-accent" stroke-width="1.3"/>
+        <text x="96" y="105" class="dia-txt-s">45°</text>
+        <path d="M 30 52 A 22 22 0 0 0 44 44" class="dia-accent" stroke-width="1.3"/>
+        <text x="36" y="62" class="dia-txt-s">45°</text>
+        <!-- side labels -->
+        <text x="14" y="74" class="dia-txt">x</text>
+        <text x="74" y="124" class="dia-txt">x</text>
+        <text x="82" y="62" class="dia-txt">x√2</text>
+      </svg>
+    </div>
+    <p class="formula">\(30^\circ\text{–}60^\circ\text{–}90^\circ \rightarrow\) sides: \(x,\ x\sqrt{3},\ 2x\)</p>
+    <div class="diagram">
+      <svg viewBox="0 0 180 130" width="180" height="130" xmlns="http://www.w3.org/2000/svg">
+        <!-- right angle bottom-right; 60 at bottom-left, 30 at top -->
+        <polygon points="30,110 140,110 140,30" class="dia-fill"/>
+        <!-- right-angle marker bottom-right -->
+        <rect x="128" y="98" width="12" height="12" class="dia-line" fill="none"/>
+        <!-- 60 deg at bottom-left -->
+        <path d="M 52 110 A 22 22 0 0 0 44 92" class="dia-accent" stroke-width="1.3"/>
+        <text x="54" y="104" class="dia-txt-s">60°</text>
+        <!-- 30 deg at top -->
+        <path d="M 140 52 A 22 22 0 0 0 126 46" class="dia-accent" stroke-width="1.3"/>
+        <text x="108" y="44" class="dia-txt-s">30°</text>
+        <!-- side labels -->
+        <text x="78" y="124" class="dia-txt">x√3</text>
+        <text x="146" y="74" class="dia-txt">x</text>
+        <text x="74" y="62" class="dia-txt">2x</text>
+      </svg>
+    </div>
+    <hr class="divider">
+    <p class="formula"><span class="label">Isosceles:</span></p>
+    <span class="note">Two sides are equal → base angles are equal.</span>
+    <p class="formula"><span class="label">Equilateral:</span></p>
+    <span class="note">All sides are equal, all angles = 60°.</span>
+  </section>
+
+  <!-- TRIGONOMETRY -->
+  <section>
+    <h2><span class="num">05</span>Trigonometry</h2>
+    <h3>SOH CAH TOA</h3>
+    <div class="diagram">
+      <svg viewBox="0 0 240 150" width="240" height="150" xmlns="http://www.w3.org/2000/svg">
+        <!-- right angle at bottom-right; phi at bottom-left -->
+        <polygon points="25,120 175,120 175,30" class="dia-fill"/>
+        <!-- right-angle marker bottom-right -->
+        <rect x="163" y="108" width="12" height="12" class="dia-line" fill="none"/>
+        <!-- angle phi at bottom-left -->
+        <path d="M 50 120 A 25 25 0 0 0 42 102" class="dia-accent" stroke-width="1.5"/>
+        <text x="52" y="113" class="dia-txt" font-style="italic">φ</text>
+        <!-- side labels -->
+        <!-- hypotenuse (from phi to top, the slanted side) -->
+        <text x="80" y="66" class="dia-txt" transform="rotate(-31 96 75)">hypotenuse</text>
+        <!-- opposite (vertical right side, opposite to phi) -->
+        <text x="182" y="78" class="dia-txt">opposite</text>
+        <!-- adjacent (bottom side, next to phi) -->
+        <text x="72" y="138" class="dia-txt">adjacent</text>
+      </svg>
+    </div>
+    <p class="formula">\(\sin = \dfrac{\text{opp}}{\text{hyp}}\)</p>
+    <p class="formula">\(\cos = \dfrac{\text{adj}}{\text{hyp}}\)</p>
+    <p class="formula">\(\tan = \dfrac{\text{opp}}{\text{adj}}\)</p>
+    <hr class="divider">
+    <h3>Co-function & Identity</h3>
+    <p class="formula">\(\sin(90^\circ - x) = \cos(x)\)</p>
+    <p class="formula">\(\cos(90^\circ - x) = \sin(x)\)</p>
+    <p class="formula">\(\tan(x) = \sin(x) / \cos(x)\)</p>
+  </section>
+
+  <!-- POLYGONS -->
+  <section>
+    <h2><span class="num">06</span>Polygons</h2>
+    <p class="formula"><span class="label">Sum of interior angles:</span> \((n - 2) \times 180\)</p>
+    <p class="formula"><span class="label">Regular polygon:</span></p>
+    <span class="note">All sides and angles are equal.</span>
+    <hr class="divider">
+    <h3>Exterior Angle Theorem</h3>
+    <span class="note">Exterior angle = sum of 2 remote interior angles.</span>
+    <p class="formula">Ext. angle \(= x + b\)</p>
+  </section>
+
+  <!-- GEOMETRY -->
+  <section>
+    <h2><span class="num">07</span>Geometry</h2>
+    <p class="formula"><span class="label">Pythagorean Theorem:</span> \(a^2 + b^2 = c^2\)</p>
+    <p class="formula"><span class="label">Common Triples:</span> \(3, 4, 5\) and \(5, 12, 13\)</p>
+    <p class="formula"><span class="label">Radical power rule:</span> \(\left(\sqrt[n]{a}\right)^m = \sqrt[n]{a^m} = a^{\frac{m}{n}}\)</p>
+    <hr class="divider">
+    <p class="formula"><span class="label">Congruent Triangles:</span></p>
+    <span class="note">Have the same shape and size.</span>
+    <p class="formula"><span class="label">Similar Triangles:</span></p>
+    <span class="note">Have the same shape.</span>
+    <hr class="divider">
+    <span class="note">Implementing the altitude of a right triangle will create two more similar triangles.</span>
+    <div class="diagram">
+      <svg viewBox="0 0 240 160" width="240" height="160" xmlns="http://www.w3.org/2000/svg">
+        <!-- Right triangle: right angle at top vertex C; A at bottom-left, B at bottom-right -->
+        <!-- We'll draw with right angle at top apex C, legs going down to A and B -->
+        <!-- Use a classic layout: A (left), B (right), C (top); right angle at C -->
+        <!-- Coordinates -->
+        <!-- A = (20,130), B = (220,130), C = (84,30) so that AC perp BC -->
+        <!-- Check perpendicularity: AC vec = (64,-100); BC vec = (-136,-100); dot = 64*-136 + -100*-100 = -8704+10000 = 1296 (not zero) -->
+        <!-- Simpler: place C so that the right angle is exactly at C using vectors -->
+        <!-- Let A=(20,130), B=(220,130). Foot D of altitude from C on AB at D=(d,130) with CD perpendicular AB. -->
+        <!-- For C above AB at height h, the right angle at C requires AC perpendicular BC. -->
+        <!-- Using AD * DB = CD^2 (geometric mean), pick AD=40, DB=160 → CD = sqrt(40*160) = 80 -->
+        <!-- So D=(60,130), C=(60,50) -->
+        <polygon points="20,130 220,130 60,50" class="dia-fill"/>
+        <!-- altitude from C to D on hypotenuse AB -->
+        <line x1="60" y1="50" x2="60" y2="130" class="dia-accent" stroke-dasharray="4 3"/>
+        <!-- right angle marker at C (between CA and CB) -->
+        <!-- vectors from C: to A=(-40,80), to B=(160,80); the right angle is at C; draw small square -->
+        <!-- Direction A from C: normalize (-40,80)/sqrt(8000) ; direction B: (160,80)/sqrt(32000) -->
+        <!-- approximate small square at C: use simple visual cue with two short segments -->
+        <path d="M 53.6 60.6 L 56 67.4 L 49.6 69.8" class="dia-line" fill="none"/>
+        <!-- right angle marker at D (foot of altitude) -->
+        <rect x="60" y="118" width="10" height="12" class="dia-line" fill="none"/>
+        <!-- vertex labels -->
+        <text x="6" y="142" class="dia-txt">A</text>
+        <text x="224" y="142" class="dia-txt">B</text>
+        <text x="54" y="44" class="dia-txt">C</text>
+        <text x="50" y="148" class="dia-txt-s">D</text>
+        <!-- altitude label -->
+        <text x="40" y="94" class="dia-txt-s">h</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- LINEAR GRAPHS -->
+  <section>
+    <h2><span class="num">08</span>Linear Graphs</h2>
+    <p class="formula"><span class="label">Slope:</span> \(\dfrac{y_2 - y_1}{x_2 - x_1}\)</p>
+    <p class="formula"><span class="label">Slope-Intercept Form:</span> \(y = mx + b\)</p>
+    <p class="formula"><span class="label">Point-Slope Form:</span> \(y - y_1 = m(x - x_1)\)</p>
+    <p class="formula"><span class="label">Distance Formula:</span> \(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\)</p>
+    <p class="formula"><span class="label">Midpoint Formula:</span> \((x, y) = \left(\dfrac{x_1 + x_2}{2},\ \dfrac{y_1 + y_2}{2}\right)\)</p>
+    <p class="formula"><span class="label">Horizontal Line:</span> \(y = c,\ m = 0\)</p>
+    <p class="formula"><span class="label">Quadratic Formula:</span> \(x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}\)</p>
+    <hr class="divider">
+    <h3>Perpendicular Lines</h3>
+    <span class="note">Slopes are opposite reciprocals.</span>
+    <p class="formula">\(3 = \dfrac{3}{1} \rightarrow \dfrac{1}{3} \rightarrow -\dfrac{1}{3}\)</p>
+    <span class="note">Flip, then switch sign.</span>
+    <hr class="divider">
+    <h3>Reference</h3>
+    <ul>
+      <li>\(m\) = slope</li>
+      <li>\(b\) = y-intercept (constant)</li>
+      <li>\(d\) = distance</li>
+      <li>\(c\) = constant</li>
+    </ul>
+    <hr class="divider">
+    <p class="formula">ημ(θ) = \(\sin(\theta)\)</p>
+    <p class="formula">συν(θ) = \(\cos(\theta)\)</p>
+    <p class="formula">εφ(θ) = \(\tan(\theta)\)</p>
+  </section>
+
+  <!-- EXPONENTS -->
+  <section>
+    <h2><span class="num">09</span>Exponents</h2>
+    <h3>Fundamental Laws</h3>
+    <p class="formula"><span class="label">Product Rule:</span> \(a^m \cdot a^n = a^{m+n}\)</p>
+    <p class="formula"><span class="label">Quotient Rule:</span> \(\dfrac{a^m}{a^n} = a^{m-n},\ a \neq 0\)</p>
+    <p class="formula"><span class="label">Power of a Power:</span> \(\left(a^m\right)^n = a^{mn}\)</p>
+    <p class="formula"><span class="label">Power of a Product:</span> \((ab)^n = a^n b^n\)</p>
+    <p class="formula"><span class="label">Power of a Quotient:</span> \(\left(\dfrac{a}{b}\right)^n = \dfrac{a^n}{b^n},\ b \neq 0\)</p>
+    <p class="formula"><span class="label">Negative Exponent:</span> \(a^{-n} = \dfrac{1}{a^n},\ a \neq 0\)</p>
+    <p class="formula"><span class="label">Zero Exponent:</span> \(a^0 = 1,\ a \neq 0\)</p>
+    <p class="formula"><span class="label">Identity Exponent:</span> \(a^1 = a\)</p>
+    <p class="formula"><span class="label">Fractional Exponent:</span> \(a^{\frac{m}{n}} = \sqrt[n]{a^m},\ a > 0\)</p>
+    <p class="formula"><span class="label">Root Rule:</span> \(\sqrt[n]{a} = a^{\frac{1}{n}},\ a > 0\)</p>
+    <p class="formula"><span class="label">Even/Odd Power of −1:</span> \((-1)^n = \begin{cases} 1, & \text{if } n \text{ is even} \\ -1, & \text{if } n \text{ is odd} \end{cases}\)</p>
+    <p class="formula"><span class="label">Rational Exponent:</span> \(a^{\frac{m}{n}} = \left(\sqrt[n]{a}\right)^m,\ a > 0\)</p>
+    <hr class="divider">
+    <h3>Exponential Growth & Decay</h3>
+    <p class="formula">\(f(t) = a(r)^t\)</p>
+    <ul>
+      <li>\(a\): Initial value (y-intercept)</li>
+      <li>\(r\): Rate of change</li>
+      <li>\(t\): Time</li>
+    </ul>
+    <span class="note">Example: 200 bacteria double every 3 hours — when will the population reach 800?</span>
+    <p class="formula">\(f(t) = 200(2)^{\frac{t}{3}}\)</p>
+    <p class="formula">\(800 = 200(2)^{\frac{t}{3}}\)</p>
+    <p class="formula">\(4 = 2^{\frac{t}{3}}\)</p>
+    <p class="formula">\(\dfrac{t}{3} = 2 \quad\Rightarrow\quad t = 6\)</p>
+    <span class="note">Answer: Population will reach 800 after 6 hours.</span>
+  </section>
+
+  <!-- QUADRATIC GRAPHS -->
+  <section>
+    <h2><span class="num">10</span>Quadratic Graphs</h2>
+    <p class="formula"><span class="label">Standard Form:</span> \(y = ax^2 + bx + c\)</p>
+    <ul>
+      <li><span class="label">a:</span> The greater \(a\) is, the narrower the graph. If \(a\) is positive, the graph opens upward (U-shape); if negative, it opens downward (∩-shape).</li>
+      <li><span class="label">b:</span> Represents the slope of the parabola at the y-intercept, or when \(x = 0\).</li>
+      <li><span class="label">c:</span> The y-value of the graph at the y-intercept.</li>
+    </ul>
+    <hr class="divider">
+    <p class="formula"><span class="label">Vertex Form:</span> \(y = a(x - h)^2 + k\)</p>
+    <ul>
+      <li><span class="label">h:</span> The x-value of the vertex.</li>
+      <li><span class="label">k:</span> The y-value of the vertex.</li>
+    </ul>
+    <hr class="divider">
+    <p class="formula"><span class="label">Quadratic Formula:</span> \(x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}\)</p>
+    <p class="formula"><span class="label">Discriminant:</span> \(b^2 - 4ac\)</p>
+    <ul>
+      <li>\(> 0\) → there are 2 solutions</li>
+      <li>\(= 0\) → there is 1 solution</li>
+      <li>\(< 0\) → there are no solutions</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>Προχειρες Σημειωσεις · Τσαλαπατης Σταυρος</footer>
+
+</body>
+</html>

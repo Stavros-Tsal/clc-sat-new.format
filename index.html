@@ -1334,22 +1334,11 @@ window.addEventListener('DOMContentLoaded', function() {
   <button class="nav-back-btn" onclick="goScreen('screen-subject')">← Back</button>
 </div>
 
-<!-- ══ SCREEN: PREP THEORY ══ -->
+<!-- ══ SCREEN: THEORY (content populated dynamically per section by renderTheoryCards()) ══ -->
 <div id="screen-prep-theory" class="screen">
   <h2 class="subject-title">Theory</h2>
   <p class="subject-sub">Question bank αναφοράς &amp; κανόνες βαθμολόγησης</p>
-  <div class="mode-cards">
-    <a class="mode-card" href="solved-exercises/Formula-Booklet-and-Solved-Exercises-March-2026.pdf" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
-      <div class="icon">📖</div>
-      <div class="label">Formula Booklet</div>
-      <div class="desc">Συνοπτικό τύπων &amp; τροπων (PDF)</div>
-    </a>
-    <a class="mode-card" href="solved-exercises/SAT-Math-Formula-Sheet.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
-      <div class="icon">📋</div>
-      <div class="label">SAT Math Formula Sheet</div>
-      <div class="desc">Δομή &amp; scoring του Digital SAT Math</div>
-    </a>
-  </div>
+  <div class="mode-cards" id="theory-cards"></div>
   <button class="nav-back-btn" onclick="goScreen('screen-mode')">← Back</button>
 </div>
 
@@ -2277,11 +2266,11 @@ function renderMathMenu() {
       onclick: "goScreen('screen-specific-practice')"
     });
   }
-  if (currentSection === 'foundation') {
+  if (currentSection === 'foundation' || currentSection === 'resit') {
     cards.push({
       icon: '📖', label: 'Theory',
       desc: 'Question bank αναφοράς & κανόνες βαθμολόγησης',
-      onclick: "goScreen('screen-prep-theory')"
+      onclick: "goScreen('screen-prep-theory'); renderTheoryCards();"
     });
   }
   container.innerHTML = cards.map(c =>
@@ -2360,6 +2349,32 @@ const DRILL_SPLIT_SPEC = {
   2: {"Probabilities":[1,2,3,4,5,6,7,8,14,15,18,19,23,25,28,29,38,39,40,42,43,44,46,57],"Statistical Reviews":[9,10,12,16,17,52,53,56],"Statistics Measures":[11,13,20,21,24,26,27,30,31,45,48,49,50,51,54],"Percentages & Ratios":[22,32,33,34,35,36,37,41,55,58,59,60]},
   3: {"2D-Shapes":[3,4,7,9,12,13,14,21,22,23,24,25,26,30,31,33,34,35,39,40,42],"3D-Shapes":[8,15,17,18,20,32,41,49,50,52,53,56],"Similarity":[16,19,38,43,51,57,58,59],"Circles":[5,6,29,36,47,48,55,60],"Trigonometry":[1,2,10,11,27,28,37,44,45,46],"Further Topics":[54]}
 };
+
+// ── THEORY: per-section material (Formula Booklet shared; presentations differ by section) ──
+const THEORY_SPEC = {
+  foundation: [
+    { icon: '📖', label: 'Formula Booklet', desc: 'Συνοπτικό τύπων & τρόπων (PDF)', href: 'solved-exercises/Formula-Booklet-and-Solved-Exercises-March-2026.pdf' },
+    { icon: '📊', label: 'Foundation Course Theory', desc: 'CLC DSAT Foundation Course — presentation (PDF)', href: 'solved-exercises/Foundation-Course-Theory.pdf' }
+  ],
+  resit: [
+    { icon: '📖', label: 'Formula Booklet', desc: 'Συνοπτικό τύπων & τρόπων (PDF)', href: 'solved-exercises/Formula-Booklet-and-Solved-Exercises-March-2026.pdf' },
+    { icon: '📊', label: 'Digital SAT Math Theory — Part 1', desc: 'CLC Digital SAT Math Theory — presentation (PDF)', href: 'solved-exercises/Digital-SAT-Math-Theory-Part1.pdf' },
+    { icon: '📈', label: 'Digital SAT Math Theory — Part 2', desc: 'CLC Digital SAT Math Theory — presentation (PDF)', href: 'solved-exercises/Digital-SAT-Math-Theory-Part2.pdf' }
+  ]
+};
+
+function renderTheoryCards() {
+  const container = document.getElementById('theory-cards');
+  if (!container) return;
+  const items = THEORY_SPEC[currentSection] || [];
+  container.innerHTML = items.map(it =>
+    `<a class="mode-card" href="${it.href}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">` +
+      `<div class="icon">${it.icon}</div>` +
+      `<div class="label">${it.label}</div>` +
+      `<div class="desc">${it.desc}</div>` +
+    `</a>`
+  ).join('');
+}
 
 let ORIGINAL_DRILL_QUESTIONS = null;
 let ORIGINAL_DRILL_ANSWERS = null;

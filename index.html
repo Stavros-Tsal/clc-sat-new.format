@@ -1373,8 +1373,8 @@ window.addEventListener('DOMContentLoaded', function() {
   <button class="nav-back-btn" onclick="goScreen('screen-mode')">← Back</button>
 </div>
 
-<!-- ══ SCREEN: PRACTICE TEST LIST ══ -->
-<div id="screen-test-list" class="screen">
+<!-- ══ SCREEN: PRACTICE TEST LIST — FOUNDATION ══ -->
+<div id="screen-test-list-foundation" class="screen">
   <h2 class="subject-title">Practice Tests</h2>
   <p class="subject-sub">Choose a full-length test to begin</p>
   <div class="mode-cards">
@@ -1383,74 +1383,90 @@ window.addEventListener('DOMContentLoaded', function() {
       <div class="label">Test 1</div>
       <div class="desc">Module 1 (25 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
+  </div>
+  <button class="nav-back-btn" onclick="goScreen('screen-mode')">← Back</button>
+</div>
+<!-- ══ SCREEN: PRACTICE TEST LIST — PREP ══ -->
+<div id="screen-test-list-prep" class="screen">
+  <h2 class="subject-title">Practice Tests</h2>
+  <p class="subject-sub">Choose a full-length test to begin</p>
+  <div class="mode-cards">
     <div class="mode-card" onclick="goScreen('screen-test2-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 2</div>
+      <div class="label">Test 1</div>
       <div class="desc">Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test3-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 3</div>
+      <div class="label">Test 2</div>
       <div class="desc">Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test4-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 4</div>
+      <div class="label">Test 3</div>
       <div class="desc">Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test5-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 5</div>
+      <div class="label">Test 4</div>
       <div class="desc">Advanced difficulty · Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test6-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 6</div>
+      <div class="label">Test 5</div>
       <div class="desc">Advanced difficulty · Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
+  </div>
+  <button class="nav-back-btn" onclick="goScreen('screen-mode')">← Back</button>
+</div>
+<!-- ══ SCREEN: PRACTICE TEST LIST — RESIT ══ -->
+<div id="screen-test-list-resit" class="screen">
+  <h2 class="subject-title">Practice Tests</h2>
+  <p class="subject-sub">Choose a full-length test to begin</p>
+  <div class="mode-cards">
     <div class="mode-card" onclick="goScreen('screen-test7-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 7</div>
+      <div class="label">Test 1</div>
       <div class="desc">From the drills · Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test8-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 8</div>
+      <div class="label">Test 2</div>
       <div class="desc">Advanced difficulty · Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test9-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 9</div>
+      <div class="label">Test 3</div>
       <div class="desc">Advanced difficulty · Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test10-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 10</div>
+      <div class="label">Test 4</div>
       <div class="desc">Advanced difficulty · Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test11-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 11</div>
+      <div class="label">Test 5</div>
       <div class="desc">Module 1 (24 questions, 35 min) + Module 2 (23 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test12-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 12</div>
+      <div class="label">Test 6</div>
       <div class="desc">Module 1 (21 questions, 35 min) + Module 2 (20 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test13-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 13</div>
+      <div class="label">Test 7</div>
       <div class="desc">Hardest questions on record · Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test14-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 14</div>
+      <div class="label">Test 8</div>
       <div class="desc">Module 1 (22 questions, 35 min) + Module 2 (22 questions, 35 min)</div>
     </div>
     <div class="mode-card" onclick="goScreen('screen-test15-ready')">
       <div class="icon">📄</div>
-      <div class="label">Test 15</div>
+      <div class="label">Test 9</div>
       <div class="desc">June 2026 Questions · Single module (16 questions, 35 min)</div>
     </div>
   </div>
@@ -1484,13 +1500,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1()">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-foundation')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 2 READY ══ -->
 <div id="screen-test2-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 2</h1>
+  <h1 class="welcome-title">Test 1</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1514,13 +1530,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(2)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-prep')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 3 READY ══ -->
 <div id="screen-test3-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 3</h1>
+  <h1 class="welcome-title">Test 2</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1544,13 +1560,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(3)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-prep')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 4 READY ══ -->
 <div id="screen-test4-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 4</h1>
+  <h1 class="welcome-title">Test 3</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1574,13 +1590,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(4)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-prep')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 5 READY ══ -->
 <div id="screen-test5-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 5</h1>
+  <h1 class="welcome-title">Test 4</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     Advanced difficulty. This test has <strong>2 modules</strong>:
   </p>
@@ -1604,13 +1620,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(5)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-prep')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 6 READY ══ -->
 <div id="screen-test6-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 6</h1>
+  <h1 class="welcome-title">Test 5</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     Advanced difficulty. This test has <strong>2 modules</strong>:
   </p>
@@ -1634,13 +1650,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(6)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-prep')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 7 READY ══ -->
 <div id="screen-test7-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 7</h1>
+  <h1 class="welcome-title">Test 1</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1664,13 +1680,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(7)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-resit')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 8 READY ══ -->
 <div id="screen-test8-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 8</h1>
+  <h1 class="welcome-title">Test 2</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1694,13 +1710,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(8)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-resit')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 9 READY ══ -->
 <div id="screen-test9-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 9</h1>
+  <h1 class="welcome-title">Test 3</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1724,13 +1740,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(9)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-resit')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 10 READY ══ -->
 <div id="screen-test10-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 10</h1>
+  <h1 class="welcome-title">Test 4</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1754,12 +1770,12 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(10)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-resit')">← Back</button></div>
 </div>
 
 <div id="screen-test11-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 11</h1>
+  <h1 class="welcome-title">Test 5</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1783,12 +1799,12 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(11)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-resit')">← Back</button></div>
 </div>
 
 <div id="screen-test12-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 12</h1>
+  <h1 class="welcome-title">Test 6</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1812,13 +1828,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(12)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-resit')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 13 READY ══ -->
 <div id="screen-test13-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 13</h1>
+  <h1 class="welcome-title">Test 7</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1842,13 +1858,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(13)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-resit')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 14 READY ══ -->
 <div id="screen-test14-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 14</h1>
+  <h1 class="welcome-title">Test 8</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     This test has <strong>2 modules</strong>:
   </p>
@@ -1872,13 +1888,13 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(14)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-resit')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST 16 READY ══ -->
 <div id="screen-test15-ready" class="screen">
   <div class="welcome-divider"></div>
-  <h1 class="welcome-title">Test 15</h1>
+  <h1 class="welcome-title">Test 9</h1>
   <p class="welcome-sub" style="max-width:480px;margin:0 auto 8px;">
     <strong>June 2026 Questions</strong> — this test has <strong>1 module</strong>:
   </p>
@@ -1896,7 +1912,7 @@ window.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <button class="welcome-next" onclick="startTestModule1(15)">Go! →</button>
-  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list')">← Back</button></div>
+  <div><button class="nav-back-btn" onclick="goScreen('screen-test-list-resit')">← Back</button></div>
 </div>
 
 <!-- ══ SCREEN: TEST BREAK ══ -->
@@ -1921,7 +1937,7 @@ window.addEventListener('DOMContentLoaded', function() {
       <h1>CLC SAT Practice</h1>
       <div class="subtitle" id="test-module-label">Practice Test — Module 1</div>
     </div>
-    <button onclick="clearInterval(testTimerInterval);clearInterval(breakInterval);goScreen('screen-test-list')" style="margin-left:auto;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:500;">← Exit</button>
+    <button onclick="clearInterval(testTimerInterval);clearInterval(breakInterval);goScreen('screen-test-list-' + currentSection)" style="margin-left:auto;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:500;">← Exit</button>
   </header>
 
   <div class="timer-bar" id="test-timer-bar" style="background:#5a0000;">
@@ -2116,11 +2132,11 @@ function renderMathMenu() {
     desc: 'Targeted exercises by topic — Algebra, Interpretation, Statistics',
     onclick: 'goQuizSection()'
   });
-  if (currentSection === 'prep' || currentSection === 'resit') {
+  if (currentSection === 'foundation' || currentSection === 'prep' || currentSection === 'resit') {
     cards.push({
       icon: '📝', label: 'Practice Test',
       desc: 'Full-length SAT mock test under timed conditions',
-      onclick: "goScreen('screen-test-list')"
+      onclick: "goScreen('screen-test-list-" + currentSection + "')"
     });
   }
   if (currentSection === 'prep') {
@@ -2946,6 +2962,13 @@ const TEST_DATA = {
   15: { m1: TEST15_M1 }
 };
 
+// Section-relative display numbers (old internal test id -> what the student sees)
+const TEST_DISPLAY_NUM = {
+  1: 1,                                        // Foundation: Test 1
+  2: 1, 3: 2, 4: 3, 5: 4, 6: 5,                 // Prep: Test 1-5
+  7: 1, 8: 2, 9: 3, 10: 4, 11: 5, 12: 6, 13: 7, 14: 8, 15: 9  // Resit: Test 1-9
+};
+
 function currentTestQuestions() {
   const d = TEST_DATA[testState.testId] || TEST_DATA[1];
   return testState.moduleIdx === 1 ? d.m1 : d.m2;
@@ -2957,8 +2980,8 @@ function startTestModule1(testId) {
   testState = { testId, moduleIdx: 1, current: 0, score: 0, answered: {}, bookmarks: new Set(), eliminated: {} };
   const hasModule2 = !!(TEST_DATA[testId] && TEST_DATA[testId].m2 && TEST_DATA[testId].m2.length);
   document.getElementById('test-module-label').textContent = hasModule2
-    ? `Practice Test — Test ${testId} · Module 1`
-    : `Practice Test — Test ${testId}`;
+    ? `Practice Test — Test ${TEST_DISPLAY_NUM[testId]} · Module 1`
+    : `Practice Test — Test ${TEST_DISPLAY_NUM[testId]}`;
   goScreen('screen-test-quiz');
   renderTestQuestion();
   resetTestTimer();
@@ -2968,7 +2991,7 @@ function startTestModule2() {
   clearInterval(breakInterval);
   const testId = testState.testId || 1;
   testState = { testId, moduleIdx: 2, current: 0, score: 0, answered: {}, bookmarks: new Set(), eliminated: {} };
-  document.getElementById('test-module-label').textContent = `Practice Test — Test ${testId} · Module 2`;
+  document.getElementById('test-module-label').textContent = `Practice Test — Test ${TEST_DISPLAY_NUM[testId]} · Module 2`;
   goScreen('screen-test-quiz');
   renderTestQuestion();
   resetTestTimer();
@@ -3314,8 +3337,8 @@ function showFinalResults() {
   ];
 
   const subtitle = singleModule
-    ? `Test ${testId} — ${m1.scaledScore}/800 (${m1.correctCount}/${m1.total} correct)`
-    : `Test ${testId} — Module 1: ${m1.scaledScore}/400 (${m1.correctCount}/${m1.total} correct) · Module 2: ${m2.scaledScore}/400 (${m2.correctCount}/${m2.total} correct)`;
+    ? `Test ${TEST_DISPLAY_NUM[testId]} — ${m1.scaledScore}/800 (${m1.correctCount}/${m1.total} correct)`
+    : `Test ${TEST_DISPLAY_NUM[testId]} — Module 1: ${m1.scaledScore}/400 (${m1.correctCount}/${m1.total} correct) · Module 2: ${m2.scaledScore}/400 (${m2.correctCount}/${m2.total} correct)`;
 
   document.getElementById('test-results-wrap').innerHTML = `
     <div class="score-screen active">
@@ -3329,7 +3352,7 @@ function showFinalResults() {
       <p class="score-subtitle">${subtitle}</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px 0;">
         <button class="restart-btn" onclick="promptResultsPDF()">📄 Results PDF</button>
-        <button class="restart-btn" onclick="startTestModule1(${testId})">Retake Test ${testId}</button>
+        <button class="restart-btn" onclick="startTestModule1(${testId})">Retake Test ${TEST_DISPLAY_NUM[testId]}</button>
       </div>
       ${allBookmarks.length > 0 ? `
       <div class="bookmark-summary">
@@ -3401,7 +3424,7 @@ function generateResultsPDF(studentName) {
 </style>
 </head><body>
   <h1>CLC SAT Practice Test — Results</h1>
-  <div class="meta">Student: <strong>${studentName}</strong> &nbsp;|&nbsp; Test ${testId} &nbsp;|&nbsp; ${new Date().toLocaleDateString()}</div>
+  <div class="meta">Student: <strong>${studentName}</strong> &nbsp;|&nbsp; Test ${TEST_DISPLAY_NUM[testId]} &nbsp;|&nbsp; ${new Date().toLocaleDateString()}</div>
   <div class="score-box">
     <span class="big">${totalScore}</span> / ${maxScore}
     ${singleModule

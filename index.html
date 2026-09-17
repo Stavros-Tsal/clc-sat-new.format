@@ -2117,7 +2117,7 @@ function renderMathMenu() {
       onclick: "goScreen('screen-specific-practice')"
     });
   }
-  if (currentSection === 'foundation' || currentSection === 'resit') {
+  if (currentSection === 'foundation' || currentSection === 'prep') {
     cards.push({
       icon: '📖', label: 'Theory',
       desc: 'Question bank αναφοράς & κανόνες βαθμολόγησης',
@@ -2207,7 +2207,8 @@ const THEORY_SPEC = {
     { icon: '📖', label: 'Formula Booklet', desc: 'Συνοπτικό τύπων & τρόπων (PDF)', href: 'solved-exercises/Formula-Booklet-and-Solved-Exercises-March-2026.pdf' },
     { icon: '📊', label: 'Foundation Course Theory', desc: 'CLC DSAT Foundation Course — presentation (PDF)', href: 'solved-exercises/Foundation-Course-Theory.pdf' }
   ],
-  resit: [
+  resit: [],
+  prep: [
     { icon: '📖', label: 'Formula Booklet', desc: 'Συνοπτικό τύπων & τρόπων (PDF)', href: 'solved-exercises/Formula-Booklet-and-Solved-Exercises-March-2026.pdf' },
     { icon: '📊', label: 'Digital SAT Math Theory — Part 1', desc: 'CLC Digital SAT Math Theory — presentation (PDF)', href: 'solved-exercises/Digital-SAT-Math-Theory-Part1.pdf' },
     { icon: '📈', label: 'Digital SAT Math Theory — Part 2', desc: 'CLC Digital SAT Math Theory — presentation (PDF)', href: 'solved-exercises/Digital-SAT-Math-Theory-Part2.pdf' }

@@ -2048,12 +2048,25 @@ function isSectionUnlocked(section) {
   return !!(savedHash && SECTION_HASHES[section] && savedHash === SECTION_HASHES[section]);
 }
 
+function applyFullPracticeGating() {
+  // Full Practice Test card on the subject screen: Prep & Resit only (not Foundation)
+  const fpCard = document.getElementById('full-practice-card');
+  const fpSoon = document.getElementById('full-practice-coming-soon');
+  if (fpCard && fpSoon) {
+    const allowed = (currentSection === 'prep' || currentSection === 'resit');
+    fpSoon.style.display = allowed ? 'none' : 'inline-block';
+    fpCard.style.pointerEvents = allowed ? 'auto' : 'none';
+    fpCard.style.opacity = allowed ? '1' : '0.55';
+  }
+}
+
 function applySectionBadges() {
   const label = currentSection ? SECTION_LABELS[currentSection] : '📚 Τμήμα';
   const b1 = document.getElementById('section-home-badge');
   const b2 = document.getElementById('math-section-badge');
   if (b1) b1.textContent = label;
   if (b2) b2.textContent = label;
+  applyFullPracticeGating();
 }
 
 function selectSection(section) {
@@ -2131,15 +2144,7 @@ function renderMathMenu() {
       '<div class="desc">' + c.desc + '</div>' +
     '</div>'
   ).join('');
-  // Full Practice Test card on the subject screen: Prep only for now
-  const fpCard = document.getElementById('full-practice-card');
-  const fpSoon = document.getElementById('full-practice-coming-soon');
-  if (fpCard && fpSoon) {
-    const allowed = (currentSection === 'prep');
-    fpSoon.style.display = allowed ? 'none' : 'inline-block';
-    fpCard.style.pointerEvents = allowed ? 'auto' : 'none';
-    fpCard.style.opacity = allowed ? '1' : '0.55';
-  }
+  applyFullPracticeGating();
 }
 
 // ── SCREEN NAVIGATION ──

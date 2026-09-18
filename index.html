@@ -2301,12 +2301,23 @@ function applyDrillDataForSection(section) {
       QUESTIONS[tabIdx] = newQ;
       ANSWERS[tabIdx] = newA;
       DRILL_SKILL_LABELS[tabIdx] = null; // Resit: chapter-only, no subchapter grouping
+    } else if (section === 'foundation') {
+      // Foundation: Drills tab stays open but starts empty — content to be uploaded separately
+      QUESTIONS[tabIdx] = [];
+      ANSWERS[tabIdx] = {};
+      DRILL_SKILL_LABELS[tabIdx] = null;
     } else {
       // host / no section: restore full original bank
       QUESTIONS[tabIdx] = JSON.parse(JSON.stringify(origQ));
       ANSWERS[tabIdx] = JSON.parse(JSON.stringify(origA));
       DRILL_SKILL_LABELS[tabIdx] = null;
     }
+  }
+  if (section === 'foundation') {
+    // Interpretation (tab 1) isn't in drillTabs above — empty it too for Foundation
+    QUESTIONS[1] = [];
+    ANSWERS[1] = {};
+    DRILL_SKILL_LABELS[1] = null;
   }
   // Reset any in-progress quiz state so stale indices from a previous dataset don't linger
   for (let i = 0; i < state.length; i++) {
@@ -2529,6 +2540,15 @@ function escMath(s) {
 function renderQuestion(tabIdx) {
   const s = state[tabIdx];
   const qs = QUESTIONS[tabIdx];
+  if (!qs || qs.length === 0) {
+    document.getElementById(`quiz-${tabIdx}`).innerHTML = `
+      <div style="text-align:center;padding:60px 20px;color:var(--muted);">
+        <div style="font-size:40px;margin-bottom:12px;">📭</div>
+        <div style="font-size:16px;font-weight:600;margin-bottom:6px;">No exercises here yet</div>
+        <div style="font-size:14px;">This section's drills are being prepared — check back soon.</div>
+      </div>`;
+    return;
+  }
   const q = qs[s.current];
   const qIdx = s.current;
   const letters = ['A','B','C','D'];

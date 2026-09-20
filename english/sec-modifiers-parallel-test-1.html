@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standard English Conventions: Modifiers & Parallel Structure — Test 1</title>
+
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; margin:0; background:#f7f5f0; color:#241a12; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+.card { background:#fff; border-radius: 10px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom:20px; }
+h1 { color:#A8002E; font-size: 1.6rem; margin-top:0; }
+.start-btn, #submit-btn, #confirm-submit { background:#A8002E; color:#fff; border:none; padding:12px 28px; border-radius:6px; font-size:1rem; cursor:pointer; }
+.start-btn:hover, #submit-btn:hover { background:#8a0026; }
+.timing-options { display:flex; gap:14px; margin:18px 0; }
+.timing-card { flex:1; border:2px solid #ddd; border-radius:8px; padding:16px; cursor:pointer; text-align:center; }
+.timing-card.selected { border-color:#A8002E; background:#FBF3E3; }
+.timing-card h3 { margin:0 0 6px 0; color:#A8002E; font-size:1.05rem; }
+.timing-card div.mins { font-size:1.5rem; font-weight:bold; color:#241a12; }
+.nav-grid { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0; }
+.nav-btn { width:38px; height:38px; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer; font-size:0.9rem; }
+.nav-btn.current { border-color:#A8002E; border-width:2px; }
+.nav-btn.answered { background:#F5EFE0; }
+.nav-arrow { border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer; font-size:0.9rem; }
+#q-text{font-size:1.08rem;line-height:1.6;margin:14px 0 20px}
+.notesbullets{margin:10px 0 10px 0;padding-left:22px}
+.notesbullets li{margin-bottom:6px;line-height:1.5}
+.choice-row { display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid #ddd; border-radius:6px; margin-bottom:10px; cursor:pointer; }
+.choice-row:hover { background:#faf6ee; }
+.choice-row.selected { border-color:#A8002E; background:#FBF3E3; }
+.choice-letter { font-weight:bold; color:#A8002E; }
+.timer-box { position:sticky; top:0; background:#241a12; color:#fff; padding:8px 16px; border-radius:6px; font-weight:bold; text-align:center; margin-bottom:14px; font-size:1.1rem; z-index:10; }
+.timer-box.low-time { background:#A8002E; }
+.review-card { border:1px solid #ddd; border-radius:8px; padding:18px; margin-bottom:16px; }
+.review-card.correct { border-left: 5px solid #1F7A3D; }
+.review-card.incorrect { border-left: 5px solid #A8002E; }
+.review-q { font-weight:600; margin-bottom:10px; }
+.review-choice { display:flex; gap:8px; padding:6px 0; }
+.review-choice.right-answer { color:#1F7A3D; font-weight:600; }
+.review-choice.user-wrong { color:#A8002E; font-weight:600; }
+.review-section { margin-top:12px; }
+.review-section-label { font-weight:bold; color:#B8882A; font-family: Georgia, serif; font-size:1rem; margin-bottom:4px; }
+.review-rule { background:#faf6ee; padding:10px 12px; border-radius:6px; font-size:.92rem; color:#3a3a3a; }
+.review-tip { background:#FBF3E3; padding:10px 12px; border-radius:6px; font-size:.92rem; color:#3a3a3a; border-left:3px solid #B8882A; }
+.review-trap { background:#FCEDEE; padding:10px 12px; border-radius:6px; font-size:.92rem; color:#3a3a3a; border-left:3px solid #A8002E; }
+.review-poe-list { margin:6px 0 0 0; padding-left:20px; font-size:.92rem; color:#3a3a3a; }
+.review-poe-list li { margin-bottom:5px; line-height:1.45; }
+.review-poe-list li.correct-letter { color:#1F7A3D; font-weight:600; }
+.score-big { font-size:2.4rem; color:#A8002E; font-weight:bold; }
+.hidden { display:none !important; }
+.subtitle { color:#5A5A5A; font-size:0.95rem; margin-bottom:20px; }
+#confirm-box { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; }
+#confirm-box .card { max-width:420px; text-align:center; }
+#print-btn { position:fixed; bottom:20px; right:20px; background:#B8882A; color:#fff; border:none; padding:12px 18px; border-radius:24px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.2); font-size:0.95rem; }
+@media print {
+  #print-btn, #intro-screen, #test-screen, #confirm-box { display:none !important; }
+  body { background:#fff; }
+  .card { box-shadow:none; }
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <div id="intro-screen" class="card">
+    <h1>Standard English Conventions: Modifiers & Parallel Structure — Test 1</h1>
+    <div class="subtitle">Mixed practice — misplaced/dangling modifiers and parallel structure, including conjunctions and comparisons. Test 1 of 2 — 20 questions.</div>
+    <p>20 questions. Choose your timing, then click Start when you're ready.</p>
+    <div class="timing-options">
+      <div class="timing-card" data-minutes="30" data-default="1">
+        <h3>Standard Time</h3>
+        <div class="mins">30 min</div>
+      </div>
+      <div class="timing-card" data-minutes="38">
+        <h3>Extended Time (+25%)</h3>
+        <div class="mins">38 min</div>
+      </div>
+    </div>
+    <button class="start-btn">Start Test</button>
+  </div>
+
+  <div id="test-screen" class="card hidden">
+    <div id="timer-box" class="timer-box"></div>
+    <div id="q-counter" style="font-weight:600;color:#5A5A5A;margin-bottom:8px;"></div>
+    <div id="q-text"></div>
+    <div id="choices"></div>
+    <div style="display:flex; justify-content:space-between; margin-top:16px;">
+      <button id="prev-btn" class="nav-arrow" style="width:auto;padding:8px 16px;">&larr; Back</button>
+      <button id="next-btn" class="nav-arrow" style="width:auto;padding:8px 16px;">Next &rarr;</button>
+    </div>
+    <div id="nav-grid" class="nav-grid"></div>
+    <button id="submit-btn">Submit Test</button>
+  </div>
+
+  <div id="results-screen" class="card hidden">
+    <h1>Results</h1>
+    <div class="score-big"></div>
+    <div id="score-by-skill" style="margin:16px 0;"></div>
+    <div id="review-container"></div>
+  </div>
+
+  <button id="print-btn" class="hidden">Export / Print PDF</button>
+
+  <div id="confirm-box" class="hidden">
+    <div class="card">
+      <p>Submit your test? You won't be able to change your answers after this.</p>
+      <button id="confirm-submit">Yes, Submit</button>
+      <button id="cancel-submit" style="background:#ccc;color:#333;">Cancel</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+const QUESTIONS = [{"question": "An imposing spire of igneous rock rising high above the Belle Fourche River in eastern Wyoming, Devils Tower (also known as Bear Lodge) is one of the most prominent examples of columnar jointing, a pattern of fracturing in rocks that ______ in parallel arrays of long polygonal prisms. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "resulting", "B": "were resulting", "C": "results", "D": "to result"}, "correct": "C", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is the use of verb forms within a sentence. Relative clauses, such as the one beginning with “that,” require a finite (tensed) verb, a verb that can function as the main verb of a clause. This choice correctly supplies the clause with the finite present tense verb “results.” Furthermore, the simple present tense verb “results” correctly indicates that the formation of parallel arrays of long polygonal prisms is an enduring property of this fracturing pattern.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "Because it results in an ungrammatical sentence. The nonfinite participle “resulting” doesn’t supply the clause with a finite verb.", "poe": {"C": "The convention being tested is the use of verb forms within a sentence. Relative clauses, such as the one beginning with “that,” require a finite (tensed) verb, a verb that can function as the main verb of a clause. This choice correctly supplies the clause with the finite present tense verb “results.” Furthermore, the simple present tense verb “results” correctly indicates that the formation of parallel arrays of long polygonal prisms is an enduring property of this fracturing pattern.", "A": "Because it results in an ungrammatical sentence. The nonfinite participle “resulting” doesn’t supply the clause with a finite verb.", "B": "Because the past progressive tense verb “were resulting” doesn’t indicate that the formation of parallel arrays of long polygonal prisms is an enduring property of this fracturing pattern.", "D": "Because it results in an ungrammatical sentence. The nonfinite to-infinitive “to result” doesn’t supply the clause with a finite verb."}}, {"question": "The new policy affected both small business owners and ______ .", "choices": {"A": "large corporations", "B": "largely corporate", "C": "corporations that are large", "D": "being a large corporation"}, "correct": "A", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Both...and\" requires matching forms — \"small business owners\" and \"large corporations\" are both simple noun phrases.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"largely corporate,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "poe": {"A": "\"Both...and\" requires matching forms — \"small business owners\" and \"large corporations\" are both simple noun phrases.", "B": "This choice, \"largely corporate,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "C": "This choice, \"corporations that are large,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "D": "This choice, \"being a large corporation,\" functions as a noun here, which does not fit the grammatical role the sentence requires in this position."}}, {"question": "The Herfindahl-Hirschman Index (HHI), a commonly used measure of competition between companies in a particular market, ranges from a score of zero to 10,000 points. Compared with that of a highly concentrated market—that is, a market controlled by very few companies— Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "a market that is less concentrated will have a much lower HHI score.", "B": "the HHI score of a less concentrated market will be much lower.", "C": "when a market is less concentrated, its HHI score will be much lower.", "D": "aless concentrated market will have an HHI score that is much lower."}, "correct": "B", "difficulty": "Hard", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": [], "rule": "The comparison \"compared with that of a highly concentrated market\" uses \"that\" to stand in for \"the HHI score.\" The second half must parallel this by also referring to \"the HHI score,\" which only choice B does.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"a market that is less concentrated will have a much lower HHI score.,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "poe": {"A": "This choice, \"a market that is less concentrated will have a much lower HHI score.,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "B": "The comparison \"compared with that of a highly concentrated market\" uses \"that\" to stand in for \"the HHI score.\" The second half must parallel this by also referring to \"the HHI score,\" which only choice B does.", "C": "This choice, \"when a market is less concentrated, its HHI score will be much lower.,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "D": "This choice, \"aless concentrated market will have an HHI score that is much lower.,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison."}}, {"question": "Aware of the growing risks, ______", "choices": {"C": "new safety measures were implemented by the company.", "D": "the company implemented new safety measures.", "A": "safety measures grew more common at the company.", "B": "it became necessary to implement safety measures."}, "correct": "D", "difficulty": "Easy", "skill": "Modifiers", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Aware of the growing risks\" logically describes the company, which correctly appears right after the comma.", "tip": "Check the word or phrase right after an introductory modifier — that word must be the one actually being described, or the sentence has a misplaced or dangling modifier.", "trap": "This choice makes \"new safety measures\" the subject right after the comma, which means \"Aware of the growing risks\" would illogically be describing \"new safety measures\" instead of the person or thing it actually describes.", "poe": {"C": "This choice makes \"new safety measures\" the subject right after the comma, which means \"Aware of the growing risks\" would illogically be describing \"new safety measures\" instead of the person or thing it actually describes.", "D": "\"Aware of the growing risks\" logically describes the company, which correctly appears right after the comma.", "A": "This choice makes \"safety measures\" the subject right after the comma, which means \"Aware of the growing risks\" would illogically be describing \"safety measures\" instead of the person or thing it actually describes.", "B": "This choice makes \"it\" the subject right after the comma, which means \"Aware of the growing risks\" would illogically be describing \"it\" instead of the person or thing it actually describes."}}, {"question": "The professor is known for being demanding, fair, and ______ with her students.", "choices": {"C": "patience", "D": "patient", "A": "having patience", "B": "showing patience"}, "correct": "D", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "The list uses \"demanding\" and \"fair\" as simple adjectives, so \"patient\" correctly matches that parallel pattern.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"patience,\" functions as a noun here, which does not fit the grammatical role the sentence requires in this position.", "poe": {"C": "This choice, \"patience,\" functions as a noun here, which does not fit the grammatical role the sentence requires in this position.", "D": "The list uses \"demanding\" and \"fair\" as simple adjectives, so \"patient\" correctly matches that parallel pattern.", "A": "This choice, \"having patience,\" functions as a noun here, which does not fit the grammatical role the sentence requires in this position.", "B": "This choice, \"showing patience,\" functions as a noun here, which does not fit the grammatical role the sentence requires in this position."}}, {"question": "The museum's collection is larger than ______ .", "choices": {"A": "the gallery downtown", "B": "that of the gallery downtown", "C": "the gallery downtown has", "D": "having the gallery downtown"}, "correct": "B", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "The comparison must compare collections to collections — \"that of the gallery downtown\" correctly stands in for \"the collection of the gallery downtown.\"", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice compares directly to \"the gallery downtown\" itself, rather than to what that thing HAS or IS — creating an illogical comparison between two different types of things.", "poe": {"A": "This choice compares directly to \"the gallery downtown\" itself, rather than to what that thing HAS or IS — creating an illogical comparison between two different types of things.", "B": "The comparison must compare collections to collections — \"that of the gallery downtown\" correctly stands in for \"the collection of the gallery downtown.\"", "C": "This choice, \"the gallery downtown has,\" functions as a plural noun or a verb form here, which does not fit the grammatical role the sentence requires in this position.", "D": "This choice compares directly to \"having the gallery downtown\" itself, rather than to what that thing HAS or IS — creating an illogical comparison between two different types of things."}}, {"question": "Trembling with excitement, ______", "choices": {"A": "the presents were opened by the children.", "B": "the children opened their presents.", "C": "it was an exciting moment for the children.", "D": "presents were what the children wanted."}, "correct": "B", "difficulty": "Easy", "skill": "Modifiers", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Trembling with excitement\" logically describes the children, who correctly appear right after the comma.", "tip": "Check the word or phrase right after an introductory modifier — that word must be the one actually being described, or the sentence has a misplaced or dangling modifier.", "trap": "This choice makes \"the presents\" the subject right after the comma, which means \"Trembling with excitement\" would illogically be describing \"the presents\" instead of the person or thing it actually describes.", "poe": {"A": "This choice makes \"the presents\" the subject right after the comma, which means \"Trembling with excitement\" would illogically be describing \"the presents\" instead of the person or thing it actually describes.", "B": "\"Trembling with excitement\" logically describes the children, who correctly appear right after the comma.", "C": "This choice makes \"it\" the subject right after the comma, which means \"Trembling with excitement\" would illogically be describing \"it\" instead of the person or thing it actually describes.", "D": "This choice makes \"presents\" the subject right after the comma, which means \"Trembling with excitement\" would illogically be describing \"presents\" instead of the person or thing it actually describes."}}, {"question": "The company's new headquarters is both larger and ______ than the old one.", "choices": {"B": "more modern", "C": "modernized", "D": "modernizing", "A": "has more modernity"}, "correct": "B", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Both...and\" requires matching forms — \"larger\" and \"more modern\" are both comparative adjectives.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"modernized,\" functions as a past-tense verb or past-participle adjective here, which does not fit the grammatical role the sentence requires in this position.", "poe": {"B": "\"Both...and\" requires matching forms — \"larger\" and \"more modern\" are both comparative adjectives.", "C": "This choice, \"modernized,\" functions as a past-tense verb or past-participle adjective here, which does not fit the grammatical role the sentence requires in this position.", "D": "This choice, \"modernizing,\" functions as a gerund or present-participle form here, which does not fit the grammatical role the sentence requires in this position.", "A": "This choice, \"has more modernity,\" functions as a noun here, which does not fit the grammatical role the sentence requires in this position."}}, {"question": "Startled by the sudden noise, ______", "choices": {"B": "the room was quickly left by the cat.", "C": "the cat quickly left the room.", "D": "a quick exit was made from the room.", "A": "it was a sudden and quick exit."}, "correct": "C", "difficulty": "Easy", "skill": "Modifiers", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Startled by the sudden noise\" logically describes the cat, which correctly appears right after the comma.", "tip": "Check the word or phrase right after an introductory modifier — that word must be the one actually being described, or the sentence has a misplaced or dangling modifier.", "trap": "This choice makes \"the room\" the subject right after the comma, which means \"Startled by the sudden noise\" would illogically be describing \"the room\" instead of the person or thing it actually describes.", "poe": {"B": "This choice makes \"the room\" the subject right after the comma, which means \"Startled by the sudden noise\" would illogically be describing \"the room\" instead of the person or thing it actually describes.", "C": "\"Startled by the sudden noise\" logically describes the cat, which correctly appears right after the comma.", "D": "This choice makes \"a quick exit\" the subject right after the comma, which means \"Startled by the sudden noise\" would illogically be describing \"a quick exit\" instead of the person or thing it actually describes.", "A": "This choice makes \"it\" the subject right after the comma, which means \"Startled by the sudden noise\" would illogically be describing \"it\" instead of the person or thing it actually describes."}}, {"question": "The report was neither well organized nor ______ .", "choices": {"A": "clearly written", "B": "clarity in writing", "C": "writing with clarity", "D": "it was written clearly"}, "correct": "A", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Neither...nor\" requires matching forms — \"well organized\" and \"clearly written\" are both adjective phrases.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"clarity in writing,\" functions as a gerund or present-participle form here, which does not fit the grammatical role the sentence requires in this position.", "poe": {"A": "\"Neither...nor\" requires matching forms — \"well organized\" and \"clearly written\" are both adjective phrases.", "B": "This choice, \"clarity in writing,\" functions as a gerund or present-participle form here, which does not fit the grammatical role the sentence requires in this position.", "C": "This choice, \"writing with clarity,\" functions as a noun here, which does not fit the grammatical role the sentence requires in this position.", "D": "This choice, \"it was written clearly,\" functions as an adverb here, which does not fit the grammatical role the sentence requires in this position."}}, {"question": "Supported by biochemical analyses of over 2,000 skeletons from the Middle Ages, ____ Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "vegetables and grains were, a 2022 study found, the primary components of early medieval rulers’ diets.", "B": "early medieval rulers’ diets were found, in a 2022 study, to have primarily consisted of vegetables and grains.", "C": "the primary components of early medieval rulers’ diets were vegetables and grains, according to a 2022 study.", "D": "findings from a 2022 study suggested that vegetables and grains were the primary components of early medieval rulers’ diets."}, "correct": "D", "difficulty": "Hard", "skill": "Modifiers", "domain": "Standard English Conventions", "tags": [], "rule": "The introductory phrase \"Supported by biochemical analyses...\" must modify something that can logically be \"supported\" by evidence — a finding or claim. Only choice D supplies such a subject (\"findings\"), avoiding a dangling modifier.", "tip": "Check the word or phrase right after an introductory modifier — that word must be the one actually being described, or the sentence has a misplaced or dangling modifier.", "trap": "This choice makes \"vegetables and grains\" the subject right after the comma, which means \"Supported by biochemical analyses of over 2,000 skeletons from the Middle Ages, ____ Which choice completes the text so that it conforms to the conventions of Standard English?\" would illogically be describing \"vegetables and grains\" instead of the person or thing it actually describes.", "poe": {"A": "This choice makes \"vegetables and grains\" the subject right after the comma, which means \"Supported by biochemical analyses of over 2,000 skeletons from the Middle Ages, ____ Which choice completes the text so that it conforms to the conventions of Standard English?\" would illogically be describing \"vegetables and grains\" instead of the person or thing it actually describes.", "B": "This choice makes \"early medieval rulers’ diets\" the subject right after the comma, which means \"Supported by biochemical analyses of over 2,000 skeletons from the Middle Ages, ____ Which choice completes the text so that it conforms to the conventions of Standard English?\" would illogically be describing \"early medieval rulers’ diets\" instead of the person or thing it actually describes.", "C": "This choice makes \"the primary components\" the subject right after the comma, which means \"Supported by biochemical analyses of over 2,000 skeletons from the Middle Ages, ____ Which choice completes the text so that it conforms to the conventions of Standard English?\" would illogically be describing \"the primary components\" instead of the person or thing it actually describes.", "D": "The introductory phrase \"Supported by biochemical analyses...\" must modify something that can logically be \"supported\" by evidence — a finding or claim. Only choice D supplies such a subject (\"findings\"), avoiding a dangling modifier."}}, {"question": "The design was praised for being both functional and ______ .", "choices": {"D": "beautiful", "A": "a thing of beauty", "B": "showing beauty", "C": "having beauty"}, "correct": "D", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Both...and\" requires matching forms — \"functional\" and \"beautiful\" are both simple adjectives.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"a thing of beauty,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "poe": {"D": "\"Both...and\" requires matching forms — \"functional\" and \"beautiful\" are both simple adjectives.", "A": "This choice, \"a thing of beauty,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "B": "This choice, \"showing beauty,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "C": "This choice, \"having beauty,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison."}}, {"question": "Having practiced for months, ______", "choices": {"D": "the recital was a great success for the young violinist.", "A": "the young violinist performed with great confidence.", "B": "confidence was shown by the young violinist.", "C": "it was clear the violinist was ready."}, "correct": "A", "difficulty": "Easy", "skill": "Modifiers", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Having practiced for months\" logically describes the violinist, who correctly appears right after the comma.", "tip": "Check the word or phrase right after an introductory modifier — that word must be the one actually being described, or the sentence has a misplaced or dangling modifier.", "trap": "This choice makes \"the recital\" the subject right after the comma, which means \"Having practiced for months\" would illogically be describing \"the recital\" instead of the person or thing it actually describes.", "poe": {"D": "This choice makes \"the recital\" the subject right after the comma, which means \"Having practiced for months\" would illogically be describing \"the recital\" instead of the person or thing it actually describes.", "A": "\"Having practiced for months\" logically describes the violinist, who correctly appears right after the comma.", "B": "This choice makes \"confidence\" the subject right after the comma, which means \"Having practiced for months\" would illogically be describing \"confidence\" instead of the person or thing it actually describes.", "C": "This choice makes \"it\" the subject right after the comma, which means \"Having practiced for months\" would illogically be describing \"it\" instead of the person or thing it actually describes."}}, {"question": "She not only finished the race but also ______ a new personal record.", "choices": {"D": "setting", "A": "set", "B": "to set", "C": "had set"}, "correct": "A", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Not only...but also\" requires matching grammatical forms on both sides — \"finished\" and \"set\" are both simple past tense.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"setting,\" functions as a gerund or present-participle form here, which does not fit the grammatical role the sentence requires in this position.", "poe": {"D": "This choice, \"setting,\" functions as a gerund or present-participle form here, which does not fit the grammatical role the sentence requires in this position.", "A": "\"Not only...but also\" requires matching grammatical forms on both sides — \"finished\" and \"set\" are both simple past tense.", "B": "This choice, \"to set,\" functions as an infinitive verb form here, which does not fit the grammatical role the sentence requires in this position.", "C": "This choice, \"had set,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison."}}, {"question": "The negotiations were either going to succeed quickly or ______ for months.", "choices": {"B": "dragging on", "C": "drag on", "D": "dragged on", "A": "to drag on"}, "correct": "C", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Either...or\" requires matching forms — \"going to succeed\" and \"drag on\" are correctly paired after \"were.\"", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"dragging on,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "poe": {"B": "This choice, \"dragging on,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "C": "\"Either...or\" requires matching forms — \"going to succeed\" and \"drag on\" are correctly paired after \"were.\"", "D": "This choice, \"dragged on,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "A": "This choice, \"to drag on,\" functions as an infinitive verb form here, which does not fit the grammatical role the sentence requires in this position."}}, {"question": "Frustrated by the constant delays, ______", "choices": {"B": "the airline was complained about by passengers.", "C": "passengers filed complaints against the airline.", "D": "complaints about the airline grew common.", "A": "it was common to complain about the airline."}, "correct": "C", "difficulty": "Easy", "skill": "Modifiers", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Frustrated by the constant delays\" logically describes the passengers, who correctly appear right after the comma.", "tip": "Check the word or phrase right after an introductory modifier — that word must be the one actually being described, or the sentence has a misplaced or dangling modifier.", "trap": "This choice makes \"the airline\" the subject right after the comma, which means \"Frustrated by the constant delays\" would illogically be describing \"the airline\" instead of the person or thing it actually describes.", "poe": {"B": "This choice makes \"the airline\" the subject right after the comma, which means \"Frustrated by the constant delays\" would illogically be describing \"the airline\" instead of the person or thing it actually describes.", "C": "\"Frustrated by the constant delays\" logically describes the passengers, who correctly appear right after the comma.", "D": "This choice makes \"complaints about the airline\" the subject right after the comma, which means \"Frustrated by the constant delays\" would illogically be describing \"complaints about the airline\" instead of the person or thing it actually describes.", "A": "This choice makes \"it\" the subject right after the comma, which means \"Frustrated by the constant delays\" would illogically be describing \"it\" instead of the person or thing it actually describes."}}, {"question": "Covered in dust and cobwebs, ______", "choices": {"D": "the attic revealed the old chest had not been opened in decades.", "A": "we found the old chest had not been opened in decades.", "B": "the old chest had not been opened in decades.", "C": "decades had passed since the chest was opened."}, "correct": "B", "difficulty": "Easy", "skill": "Modifiers", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Covered in dust and cobwebs\" logically describes the chest, which correctly appears right after the comma.", "tip": "Check the word or phrase right after an introductory modifier — that word must be the one actually being described, or the sentence has a misplaced or dangling modifier.", "trap": "This choice makes \"the attic\" the subject right after the comma, which means \"Covered in dust and cobwebs\" would illogically be describing \"the attic\" instead of the person or thing it actually describes.", "poe": {"D": "This choice makes \"the attic\" the subject right after the comma, which means \"Covered in dust and cobwebs\" would illogically be describing \"the attic\" instead of the person or thing it actually describes.", "A": "This choice makes \"we\" the subject right after the comma, which means \"Covered in dust and cobwebs\" would illogically be describing \"we\" instead of the person or thing it actually describes.", "B": "\"Covered in dust and cobwebs\" logically describes the chest, which correctly appears right after the comma.", "C": "This choice makes \"decades\" the subject right after the comma, which means \"Covered in dust and cobwebs\" would illogically be describing \"decades\" instead of the person or thing it actually describes."}}, {"question": "The coach expected the team to practice daily, follow the training plan, and ______ every game with full effort.", "choices": {"B": "approaching", "C": "approach", "D": "approached", "A": "they approach"}, "correct": "C", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "The list uses \"practice\" and \"follow\" as base verb forms, so \"approach\" correctly matches that parallel pattern.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"approaching,\" functions as a gerund or present-participle form here, which does not fit the grammatical role the sentence requires in this position.", "poe": {"B": "This choice, \"approaching,\" functions as a gerund or present-participle form here, which does not fit the grammatical role the sentence requires in this position.", "C": "The list uses \"practice\" and \"follow\" as base verb forms, so \"approach\" correctly matches that parallel pattern.", "D": "This choice, \"approached,\" functions as a past-tense verb or past-participle adjective here, which does not fit the grammatical role the sentence requires in this position.", "A": "This choice, \"they approach,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison."}}, {"question": "The exhibit features works by three sculptors: one known for abstract forms, another for realistic portraiture, and the third ______ large-scale public installations.", "choices": {"B": "specializes in", "C": "specializing in", "D": "who specializes in", "A": "specialized in"}, "correct": "C", "difficulty": "Hard", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": [], "rule": "For parallel structure with \"known for\" and the implied \"known for\" governing all three items, \"specializing in\" matches the participial form used for the first two items.", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice, \"specializes in,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "poe": {"B": "This choice, \"specializes in,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "C": "For parallel structure with \"known for\" and the implied \"known for\" governing all three items, \"specializing in\" matches the participial form used for the first two items.", "D": "This choice, \"who specializes in,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison.", "A": "This choice, \"specialized in,\" breaks the parallel grammatical pattern established by the rest of the list, pair, or comparison."}}, {"question": "The average rainfall in the northern region is higher than ______ .", "choices": {"A": "the southern region", "B": "that of the southern region", "C": "the southern region's rain", "D": "southern region rainfall"}, "correct": "B", "difficulty": "Easy", "skill": "Parallel Structure", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "The comparison must compare rainfall to rainfall — \"that of the southern region\" correctly stands in for \"the rainfall of the southern region.\"", "tip": "When a sentence lists, joins, or compares items, every item must share the same grammatical form — check the first item in the list or pair, then confirm every other item matches it.", "trap": "This choice compares directly to \"the southern region\" itself, rather than to what that thing HAS or IS — creating an illogical comparison between two different types of things.", "poe": {"A": "This choice compares directly to \"the southern region\" itself, rather than to what that thing HAS or IS — creating an illogical comparison between two different types of things.", "B": "The comparison must compare rainfall to rainfall — \"that of the southern region\" correctly stands in for \"the rainfall of the southern region.\"", "C": "This choice compares directly to \"the southern region's rain\" itself, rather than to what that thing HAS or IS — creating an illogical comparison between two different types of things.", "D": "This choice compares directly to \"southern region rainfall\" itself, rather than to what that thing HAS or IS — creating an illogical comparison between two different types of things."}}];
+const STANDARD_MINUTES = 30;
+const EXTENDED_MINUTES = 38;
+const STATE = { idx:0, answers:{}, flags:{}, submitted:false, minutesChosen:STANDARD_MINUTES, secondsLeft:0, timerId:null };
+window.__CLC_TEST_STATE__ = STATE;
+
+function $(sel){ return document.querySelector(sel); }
+function $all(sel){ return document.querySelectorAll(sel); }
+
+document.addEventListener('DOMContentLoaded', function(){
+
+  $all('.timing-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      $all('.timing-card').forEach(c=>c.classList.remove('selected'));
+      card.classList.add('selected');
+      STATE.minutesChosen = parseFloat(card.dataset.minutes);
+    });
+  });
+  $('.timing-card[data-default="1"]') && $('.timing-card[data-default="1"]').classList.add('selected');
+
+  $('.start-btn').addEventListener('click', function(){
+    $('#intro-screen').classList.add('hidden');
+    $('#test-screen').classList.remove('hidden');
+    buildNav();
+    renderQuestion();
+    startTimer();
+  });
+
+  function startTimer(){
+    STATE.secondsLeft = Math.round(STATE.minutesChosen*60);
+    updateTimerDisplay();
+    STATE.timerId = setInterval(()=>{
+      STATE.secondsLeft--;
+      updateTimerDisplay();
+      if(STATE.secondsLeft<=0){
+        clearInterval(STATE.timerId);
+        STATE.submitted = true;
+        showResults();
+      }
+    }, 1000);
+  }
+  function updateTimerDisplay(){
+    const m = Math.floor(STATE.secondsLeft/60);
+    const s = STATE.secondsLeft%60;
+    const box = $('#timer-box');
+    if(!box) return;
+    box.textContent = 'Time Remaining: ' + m + ':' + (s<10?'0':'')+s;
+    box.classList.toggle('low-time', STATE.secondsLeft <= 120);
+  }
+
+  function buildNav(){
+    const nav = $('#nav-grid');
+    nav.innerHTML = '';
+    QUESTIONS.forEach((q,i)=>{
+      const btn = document.createElement('button');
+      btn.className = 'nav-btn';
+      btn.textContent = (i+1);
+      btn.addEventListener('click', ()=>{ STATE.idx = i; renderQuestion(); });
+      nav.appendChild(btn);
+    });
+  }
+
+  function renderQuestion(){
+    const q = QUESTIONS[STATE.idx];
+    $('#q-text').innerHTML = q.question.replace(/\n/g,'<br>');
+    const choicesEl = $('#choices');
+    choicesEl.innerHTML = '';
+    ['A','B','C','D'].forEach(letter=>{
+      if(!q.choices[letter]) return;
+      const row = document.createElement('div');
+      row.className = 'choice-row' + (STATE.answers[STATE.idx]===letter ? ' selected':'');
+      row.innerHTML = '<span class="choice-letter">'+letter+'</span><span class="choice-text"></span>';
+      row.querySelector('.choice-text').textContent = q.choices[letter];
+      row.addEventListener('click', ()=>{
+        STATE.answers[STATE.idx] = letter;
+        renderQuestion();
+      });
+      choicesEl.appendChild(row);
+    });
+    updateNav();
+    $('#q-counter').textContent = 'Question ' + (STATE.idx+1) + ' of ' + QUESTIONS.length;
+  }
+
+  function updateNav(){
+    $all('.nav-btn').forEach((btn,i)=>{
+      btn.classList.toggle('current', i===STATE.idx);
+      btn.classList.toggle('answered', STATE.answers[i] !== undefined);
+    });
+  }
+
+  $('#prev-btn') && $('#prev-btn').addEventListener('click', ()=>{
+    if(STATE.idx>0){ STATE.idx--; renderQuestion(); }
+  });
+  $('#next-btn') && $('#next-btn').addEventListener('click', ()=>{
+    if(STATE.idx<QUESTIONS.length-1){ STATE.idx++; renderQuestion(); }
+  });
+
+  $('#submit-btn').addEventListener('click', ()=>{
+    $('#confirm-box').classList.remove('hidden');
+  });
+  $('#cancel-submit') && $('#cancel-submit').addEventListener('click', ()=>{
+    $('#confirm-box').classList.add('hidden');
+  });
+  $('#confirm-submit').addEventListener('click', ()=>{
+    $('#confirm-box').classList.add('hidden');
+    if(STATE.timerId) clearInterval(STATE.timerId);
+    STATE.submitted = true;
+    showResults();
+  });
+
+  $('#print-btn') && $('#print-btn').addEventListener('click', ()=> window.print());
+
+  function showResults(){
+    $('#test-screen').classList.add('hidden');
+    $('#results-screen').classList.remove('hidden');
+    $('#print-btn') && $('#print-btn').classList.remove('hidden');
+    let correctCount = 0;
+    QUESTIONS.forEach((q,i)=>{ if(STATE.answers[i]===q.correct) correctCount++; });
+    $('.score-big').textContent = correctCount + ' / ' + QUESTIONS.length;
+
+    const container = $('#review-container');
+    container.innerHTML = '';
+    QUESTIONS.forEach((q,i)=>{
+      const userAns = STATE.answers[i];
+      const isCorrect = userAns === q.correct;
+      const card = document.createElement('div');
+      card.className = 'review-card ' + (isCorrect ? 'correct':'incorrect');
+
+      let html = '<div class="review-q"></div><div class="review-choices"></div>';
+      html += '<div class="review-section"><div class="review-section-label">Rule</div><div class="review-rule"></div></div>';
+      html += '<div class="review-section"><div class="review-section-label">Tip</div><div class="review-tip"></div></div>';
+      if (q.trap) {
+        html += '<div class="review-section"><div class="review-section-label">Trap</div><div class="review-trap"></div></div>';
+      }
+      html += '<div class="review-section"><div class="review-section-label">Process of Elimination</div><ul class="review-poe-list"></ul></div>';
+      card.innerHTML = html;
+
+      card.querySelector('.review-q').textContent = 'Question ' + (i+1) + ': ' + q.question.replace(/<[^>]+>/g,' ');
+      const choicesDiv = card.querySelector('.review-choices');
+      ['A','B','C','D'].forEach(letter=>{
+        if(!q.choices[letter]) return;
+        const row = document.createElement('div');
+        row.className = 'review-choice' +
+          (letter===q.correct ? ' right-answer' : '') +
+          (letter===userAns && letter!==q.correct ? ' user-wrong' : '');
+        row.innerHTML = '<span>'+letter+'.</span><span></span>';
+        row.querySelectorAll('span')[1].textContent = q.choices[letter];
+        choicesDiv.appendChild(row);
+      });
+
+      card.querySelector('.review-rule').textContent = q.rule || '';
+      card.querySelector('.review-tip').textContent = q.tip || '';
+      if (q.trap) card.querySelector('.review-trap').textContent = q.trap;
+
+      const poeList = card.querySelector('.review-poe-list');
+      ['A','B','C','D'].forEach(letter=>{
+        if(!q.poe || !q.poe[letter]) return;
+        const li = document.createElement('li');
+        li.textContent = letter + '. ' + q.poe[letter];
+        if (letter === q.correct) li.classList.add('correct-letter');
+        poeList.appendChild(li);
+      });
+
+      container.appendChild(card);
+    });
+
+    const bySkill = {};
+    QUESTIONS.forEach((q,i)=>{
+      const key = q.skill || 'General';
+      bySkill[key] = bySkill[key] || {correct:0,total:0};
+      bySkill[key].total++;
+      if(STATE.answers[i]===q.correct) bySkill[key].correct++;
+    });
+    let skillHtml = '';
+    Object.keys(bySkill).sort().forEach(s=>{
+      skillHtml += '<div>'+s+': '+bySkill[s].correct+' / '+bySkill[s].total+'</div>';
+    });
+    $('#score-by-skill').innerHTML = skillHtml;
+  }
+});
+})();
+</script>
+
+</body>
+</html>

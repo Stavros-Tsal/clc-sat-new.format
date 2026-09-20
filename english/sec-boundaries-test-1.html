@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standard English Conventions: Boundaries — Test 1</title>
+
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; margin:0; background:#f7f5f0; color:#241a12; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+.card { background:#fff; border-radius: 10px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom:20px; }
+h1 { color:#A8002E; font-size: 1.6rem; margin-top:0; }
+.start-btn, #submit-btn, #confirm-submit { background:#A8002E; color:#fff; border:none; padding:12px 28px; border-radius:6px; font-size:1rem; cursor:pointer; }
+.start-btn:hover, #submit-btn:hover { background:#8a0026; }
+.timing-options { display:flex; gap:14px; margin:18px 0; }
+.timing-card { flex:1; border:2px solid #ddd; border-radius:8px; padding:16px; cursor:pointer; text-align:center; }
+.timing-card.selected { border-color:#A8002E; background:#FBF3E3; }
+.timing-card h3 { margin:0 0 6px 0; color:#A8002E; font-size:1.05rem; }
+.timing-card div.mins { font-size:1.5rem; font-weight:bold; color:#241a12; }
+.nav-grid { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0; }
+.nav-btn { width:38px; height:38px; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer; font-size:0.9rem; }
+.nav-btn.current { border-color:#A8002E; border-width:2px; }
+.nav-btn.answered { background:#F5EFE0; }
+.nav-arrow { border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer; font-size:0.9rem; }
+#q-text{font-size:1.08rem;line-height:1.6;margin:14px 0 20px}
+.notesbullets{margin:10px 0 10px 0;padding-left:22px}
+.notesbullets li{margin-bottom:6px;line-height:1.5}
+.choice-row { display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid #ddd; border-radius:6px; margin-bottom:10px; cursor:pointer; }
+.choice-row:hover { background:#faf6ee; }
+.choice-row.selected { border-color:#A8002E; background:#FBF3E3; }
+.choice-letter { font-weight:bold; color:#A8002E; }
+.timer-box { position:sticky; top:0; background:#241a12; color:#fff; padding:8px 16px; border-radius:6px; font-weight:bold; text-align:center; margin-bottom:14px; font-size:1.1rem; z-index:10; }
+.timer-box.low-time { background:#A8002E; }
+.review-card { border:1px solid #ddd; border-radius:8px; padding:18px; margin-bottom:16px; }
+.review-card.correct { border-left: 5px solid #1F7A3D; }
+.review-card.incorrect { border-left: 5px solid #A8002E; }
+.review-q { font-weight:600; margin-bottom:10px; }
+.review-choice { display:flex; gap:8px; padding:6px 0; }
+.review-choice.right-answer { color:#1F7A3D; font-weight:600; }
+.review-choice.user-wrong { color:#A8002E; font-weight:600; }
+.review-section { margin-top:12px; }
+.review-section-label { font-weight:bold; color:#B8882A; font-family: Georgia, serif; font-size:1rem; margin-bottom:4px; }
+.review-rule { background:#faf6ee; padding:10px 12px; border-radius:6px; font-size:.92rem; color:#3a3a3a; }
+.review-tip { background:#FBF3E3; padding:10px 12px; border-radius:6px; font-size:.92rem; color:#3a3a3a; border-left:3px solid #B8882A; }
+.review-trap { background:#FCEDEE; padding:10px 12px; border-radius:6px; font-size:.92rem; color:#3a3a3a; border-left:3px solid #A8002E; }
+.review-poe-list { margin:6px 0 0 0; padding-left:20px; font-size:.92rem; color:#3a3a3a; }
+.review-poe-list li { margin-bottom:5px; line-height:1.45; }
+.review-poe-list li.correct-letter { color:#1F7A3D; font-weight:600; }
+.score-big { font-size:2.4rem; color:#A8002E; font-weight:bold; }
+.hidden { display:none !important; }
+.subtitle { color:#5A5A5A; font-size:0.95rem; margin-bottom:20px; }
+#confirm-box { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; }
+#confirm-box .card { max-width:420px; text-align:center; }
+#print-btn { position:fixed; bottom:20px; right:20px; background:#B8882A; color:#fff; border:none; padding:12px 18px; border-radius:24px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.2); font-size:0.95rem; }
+@media print {
+  #print-btn, #intro-screen, #test-screen, #confirm-box { display:none !important; }
+  body { background:#fff; }
+  .card { box-shadow:none; }
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <div id="intro-screen" class="card">
+    <h1>Standard English Conventions: Boundaries — Test 1</h1>
+    <div class="subtitle">Comprehensive Boundaries practice — commas, semicolons, colons, dashes, periods, clauses, run-ons, fragments, and logical separation. Test 1 of 2 — 20 questions.</div>
+    <p>20 questions. Choose your timing, then click Start when you're ready.</p>
+    <div class="timing-options">
+      <div class="timing-card" data-minutes="30" data-default="1">
+        <h3>Standard Time</h3>
+        <div class="mins">30 min</div>
+      </div>
+      <div class="timing-card" data-minutes="38">
+        <h3>Extended Time (+25%)</h3>
+        <div class="mins">38 min</div>
+      </div>
+    </div>
+    <button class="start-btn">Start Test</button>
+  </div>
+
+  <div id="test-screen" class="card hidden">
+    <div id="timer-box" class="timer-box"></div>
+    <div id="q-counter" style="font-weight:600;color:#5A5A5A;margin-bottom:8px;"></div>
+    <div id="q-text"></div>
+    <div id="choices"></div>
+    <div style="display:flex; justify-content:space-between; margin-top:16px;">
+      <button id="prev-btn" class="nav-arrow" style="width:auto;padding:8px 16px;">&larr; Back</button>
+      <button id="next-btn" class="nav-arrow" style="width:auto;padding:8px 16px;">Next &rarr;</button>
+    </div>
+    <div id="nav-grid" class="nav-grid"></div>
+    <button id="submit-btn">Submit Test</button>
+  </div>
+
+  <div id="results-screen" class="card hidden">
+    <h1>Results</h1>
+    <div class="score-big"></div>
+    <div id="score-by-skill" style="margin:16px 0;"></div>
+    <div id="review-container"></div>
+  </div>
+
+  <button id="print-btn" class="hidden">Export / Print PDF</button>
+
+  <div id="confirm-box" class="hidden">
+    <div class="card">
+      <p>Submit your test? You won't be able to change your answers after this.</p>
+      <button id="confirm-submit">Yes, Submit</button>
+      <button id="cancel-submit" style="background:#ccc;color:#333;">Cancel</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+const QUESTIONS = [{"question": "The city council approved the plan ______ against strong public opposition ______ during last week's meeting.", "choices": {"C": ", / —", "D": "— / —", "A": "; / ;", "B": ", / ,"}, "correct": "D", "difficulty": "Easy", "skill": "Dash", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "A pair of dashes correctly encloses the phrase \"against strong public opposition,\" matching on both sides.", "tip": "If you open a phrase with one dash, you must close it with a second dash — never mix a dash with a comma around the same phrase.", "trap": "This choice uses a comma on one side and a dash on the other around the same phrase — the punctuation must match on both sides, so this inconsistent pairing is incorrect here.", "poe": {"C": "This choice uses a comma on one side and a dash on the other around the same phrase — the punctuation must match on both sides, so this inconsistent pairing is incorrect here.", "D": "A pair of dashes correctly encloses the phrase \"against strong public opposition,\" matching on both sides.", "A": "This choice uses a semicolon on both sides, which does not correctly fit the punctuation pattern required by this sentence.", "B": "This choice uses a comma on both sides, which does not correctly fit the punctuation pattern required by this sentence."}}, {"question": "Before the trip, we needed to pack clothes, snacks, and a map ______", "choices": {"B": ":", "C": ",", "D": ";", "A": " "}, "correct": "C", "difficulty": "Easy", "skill": "Colon", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "This sentence is a complete thought already listing the items; no colon is needed since \"we needed to pack\" is not set up as an independent clause introducing a separate list.", "tip": "Cover everything after the colon — what remains before it must be a complete, independent sentence.", "trap": "This choice uses a colon, but the words before it do not form the complete, independent sentence a colon requires.", "poe": {"B": "This choice uses a colon, but the words before it do not form the complete, independent sentence a colon requires.", "C": "This sentence is a complete thought already listing the items; no colon is needed since \"we needed to pack\" is not set up as an independent clause introducing a separate list.", "D": "This choice uses a semicolon, but a semicolon requires an independent, complete clause on both sides — that requirement is not met here.", "A": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here."}}, {"question": "Exhausted after the long flight ______ the travelers went straight to their hotel.", "choices": {"D": ".", "A": ",", "B": ";", "C": ":"}, "correct": "A", "difficulty": "Easy", "skill": "Fragments", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Exhausted after the long flight\" is a fragment describing the travelers — a comma correctly attaches it to the main clause.", "tip": "Every complete sentence needs its own subject and its own main verb — a phrase describing another sentence usually needs a comma, not a period, to connect to it.", "trap": "This choice uses a period, but the words before it do not form a complete, independent sentence, so a period incorrectly creates a fragment.", "poe": {"D": "This choice uses a period, but the words before it do not form a complete, independent sentence, so a period incorrectly creates a fragment.", "A": "\"Exhausted after the long flight\" is a fragment describing the travelers — a comma correctly attaches it to the main clause.", "B": "This choice uses a semicolon, but a semicolon requires an independent, complete clause on both sides — that requirement is not met here.", "C": "This choice uses a colon, but the words before it do not form the complete, independent sentence a colon requires."}}, {"question": "The volunteers worked through the night to prepare the shelter ______ by morning, every bed was ready for a new arrival.", "choices": {"B": ",", "C": ";", "D": ":", "A": "."}, "correct": "C", "difficulty": "Medium", "skill": "Logical Separation of Ideas", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "These are two closely related events describing the same overall effort, best joined by a semicolon.", "tip": "When multiple punctuation marks are grammatically possible, choose the one that best reflects the actual relationship between the two ideas — a colon promises an explanation, a semicolon shows a related but separate idea.", "trap": "This choice uses only a comma, which is too weak to join two independent clauses on its own — that creates a comma splice.", "poe": {"B": "This choice uses only a comma, which is too weak to join two independent clauses on its own — that creates a comma splice.", "C": "These are two closely related events describing the same overall effort, best joined by a semicolon.", "D": "This choice uses a colon, which promises a specific explanation — but the second part here is simply a related, separate idea, which calls for a semicolon instead.", "A": "This choice uses a period, which is grammatically possible but breaks the close connection between these two related ideas that a semicolon preserves."}}, {"question": "The startup secured new funding this quarter ______ its founders plan to double the workforce.", "choices": {"A": " ", "B": ",", "C": ";", "D": ":"}, "correct": "C", "difficulty": "Easy", "skill": "Run-ons & Comma Splices", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "Both clauses are independent, correctly joined by a semicolon.", "tip": "If two complete sentences are joined with only a comma or with no punctuation at all, that is an error — fix it with a period, a semicolon, or a comma plus a FANBOYS word.", "trap": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "poe": {"A": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "B": "This choice uses only a comma, which is too weak to join two independent clauses on its own — that creates a comma splice.", "C": "Both clauses are independent, correctly joined by a semicolon.", "D": "This choice uses a colon, which promises a specific explanation — but the second part here is simply a related, separate idea, which calls for a semicolon instead."}}, {"question": "The bridge was built in 1932 ______ it is still used by thousands of drivers every day.", "choices": {"C": " ", "D": ",", "A": ";", "B": ":"}, "correct": "A", "difficulty": "Easy", "skill": "Clauses", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "Both \"the bridge was built in 1932\" and \"it is still used by thousands of drivers every day\" are independent clauses, correctly joined by a semicolon.", "tip": "Read each clause by itself: if it leaves you expecting more information, it is dependent, not independent.", "trap": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "poe": {"C": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "D": "This choice uses only a comma, which is too weak to join two independent clauses on its own — that creates a comma splice.", "A": "Both \"the bridge was built in 1932\" and \"it is still used by thousands of drivers every day\" are independent clauses, correctly joined by a semicolon.", "B": "This choice uses a colon, which promises a specific explanation — but the second part here is simply a related, separate idea, which calls for a semicolon instead."}}, {"question": "Although the results were promising ______ researchers called for further study.", "choices": {"D": ".", "A": ",", "B": ";", "C": " "}, "correct": "A", "difficulty": "Easy", "skill": "Period", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "The dependent clause \"although the results were promising\" needs a comma, not a period, before the main clause.", "tip": "A period can only separate two independent (complete) clauses — check that both sides could stand alone first.", "trap": "This choice uses a period, but the words before it do not form a complete, independent sentence, so a period incorrectly creates a fragment.", "poe": {"D": "This choice uses a period, but the words before it do not form a complete, independent sentence, so a period incorrectly creates a fragment.", "A": "The dependent clause \"although the results were promising\" needs a comma, not a period, before the main clause.", "B": "This choice uses a semicolon, but a semicolon requires an independent, complete clause on both sides — that requirement is not met here.", "C": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here."}}, {"question": "The committee reviewed the proposal ______ and rejected it.", "choices": {"B": " ", "C": ",", "D": ";", "A": ":"}, "correct": "B", "difficulty": "Easy", "skill": "Comma", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "Since \"reviewed the proposal\" and \"rejected it\" share the same subject (\"the committee\"), no comma is needed before \"and.\"", "tip": "Test non-essential phrases by removing them: if the sentence still makes complete sense, commas belong on both sides.", "trap": "This choice uses a comma, which does not correctly fit the punctuation pattern required by this sentence.", "poe": {"B": "Since \"reviewed the proposal\" and \"rejected it\" share the same subject (\"the committee\"), no comma is needed before \"and.\"", "C": "This choice uses a comma, which does not correctly fit the punctuation pattern required by this sentence.", "D": "This choice adds an unnecessary semicolon where the sentence does not require any punctuation break.", "A": "This choice uses a colon, which does not correctly fit the punctuation pattern required by this sentence."}}, {"question": "The tall ______ ancient oak tree stood at the center of the park.", "choices": {"C": " ", "D": ",", "A": ";", "B": ":"}, "correct": "D", "difficulty": "Easy", "skill": "Comma", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Tall\" and \"ancient\" are coordinate adjectives that could be reordered (\"ancient, tall oak tree\"), so a comma is needed between them.", "tip": "Test non-essential phrases by removing them: if the sentence still makes complete sense, commas belong on both sides.", "trap": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "poe": {"C": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "D": "\"Tall\" and \"ancient\" are coordinate adjectives that could be reordered (\"ancient, tall oak tree\"), so a comma is needed between them.", "A": "This choice uses a semicolon, but a semicolon requires an independent, complete clause on both sides — that requirement is not met here.", "B": "This choice uses a colon, but the words before it do not form the complete, independent sentence a colon requires."}}, {"question": "The ancient bridge, weakened by centuries of erosion ______ finally collapsed during the storm.", "choices": {"D": ",", "A": ".", "B": ";", "C": ":"}, "correct": "D", "difficulty": "Easy", "skill": "Fragments", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "A comma correctly closes the non-essential phrase \"weakened by centuries of erosion\" before the main verb \"finally collapsed.\"", "tip": "Every complete sentence needs its own subject and its own main verb — a phrase describing another sentence usually needs a comma, not a period, to connect to it.", "trap": "This choice uses a period, but the words before it do not form a complete, independent sentence, so a period incorrectly creates a fragment.", "poe": {"D": "A comma correctly closes the non-essential phrase \"weakened by centuries of erosion\" before the main verb \"finally collapsed.\"", "A": "This choice uses a period, but the words before it do not form a complete, independent sentence, so a period incorrectly creates a fragment.", "B": "This choice uses a semicolon, but a semicolon requires an independent, complete clause on both sides — that requirement is not met here.", "C": "This choice uses a colon, but the words before it do not form the complete, independent sentence a colon requires."}}, {"question": "Located in the northern United States, the Great Lakes Basin contains roughly 35,000 islands. Lake Superior has Grand Island, for example. Lake Michigan has Belle Isle. Lake Huron, though, is home ______ the largest island of them all: Manitoulin Island. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "to;", "B": "to—", "C": "to", "D": "to,"}, "correct": "C", "difficulty": "Easy", "skill": "Semicolon", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is punctuation use between a preposition and its complement. No punctuation is needed between the preposition \"to\" and its complement \"the largest island of them all.\" The complement completes the meaning of the preposition in the phrase \"home to the largest island of them all,\" and any punctuation within it results in an ungrammatical sentence.", "tip": "Check both sides of the punctuation mark: could each one stand alone as its own complete sentence? If yes, a semicolon can work.", "trap": "Because no punctuation is needed between the preposition and its complement.", "poe": {"C": "The convention being tested is punctuation use between a preposition and its complement. No punctuation is needed between the preposition \"to\" and its complement \"the largest island of them all.\" The complement completes the meaning of the preposition in the phrase \"home to the largest island of them all,\" and any punctuation within it results in an ungrammatical sentence.", "A": "Because no punctuation is needed between the preposition and its complement.", "B": "Because no punctuation is needed between the preposition and its complement.", "D": "Because no punctuation is needed between the preposition and its complement."}}, {"question": "The company's profits declined for the third straight quarter ______ executives called an emergency board meeting.", "choices": {"D": ",", "A": ";", "B": ":", "C": "."}, "correct": "A", "difficulty": "Medium", "skill": "Logical Separation of Ideas", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "These are two closely related events (a cause and its result), best joined by a semicolon.", "tip": "When multiple punctuation marks are grammatically possible, choose the one that best reflects the actual relationship between the two ideas — a colon promises an explanation, a semicolon shows a related but separate idea.", "trap": "This choice uses only a comma, which is too weak to join two independent clauses on its own — that creates a comma splice.", "poe": {"D": "This choice uses only a comma, which is too weak to join two independent clauses on its own — that creates a comma splice.", "A": "These are two closely related events (a cause and its result), best joined by a semicolon.", "B": "This choice uses a colon, which promises a specific explanation — but the second part here is simply a related, separate idea, which calls for a semicolon instead.", "C": "This choice uses a period, which is grammatically possible but breaks the close connection between these two related ideas that a semicolon preserves."}}, {"question": "The report, ______ still under review by senior staff.", "choices": {"D": ",", "A": ".", "B": "is", "C": ";"}, "correct": "B", "difficulty": "Easy", "skill": "Fragments", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "Adding the verb \"is\" gives the sentence a complete main verb (\"is still under review\"), fixing what would otherwise be a fragment.", "tip": "Every complete sentence needs its own subject and its own main verb — a phrase describing another sentence usually needs a comma, not a period, to connect to it.", "trap": "This choice uses a comma, which does not correctly fit the punctuation pattern required by this sentence.", "poe": {"D": "This choice uses a comma, which does not correctly fit the punctuation pattern required by this sentence.", "A": "This choice uses a period, which does not correctly fit the punctuation pattern required by this sentence.", "B": "Adding the verb \"is\" gives the sentence a complete main verb (\"is still under review\"), fixing what would otherwise be a fragment.", "C": "This choice adds an unnecessary semicolon where the sentence does not require any punctuation break."}}, {"question": "When the negotiations finally reached a breakthrough ______ both delegations expressed relief.", "choices": {"B": " ", "C": ",", "D": ";", "A": "."}, "correct": "C", "difficulty": "Easy", "skill": "Clauses", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "The dependent clause \"when the negotiations finally reached a breakthrough\" needs a comma before the main clause.", "tip": "Read each clause by itself: if it leaves you expecting more information, it is dependent, not independent.", "trap": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "poe": {"B": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "C": "The dependent clause \"when the negotiations finally reached a breakthrough\" needs a comma before the main clause.", "D": "This choice uses a semicolon, but a semicolon requires an independent, complete clause on both sides — that requirement is not met here.", "A": "This choice uses a period, but the words before it do not form a complete, independent sentence, so a period incorrectly creates a fragment."}}, {"question": "The festival attracted a record crowd this year ______ local hotels reported a corresponding rise in bookings.", "choices": {"A": ",", "B": ";", "C": ":", "D": "."}, "correct": "B", "difficulty": "Medium", "skill": "Logical Separation of Ideas", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "These are two related but separate facts (not one explaining the other), best joined by a semicolon.", "tip": "When multiple punctuation marks are grammatically possible, choose the one that best reflects the actual relationship between the two ideas — a colon promises an explanation, a semicolon shows a related but separate idea.", "trap": "This choice uses only a comma, which is too weak to join two independent clauses on its own — that creates a comma splice.", "poe": {"A": "This choice uses only a comma, which is too weak to join two independent clauses on its own — that creates a comma splice.", "B": "These are two related but separate facts (not one explaining the other), best joined by a semicolon.", "C": "This choice uses a colon, which promises a specific explanation — but the second part here is simply a related, separate idea, which calls for a semicolon instead.", "D": "This choice uses a period, which is grammatically possible but breaks the close connection between these two related ideas that a semicolon preserves."}}, {"question": "She had only one fear ______ heights.", "choices": {"A": ",", "B": ";", "C": ":", "D": " "}, "correct": "C", "difficulty": "Easy", "skill": "Colon", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "The colon correctly introduces the single-word explanation after the complete sentence \"She had only one fear.\"", "tip": "Cover everything after the colon — what remains before it must be a complete, independent sentence.", "trap": "This choice uses a comma, but a comma does not have the same introductory force a colon has for what follows.", "poe": {"A": "This choice uses a comma, but a comma does not have the same introductory force a colon has for what follows.", "B": "This choice uses a semicolon, which only shows that two ideas are related — it does not signal the explanation a colon promises here.", "C": "The colon correctly introduces the single-word explanation after the complete sentence \"She had only one fear.\"", "D": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here."}}, {"question": "The bakery on Main Street ______ sells the best croissants in town.", "choices": {"B": "(no punctuation)", "C": ",", "D": ";", "A": ":"}, "correct": "B", "difficulty": "Easy", "skill": "Comma", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"On Main Street\" is essential information identifying which bakery — no commas are needed.", "tip": "Test non-essential phrases by removing them: if the sentence still makes complete sense, commas belong on both sides.", "trap": "This choice uses a comma, which does not correctly fit the punctuation pattern required by this sentence.", "poe": {"B": "\"On Main Street\" is essential information identifying which bakery — no commas are needed.", "C": "This choice uses a comma, which does not correctly fit the punctuation pattern required by this sentence.", "D": "This choice adds an unnecessary semicolon where the sentence does not require any punctuation break.", "A": "This choice uses a colon, which does not correctly fit the punctuation pattern required by this sentence."}}, {"question": "The Alvarez theory, developed in 1980 by physicist Luis Walter Alvarez and his geologist son Walter Alvarez, maintained that the secondary effects of an asteroid impact caused many dinosaurs and other animals to die ______ it left unexplored the question of whether unrelated volcanic activity might have also contributed to the mass extinctions. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "out but", "B": "out, but", "C": "out", "D": "out,"}, "correct": "B", "difficulty": "Easy", "skill": "Run-ons & Comma Splices", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is the coordination of main clauses within a sentence. This choice correctly uses a comma and the coordinating conjunction “but” to join the first main clause (“the Alvarez…out”) and the second main clause (“it left…extinctions”).", "tip": "If two complete sentences are joined with only a comma or with no punctuation at all, that is an error — fix it with a period, a semicolon, or a comma plus a FANBOYS word.", "trap": "Because when coordinating two longer main clauses such as these, it’s conventional to use a comma before the coordinating conjunction.", "poe": {"B": "The convention being tested is the coordination of main clauses within a sentence. This choice correctly uses a comma and the coordinating conjunction “but” to join the first main clause (“the Alvarez…out”) and the second main clause (“it left…extinctions”).", "A": "Because when coordinating two longer main clauses such as these, it’s conventional to use a comma before the coordinating conjunction.", "C": "Because it results in a run-on sentence. The two main clauses are fused without punctuation and/or a conjunction.", "D": "Because it results in a comma splice. Without a conjunction following it, a comma can’t be used in this way to join two main clauses."}}, {"question": "The report reached a troubling conclusion ______ the program had failed to meet even its most basic goals.", "choices": {"C": ",", "D": ";", "A": ":", "B": "."}, "correct": "A", "difficulty": "Medium", "skill": "Logical Separation of Ideas", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "The second part directly explains the conclusion mentioned in the first, so a colon best signals the explanation.", "tip": "When multiple punctuation marks are grammatically possible, choose the one that best reflects the actual relationship between the two ideas — a colon promises an explanation, a semicolon shows a related but separate idea.", "trap": "This choice uses a comma, but a comma does not have the same introductory force a colon has for what follows.", "poe": {"C": "This choice uses a comma, but a comma does not have the same introductory force a colon has for what follows.", "D": "This choice uses a semicolon, which only shows that two ideas are related — it does not signal the explanation a colon promises here.", "A": "The second part directly explains the conclusion mentioned in the first, so a colon best signals the explanation.", "B": "This choice uses a period, which does not correctly fit the punctuation pattern required by this sentence."}}, {"question": "After the committee reviewed every proposal carefully ______ they announced their decision the following week.", "choices": {"C": " ", "D": ",", "A": ";", "B": "."}, "correct": "D", "difficulty": "Easy", "skill": "Clauses", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "The dependent clause \"after the committee reviewed every proposal carefully\" needs a comma before the main clause.", "tip": "Read each clause by itself: if it leaves you expecting more information, it is dependent, not independent.", "trap": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "poe": {"C": "This choice provides no punctuation at all, which does not correctly separate the two parts of the sentence here.", "D": "The dependent clause \"after the committee reviewed every proposal carefully\" needs a comma before the main clause.", "A": "This choice uses a semicolon, but a semicolon requires an independent, complete clause on both sides — that requirement is not met here.", "B": "This choice uses a period, but the words before it do not form a complete, independent sentence, so a period incorrectly creates a fragment."}}];
+const STANDARD_MINUTES = 30;
+const EXTENDED_MINUTES = 38;
+const STATE = { idx:0, answers:{}, flags:{}, submitted:false, minutesChosen:STANDARD_MINUTES, secondsLeft:0, timerId:null };
+window.__CLC_TEST_STATE__ = STATE;
+
+function $(sel){ return document.querySelector(sel); }
+function $all(sel){ return document.querySelectorAll(sel); }
+
+document.addEventListener('DOMContentLoaded', function(){
+
+  $all('.timing-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      $all('.timing-card').forEach(c=>c.classList.remove('selected'));
+      card.classList.add('selected');
+      STATE.minutesChosen = parseFloat(card.dataset.minutes);
+    });
+  });
+  $('.timing-card[data-default="1"]') && $('.timing-card[data-default="1"]').classList.add('selected');
+
+  $('.start-btn').addEventListener('click', function(){
+    $('#intro-screen').classList.add('hidden');
+    $('#test-screen').classList.remove('hidden');
+    buildNav();
+    renderQuestion();
+    startTimer();
+  });
+
+  function startTimer(){
+    STATE.secondsLeft = Math.round(STATE.minutesChosen*60);
+    updateTimerDisplay();
+    STATE.timerId = setInterval(()=>{
+      STATE.secondsLeft--;
+      updateTimerDisplay();
+      if(STATE.secondsLeft<=0){
+        clearInterval(STATE.timerId);
+        STATE.submitted = true;
+        showResults();
+      }
+    }, 1000);
+  }
+  function updateTimerDisplay(){
+    const m = Math.floor(STATE.secondsLeft/60);
+    const s = STATE.secondsLeft%60;
+    const box = $('#timer-box');
+    if(!box) return;
+    box.textContent = 'Time Remaining: ' + m + ':' + (s<10?'0':'')+s;
+    box.classList.toggle('low-time', STATE.secondsLeft <= 120);
+  }
+
+  function buildNav(){
+    const nav = $('#nav-grid');
+    nav.innerHTML = '';
+    QUESTIONS.forEach((q,i)=>{
+      const btn = document.createElement('button');
+      btn.className = 'nav-btn';
+      btn.textContent = (i+1);
+      btn.addEventListener('click', ()=>{ STATE.idx = i; renderQuestion(); });
+      nav.appendChild(btn);
+    });
+  }
+
+  function renderQuestion(){
+    const q = QUESTIONS[STATE.idx];
+    $('#q-text').innerHTML = q.question.replace(/\n/g,'<br>');
+    const choicesEl = $('#choices');
+    choicesEl.innerHTML = '';
+    ['A','B','C','D'].forEach(letter=>{
+      if(!q.choices[letter]) return;
+      const row = document.createElement('div');
+      row.className = 'choice-row' + (STATE.answers[STATE.idx]===letter ? ' selected':'');
+      row.innerHTML = '<span class="choice-letter">'+letter+'</span><span class="choice-text"></span>';
+      row.querySelector('.choice-text').textContent = q.choices[letter];
+      row.addEventListener('click', ()=>{
+        STATE.answers[STATE.idx] = letter;
+        renderQuestion();
+      });
+      choicesEl.appendChild(row);
+    });
+    updateNav();
+    $('#q-counter').textContent = 'Question ' + (STATE.idx+1) + ' of ' + QUESTIONS.length;
+  }
+
+  function updateNav(){
+    $all('.nav-btn').forEach((btn,i)=>{
+      btn.classList.toggle('current', i===STATE.idx);
+      btn.classList.toggle('answered', STATE.answers[i] !== undefined);
+    });
+  }
+
+  $('#prev-btn') && $('#prev-btn').addEventListener('click', ()=>{
+    if(STATE.idx>0){ STATE.idx--; renderQuestion(); }
+  });
+  $('#next-btn') && $('#next-btn').addEventListener('click', ()=>{
+    if(STATE.idx<QUESTIONS.length-1){ STATE.idx++; renderQuestion(); }
+  });
+
+  $('#submit-btn').addEventListener('click', ()=>{
+    $('#confirm-box').classList.remove('hidden');
+  });
+  $('#cancel-submit') && $('#cancel-submit').addEventListener('click', ()=>{
+    $('#confirm-box').classList.add('hidden');
+  });
+  $('#confirm-submit').addEventListener('click', ()=>{
+    $('#confirm-box').classList.add('hidden');
+    if(STATE.timerId) clearInterval(STATE.timerId);
+    STATE.submitted = true;
+    showResults();
+  });
+
+  $('#print-btn') && $('#print-btn').addEventListener('click', ()=> window.print());
+
+  function showResults(){
+    $('#test-screen').classList.add('hidden');
+    $('#results-screen').classList.remove('hidden');
+    $('#print-btn') && $('#print-btn').classList.remove('hidden');
+    let correctCount = 0;
+    QUESTIONS.forEach((q,i)=>{ if(STATE.answers[i]===q.correct) correctCount++; });
+    $('.score-big').textContent = correctCount + ' / ' + QUESTIONS.length;
+
+    const container = $('#review-container');
+    container.innerHTML = '';
+    QUESTIONS.forEach((q,i)=>{
+      const userAns = STATE.answers[i];
+      const isCorrect = userAns === q.correct;
+      const card = document.createElement('div');
+      card.className = 'review-card ' + (isCorrect ? 'correct':'incorrect');
+
+      let html = '<div class="review-q"></div><div class="review-choices"></div>';
+      html += '<div class="review-section"><div class="review-section-label">Rule</div><div class="review-rule"></div></div>';
+      html += '<div class="review-section"><div class="review-section-label">Tip</div><div class="review-tip"></div></div>';
+      if (q.trap) {
+        html += '<div class="review-section"><div class="review-section-label">Trap</div><div class="review-trap"></div></div>';
+      }
+      html += '<div class="review-section"><div class="review-section-label">Process of Elimination</div><ul class="review-poe-list"></ul></div>';
+      card.innerHTML = html;
+
+      card.querySelector('.review-q').textContent = 'Question ' + (i+1) + ': ' + q.question.replace(/<[^>]+>/g,' ');
+      const choicesDiv = card.querySelector('.review-choices');
+      ['A','B','C','D'].forEach(letter=>{
+        if(!q.choices[letter]) return;
+        const row = document.createElement('div');
+        row.className = 'review-choice' +
+          (letter===q.correct ? ' right-answer' : '') +
+          (letter===userAns && letter!==q.correct ? ' user-wrong' : '');
+        row.innerHTML = '<span>'+letter+'.</span><span></span>';
+        row.querySelectorAll('span')[1].textContent = q.choices[letter];
+        choicesDiv.appendChild(row);
+      });
+
+      card.querySelector('.review-rule').textContent = q.rule || '';
+      card.querySelector('.review-tip').textContent = q.tip || '';
+      if (q.trap) card.querySelector('.review-trap').textContent = q.trap;
+
+      const poeList = card.querySelector('.review-poe-list');
+      ['A','B','C','D'].forEach(letter=>{
+        if(!q.poe || !q.poe[letter]) return;
+        const li = document.createElement('li');
+        li.textContent = letter + '. ' + q.poe[letter];
+        if (letter === q.correct) li.classList.add('correct-letter');
+        poeList.appendChild(li);
+      });
+
+      container.appendChild(card);
+    });
+
+    const bySkill = {};
+    QUESTIONS.forEach((q,i)=>{
+      const key = q.skill || 'General';
+      bySkill[key] = bySkill[key] || {correct:0,total:0};
+      bySkill[key].total++;
+      if(STATE.answers[i]===q.correct) bySkill[key].correct++;
+    });
+    let skillHtml = '';
+    Object.keys(bySkill).sort().forEach(s=>{
+      skillHtml += '<div>'+s+': '+bySkill[s].correct+' / '+bySkill[s].total+'</div>';
+    });
+    $('#score-by-skill').innerHTML = skillHtml;
+  }
+});
+})();
+</script>
+
+</body>
+</html>

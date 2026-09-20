@@ -852,6 +852,8 @@
   #screen-section-picker,
   #screen-section-auth,
   #screen-prep-theory,
+  #screen-specific-practice,
+  #screen-english-questionbank,
   #screen-coming-soon {
     min-height: 100vh;
     flex-direction: column;
@@ -860,6 +862,22 @@
     background: linear-gradient(160deg, #fff 60%, #f8f0f0 100%);
     padding: 40px 24px;
     text-align: center;
+  }
+  #screen-specific-practice,
+  #screen-english-questionbank { padding-top: 84px; }
+  .qb-chapter { margin-top: 36px; }
+  .qb-chapter:first-of-type { margin-top: 8px; }
+  .qb-chapter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: var(--crimson);
+    margin: 0 0 4px;
+  }
+  .qb-chapter-sub {
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+    max-width: 520px; margin: 0 auto 4px;
+  }
+  .theory-empty {
+    font-size: 14px; color: var(--muted); margin-top: 24px;
   }
   .section-badge {
     display: inline-flex; align-items: center; gap: 6px;
@@ -1277,11 +1295,11 @@ window.addEventListener('DOMContentLoaded', function() {
   <h2 class="subject-title">Choose a subject</h2>
   <p class="subject-sub">What would you like to practice today?</p>
   <div class="subject-cards">
-    <div class="subject-card disabled" onclick="goScreen('screen-mode','English')">
+    <div class="subject-card disabled" id="english-card" onclick="goEnglish()">
       <div class="icon">📖</div>
       <div class="label">English</div>
       <div class="desc">Reading, Writing & Language</div>
-      <span class="coming-soon">Coming Soon</span>
+      <span class="coming-soon" id="english-coming-soon">Coming Soon</span>
     </div>
     <div class="subject-card" onclick="goMath()">
       <div class="icon">📐</div>
@@ -1337,7 +1355,7 @@ window.addEventListener('DOMContentLoaded', function() {
 <!-- ══ SCREEN: THEORY (content populated dynamically per section by renderTheoryCards()) ══ -->
 <div id="screen-prep-theory" class="screen">
   <h2 class="subject-title">Theory</h2>
-  <p class="subject-sub">Question bank αναφοράς &amp; κανόνες βαθμολόγησης</p>
+  <p class="subject-sub" id="theory-sub">Question bank αναφοράς &amp; κανόνες βαθμολόγησης</p>
   <div class="mode-cards" id="theory-cards"></div>
   <button class="nav-back-btn" onclick="goScreen('screen-mode')">← Back</button>
 </div>
@@ -1346,6 +1364,88 @@ window.addEventListener('DOMContentLoaded', function() {
 <div id="screen-coming-soon" class="screen">
   <h2 class="subject-title" id="coming-soon-title">Coming Soon</h2>
   <p class="subject-sub">Αυτό το υλικό είναι υπό προετοιμασία — θα ενεργοποιηθεί σύντομα.</p>
+  <button class="nav-back-btn" onclick="goScreen('screen-mode')">← Back</button>
+</div>
+
+<!-- ══ SCREEN: ENGLISH — CLC QUESTIONBANK (Foundation) ══ -->
+<div id="screen-english-questionbank" class="screen">
+  <h2 class="subject-title">CLC Questionbank</h2>
+  <p class="subject-sub">Standard English Conventions — original questionbanks, organized by chapter and sub-topic</p>
+  <div class="qb-chapter">
+    <h3 class="qb-chapter-title">✍️ Boundaries</h3>
+    <p class="qb-chapter-sub">Commas · Semicolons · Colons · Dashes · Periods · Clauses · Run-ons · Fragments</p>
+    <div class="mode-cards">
+      <a class="mode-card" href="english/sec-boundaries-test-1.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="icon">📄</div>
+        <div class="label">Test 1</div>
+        <div class="desc">20 questions · 30 min (38 min extended)</div>
+      </a>
+      <a class="mode-card" href="english/sec-boundaries-test-2.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="icon">📄</div>
+        <div class="label">Test 2</div>
+        <div class="desc">20 questions · 30 min (38 min extended)</div>
+      </a>
+    </div>
+  </div>
+  <div class="qb-chapter">
+    <h3 class="qb-chapter-title">🔀 Modifiers &amp; Parallel Structure</h3>
+    <p class="qb-chapter-sub">Misplaced &amp; Dangling Modifiers · Parallel Structure · Conjunctions · Comparisons</p>
+    <div class="mode-cards">
+      <a class="mode-card" href="english/sec-modifiers-parallel-test-1.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="icon">📄</div>
+        <div class="label">Test 1</div>
+        <div class="desc">20 questions · 30 min (38 min extended)</div>
+      </a>
+      <a class="mode-card" href="english/sec-modifiers-parallel-test-2.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="icon">📄</div>
+        <div class="label">Test 2</div>
+        <div class="desc">20 questions · 30 min (38 min extended)</div>
+      </a>
+    </div>
+  </div>
+  <div class="qb-chapter">
+    <h3 class="qb-chapter-title">🕰️ Word Forms &amp; Tenses</h3>
+    <p class="qb-chapter-sub">Parts of Speech · Adjectives · Adverbs · Verb Tenses</p>
+    <div class="mode-cards">
+      <a class="mode-card" href="english/sec-word-forms-tenses-test-1.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="icon">📄</div>
+        <div class="label">Test 1</div>
+        <div class="desc">30 questions · 45 min (56 min extended)</div>
+      </a>
+      <a class="mode-card" href="english/sec-word-forms-tenses-test-2.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="icon">📄</div>
+        <div class="label">Test 2</div>
+        <div class="desc">30 questions · 45 min (56 min extended)</div>
+      </a>
+    </div>
+  </div>
+  <div class="qb-chapter">
+    <h3 class="qb-chapter-title">🤝 Agreement &amp; Reference</h3>
+    <p class="qb-chapter-sub">Subject-Verb Agreement · Pronouns · Nouns &amp; Apostrophes</p>
+    <div class="mode-cards">
+      <a class="mode-card" href="english/sec-agreement-reference-test-1.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="icon">📄</div>
+        <div class="label">Test 1</div>
+        <div class="desc">30 questions · 45 min (56 min extended)</div>
+      </a>
+      <a class="mode-card" href="english/sec-agreement-reference-test-2.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="icon">📄</div>
+        <div class="label">Test 2</div>
+        <div class="desc">30 questions · 45 min (56 min extended)</div>
+      </a>
+    </div>
+  </div>
+  <div class="qb-chapter">
+    <h3 class="qb-chapter-title">🔤 Vocabulary</h3>
+    <p class="qb-chapter-sub">SAT vocabulary practice — August/September 2026 word list</p>
+    <div class="mode-cards">
+      <a class="mode-card" href="english/sat-vocabulary-trainer.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="icon">🔤</div>
+        <div class="label">Vocabulary Trainer</div>
+        <div class="desc">CLC SAT Vocabulary Trainer — August/September 2026</div>
+      </a>
+    </div>
+  </div>
   <button class="nav-back-btn" onclick="goScreen('screen-mode')">← Back</button>
 </div>
 
@@ -2083,6 +2183,7 @@ function applySectionBadges() {
   if (b1) b1.textContent = label;
   if (b2) b2.textContent = label;
   applyFullPracticeGating();
+  applyEnglishGating();
 }
 
 function selectSection(section) {
@@ -2118,9 +2219,57 @@ async function handleSectionLogin(e) {
   return false;
 }
 
+let currentSubject = 'Math';
+
 function goMath() {
+  currentSubject = 'Math';
   goScreen('screen-mode', 'Math');
   renderMathMenu();
+}
+
+function goEnglish() {
+  currentSubject = 'English';
+  goScreen('screen-mode', 'English');
+  renderEnglishMenu();
+}
+
+// English is available for Foundation only (other sections keep the "Coming Soon" card)
+function applyEnglishGating() {
+  const card = document.getElementById('english-card');
+  const soon = document.getElementById('english-coming-soon');
+  if (!card || !soon) return;
+  const allowed = (currentSection === 'foundation');
+  card.classList.toggle('disabled', !allowed);
+  soon.style.display = allowed ? 'none' : 'inline-block';
+}
+
+function renderModeMenu() {
+  if (currentSubject === 'English') renderEnglishMenu(); else renderMathMenu();
+}
+
+function renderEnglishMenu() {
+  const container = document.getElementById('math-mode-cards');
+  if (!container) return;
+  const cards = [];
+  if (currentSection === 'foundation') {
+    cards.push({
+      icon: '🧭', label: 'CLC Questionbank',
+      desc: 'Original questionbanks by chapter & sub-topic',
+      onclick: "goScreen('screen-english-questionbank')"
+    });
+    cards.push({
+      icon: '📖', label: 'Theory',
+      desc: 'Theory & reference material',
+      onclick: "goScreen('screen-prep-theory'); renderTheoryCards();"
+    });
+  }
+  container.innerHTML = cards.map(c =>
+    '<div class="mode-card" onclick="' + c.onclick + '">' +
+      '<div class="icon">' + c.icon + '</div>' +
+      '<div class="label">' + c.label + '</div>' +
+      '<div class="desc">' + c.desc + '</div>' +
+    '</div>'
+  ).join('');
 }
 
 function renderMathMenu() {
@@ -2188,8 +2337,12 @@ function goScreen(id, subject) {
   }
   document.getElementById(id).classList.add('active');
   if (subject) {
-    document.getElementById('mode-badge').textContent = subject === 'Math' ? '📐 Math' : '📖 English';
+    // subject may be 'Math'/'English' or (from history state) the badge text itself
+    currentSubject = /english/i.test(subject) ? 'English' : 'Math';
+    document.getElementById('mode-badge').textContent = currentSubject === 'Math' ? '📐 Math' : '📖 English';
   }
+  if (id === 'screen-mode') renderModeMenu();
+  if (id === 'screen-subject') applyEnglishGating();
   window.scrollTo(0,0);
 
   if (!__isHistoryNav) {
@@ -2239,10 +2392,24 @@ const THEORY_SPEC = {
   ]
 };
 
+// English theory material (per section). Empty until content is uploaded.
+const THEORY_SPEC_ENGLISH = {
+  foundation: []
+};
+
 function renderTheoryCards() {
   const container = document.getElementById('theory-cards');
   if (!container) return;
-  const items = THEORY_SPEC[currentSection] || [];
+  const isEnglish = (currentSubject === 'English');
+  const sub = document.getElementById('theory-sub');
+  if (sub) sub.textContent = isEnglish
+    ? 'English theory & reference material'
+    : 'Question bank αναφοράς & κανόνες βαθμολόγησης';
+  const items = (isEnglish ? THEORY_SPEC_ENGLISH : THEORY_SPEC)[currentSection] || [];
+  if (isEnglish && items.length === 0) {
+    container.innerHTML = '<p class="theory-empty">Αυτό το υλικό είναι υπό προετοιμασία — θα ενεργοποιηθεί σύντομα.</p>';
+    return;
+  }
   container.innerHTML = items.map(it =>
     `<a class="mode-card" href="${it.href}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">` +
       `<div class="icon">${it.icon}</div>` +

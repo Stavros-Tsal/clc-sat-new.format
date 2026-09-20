@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standard English Conventions: Agreement & Reference — Test 1</title>
+
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; margin:0; background:#f7f5f0; color:#241a12; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+.card { background:#fff; border-radius: 10px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom:20px; }
+h1 { color:#A8002E; font-size: 1.6rem; margin-top:0; }
+.start-btn, #submit-btn, #confirm-submit { background:#A8002E; color:#fff; border:none; padding:12px 28px; border-radius:6px; font-size:1rem; cursor:pointer; }
+.start-btn:hover, #submit-btn:hover { background:#8a0026; }
+.timing-options { display:flex; gap:14px; margin:18px 0; }
+.timing-card { flex:1; border:2px solid #ddd; border-radius:8px; padding:16px; cursor:pointer; text-align:center; }
+.timing-card.selected { border-color:#A8002E; background:#FBF3E3; }
+.timing-card h3 { margin:0 0 6px 0; color:#A8002E; font-size:1.05rem; }
+.timing-card div.mins { font-size:1.5rem; font-weight:bold; color:#241a12; }
+.nav-grid { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0; }
+.nav-btn { width:38px; height:38px; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer; font-size:0.9rem; }
+.nav-btn.current { border-color:#A8002E; border-width:2px; }
+.nav-btn.answered { background:#F5EFE0; }
+.nav-arrow { border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer; font-size:0.9rem; }
+#q-text{font-size:1.08rem;line-height:1.6;margin:14px 0 20px}
+.notesbullets{margin:10px 0 10px 0;padding-left:22px}
+.notesbullets li{margin-bottom:6px;line-height:1.5}
+.choice-row { display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid #ddd; border-radius:6px; margin-bottom:10px; cursor:pointer; }
+.choice-row:hover { background:#faf6ee; }
+.choice-row.selected { border-color:#A8002E; background:#FBF3E3; }
+.choice-letter { font-weight:bold; color:#A8002E; }
+.timer-box { position:sticky; top:0; background:#241a12; color:#fff; padding:8px 16px; border-radius:6px; font-weight:bold; text-align:center; margin-bottom:14px; font-size:1.1rem; z-index:10; }
+.timer-box.low-time { background:#A8002E; }
+.review-card { border:1px solid #ddd; border-radius:8px; padding:18px; margin-bottom:16px; }
+.review-card.correct { border-left: 5px solid #1F7A3D; }
+.review-card.incorrect { border-left: 5px solid #A8002E; }
+.review-q { font-weight:600; margin-bottom:10px; }
+.review-choice { display:flex; gap:8px; padding:6px 0; }
+.review-choice.right-answer { color:#1F7A3D; font-weight:600; }
+.review-choice.user-wrong { color:#A8002E; font-weight:600; }
+.review-section { margin-top:12px; }
+.review-section-label { font-weight:bold; color:#B8882A; font-family: Georgia, serif; font-size:1rem; margin-bottom:4px; }
+.review-rule { background:#faf6ee; padding:10px 12px; border-radius:6px; font-size:.92rem; color:#3a3a3a; }
+.review-tip { background:#FBF3E3; padding:10px 12px; border-radius:6px; font-size:.92rem; color:#3a3a3a; border-left:3px solid #B8882A; }
+.review-trap { background:#FCEDEE; padding:10px 12px; border-radius:6px; font-size:.92rem; color:#3a3a3a; border-left:3px solid #A8002E; }
+.review-poe-list { margin:6px 0 0 0; padding-left:20px; font-size:.92rem; color:#3a3a3a; }
+.review-poe-list li { margin-bottom:5px; line-height:1.45; }
+.review-poe-list li.correct-letter { color:#1F7A3D; font-weight:600; }
+.score-big { font-size:2.4rem; color:#A8002E; font-weight:bold; }
+.hidden { display:none !important; }
+.subtitle { color:#5A5A5A; font-size:0.95rem; margin-bottom:20px; }
+#confirm-box { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; }
+#confirm-box .card { max-width:420px; text-align:center; }
+#print-btn { position:fixed; bottom:20px; right:20px; background:#B8882A; color:#fff; border:none; padding:12px 18px; border-radius:24px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.2); font-size:0.95rem; }
+@media print {
+  #print-btn, #intro-screen, #test-screen, #confirm-box { display:none !important; }
+  body { background:#fff; }
+  .card { box-shadow:none; }
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <div id="intro-screen" class="card">
+    <h1>Standard English Conventions: Agreement & Reference — Test 1</h1>
+    <div class="subtitle">Comprehensive practice — subject-verb agreement, pronouns, and nouns/apostrophes. Test 1 of 2 — 30 questions.</div>
+    <p>30 questions. Choose your timing, then click Start when you're ready.</p>
+    <div class="timing-options">
+      <div class="timing-card" data-minutes="45" data-default="1">
+        <h3>Standard Time</h3>
+        <div class="mins">45 min</div>
+      </div>
+      <div class="timing-card" data-minutes="56">
+        <h3>Extended Time (+25%)</h3>
+        <div class="mins">56 min</div>
+      </div>
+    </div>
+    <button class="start-btn">Start Test</button>
+  </div>
+
+  <div id="test-screen" class="card hidden">
+    <div id="timer-box" class="timer-box"></div>
+    <div id="q-counter" style="font-weight:600;color:#5A5A5A;margin-bottom:8px;"></div>
+    <div id="q-text"></div>
+    <div id="choices"></div>
+    <div style="display:flex; justify-content:space-between; margin-top:16px;">
+      <button id="prev-btn" class="nav-arrow" style="width:auto;padding:8px 16px;">&larr; Back</button>
+      <button id="next-btn" class="nav-arrow" style="width:auto;padding:8px 16px;">Next &rarr;</button>
+    </div>
+    <div id="nav-grid" class="nav-grid"></div>
+    <button id="submit-btn">Submit Test</button>
+  </div>
+
+  <div id="results-screen" class="card hidden">
+    <h1>Results</h1>
+    <div class="score-big"></div>
+    <div id="score-by-skill" style="margin:16px 0;"></div>
+    <div id="review-container"></div>
+  </div>
+
+  <button id="print-btn" class="hidden">Export / Print PDF</button>
+
+  <div id="confirm-box" class="hidden">
+    <div class="card">
+      <p>Submit your test? You won't be able to change your answers after this.</p>
+      <button id="confirm-submit">Yes, Submit</button>
+      <button id="cancel-submit" style="background:#ccc;color:#333;">Cancel</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+const QUESTIONS = [{"question": "The committee's decision, announced late Friday, surprised many longtime members.", "choices": {"D": "committees", "A": "committee's", "B": "committees'", "C": "committee"}, "correct": "A", "difficulty": "Easy", "skill": "Nouns & Apostrophes", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "One committee owns the decision, so the singular possessive \"committee's\" is correct.", "tip": "Ask whether the word is showing simple plurality (no apostrophe) or ownership (apostrophe) — and for plural nouns already ending in \"s,\" the possessive apostrophe goes after the s.", "trap": "This choice, \"committees,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "poe": {"D": "This choice, \"committees,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "A": "One committee owns the decision, so the singular possessive \"committee's\" is correct.", "B": "This choice, \"committees',\" is a plural possessive, which does not match what the sentence requires here.", "C": "This choice, \"committee,\" is a plain singular form with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires."}}, {"question": "On March 27, 2004, after nine years as a professional boxer, Isra Girgrah retired. The Yemeni American athlete ______ her career with a record of twenty-eight wins, three losses, and two ties. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "finish", "B": "has been finishing", "C": "finished", "D": "will be finishing"}, "correct": "C", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is the use of a verb to express tense in a sentence. In this choice, the past tense verb “finished” is consistent with the other past tense verb (“retired”) used to refer to Girgrah’s retirement in 2004.", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because the present tense verb “finish” isn’t consistent with the other past tense verb (“retired”) used to refer to Girgrah’s retirement in 2004. Furthermore, the plural verb “finish” doesn’t agree in number with the sentence’s singular subject “The Yemeni American athlete.”", "poe": {"C": "The convention being tested is the use of a verb to express tense in a sentence. In this choice, the past tense verb “finished” is consistent with the other past tense verb (“retired”) used to refer to Girgrah’s retirement in 2004.", "A": "Because the present tense verb “finish” isn’t consistent with the other past tense verb (“retired”) used to refer to Girgrah’s retirement in 2004. Furthermore, the plural verb “finish” doesn’t agree in number with the sentence’s singular subject “The Yemeni American athlete.”", "B": "Because the present perfect progressive tense verb “has been finishing” isn’t consistent with the other past tense verb (“retired”) used to refer to Girgrah’s retirement in 2004.", "D": "Because the future progressive tense verb “will be finishing” isn’t consistent with the other past tense verb (“retired”) used to refer to Girgrah’s retirement in 2004."}}, {"question": "“He was just the man for such a place, and it was just the place for such a man.” This line is from Frederick Douglass’s autobiography Narrative of the Life of Frederick Douglass (1845). It’s an example of antimetabole, a writing technique that ______ emphasis by repeating a statement in a reversed order. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "create", "B": "are creating", "C": "have created", "D": "creates"}, "correct": "D", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is subject-verb agreement. The singular verb \"creates\" agrees in number with the singular subject \"technique.\"", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because the plural verb \"create\" doesn’t agree in number with the singular subject \"technique.\"", "poe": {"D": "The convention being tested is subject-verb agreement. The singular verb \"creates\" agrees in number with the singular subject \"technique.\"", "A": "Because the plural verb \"create\" doesn’t agree in number with the singular subject \"technique.\"", "B": "Because the plural verb \"are creating\" doesn’t agree in number with the singular subject \"technique.\"", "C": "Because the plural verb \"have created\" doesn’t agree in number with the singular subject \"technique.\""}}, {"question": "In October of 1648, representatives from 96 different parties convened to sign the final treaties of the Peace of Westphalia. The treaties, which brought an end to the Thirty Years’ War, ______ signed in the cities of Osnabrück and Münster, both located in the Holy Roman Empire–controlled region of Westphalia. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "were", "B": "is", "C": "was", "D": "has been"}, "correct": "A", "difficulty": "Medium", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The subject is \"the treaties\" (plural), requiring the plural verb \"were.\"", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "This choice, \"is,\" is singular, but the subject of this sentence is plural and requires a plural verb.", "poe": {"A": "The subject is \"the treaties\" (plural), requiring the plural verb \"were.\"", "B": "This choice, \"is,\" is singular, but the subject of this sentence is plural and requires a plural verb.", "C": "This choice, \"was,\" is singular, but the subject of this sentence is plural and requires a plural verb.", "D": "This choice, \"has been,\" is singular, but the subject of this sentence is plural and requires a plural verb."}}, {"question": "When writing The Other Black Girl (2021), novelist Zakiya Dalila Harris drew on her own experiences working at a publishing office. The award- winning book is Harris’s first novel, but her writing ______ honored before. At the age of twelve, she entered a contest to have a story published in AmericanGirl magazine—and won. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "were", "B": "have been", "C": "has been", "D": "are"}, "correct": "C", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is subject-verb agreement. The singular verb “has been” agrees in number with the singular subject “writing.”", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because the plural verb “were” doesn’t agree in number with the singular subject “writing.”", "poe": {"C": "The convention being tested is subject-verb agreement. The singular verb “has been” agrees in number with the singular subject “writing.”", "A": "Because the plural verb “were” doesn’t agree in number with the singular subject “writing.”", "B": "Because the plural verb “have been” doesn’t agree in number with the singular subject “writing.”", "D": "Because the plural verb “are” doesn’t agree in number with the singular subject “writing.”"}}, {"question": "In premodern Europe, one could sail from the east coast of England to the Netherlands or France faster than one could travel by land to England’s capital, London. In that era, historian Michael Pye argues in his 2015 book The Edge of the World: A Cultural History of the North Sea and the Transformation of Europe, the North Sea did more to link the various peoples, cultures, and economies on ______ shores than to divide them. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "its", "B": "it’s", "C": "they’re", "D": "their"}, "correct": "A", "difficulty": "Hard", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": [], "rule": "The pronoun refers back to \"the North Sea\" (singular), so the singular possessive \"its\" is correct: \"...on its shores.\"", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "This choice, \"it’s,\" does not correctly match its antecedent, or creates an unclear reference.", "poe": {"A": "The pronoun refers back to \"the North Sea\" (singular), so the singular possessive \"its\" is correct: \"...on its shores.\"", "B": "This choice, \"it’s,\" does not correctly match its antecedent, or creates an unclear reference.", "C": "This choice, \"they’re,\" does not correctly match its antecedent, or creates an unclear reference.", "D": "This choice, \"their,\" is a plural possessive, which does not match what the sentence requires here."}}, {"question": "If you try on one of artist Nick Cave’s signature Soundsuits, you can expect to swish, rustle, or clang every time you move. Cave makes his suits out of found objects, everything from ceramic birds to broken record players. He carefully considers the sound an object makes before using ______ in a suit. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "this", "B": "that", "C": "these", "D": "it"}, "correct": "D", "difficulty": "Easy", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested here is pronoun-antecedent agreement. The singular pronoun \"it\" agrees in number with the singular antecedent \"object.\"", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "The singular pronoun \"this\" is used to refer to a specific thing, but here there is no specific object being referred to. Instead, the sentence is referring back to a hypothetical object that Cave might use in a Soundsuit.", "poe": {"D": "The convention being tested here is pronoun-antecedent agreement. The singular pronoun \"it\" agrees in number with the singular antecedent \"object.\"", "A": "The singular pronoun \"this\" is used to refer to a specific thing, but here there is no specific object being referred to. Instead, the sentence is referring back to a hypothetical object that Cave might use in a Soundsuit.", "B": "The singular pronoun \"that\" is used to refer to a specific thing, but here there is no specific object being referred to. Instead, the sentence is referring back to a hypothetical object that Cave might use in a Soundsuit.", "C": "Because the plural pronoun \"these\" doesn’t agree in number with the singular antecedent \"object.\""}}, {"question": "One of the earliest known maps is a Babylonian clay tablet thought to be almost 4,500 years old. The map ______ the area of a plot of land, shows a river valley, and includes the cardinal directions. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "describes", "B": "describe", "C": "have described", "D": "are describing"}, "correct": "A", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is the use of verb forms within a sentence. The singular verb \"describes\" agrees in number with the singular subject \"map.\"", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because the plural verb \"describe\" doesn’t agree in number with the singular subject \"map.\"", "poe": {"A": "The convention being tested is the use of verb forms within a sentence. The singular verb \"describes\" agrees in number with the singular subject \"map.\"", "B": "Because the plural verb \"describe\" doesn’t agree in number with the singular subject \"map.\"", "C": "Because the plural verb \"have described\" doesn’t agree in number with the singular subject \"map.\"", "D": "Because the plural verb \"are describing\" doesn’t agree in number with the singular subject \"map.\""}}, {"question": "The countries' leaders met to discuss the new trade agreement.", "choices": {"C": "country's", "D": "countries'", "A": "countries", "B": "countrys"}, "correct": "D", "difficulty": "Easy", "skill": "Nouns & Apostrophes", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "Multiple countries jointly possess their leaders, so the plural possessive \"countries'\" is correct.", "tip": "Ask whether the word is showing simple plurality (no apostrophe) or ownership (apostrophe) — and for plural nouns already ending in \"s,\" the possessive apostrophe goes after the s.", "trap": "This choice, \"country's,\" is a singular possessive, which does not match what the sentence requires here.", "poe": {"C": "This choice, \"country's,\" is a singular possessive, which does not match what the sentence requires here.", "D": "Multiple countries jointly possess their leaders, so the plural possessive \"countries'\" is correct.", "A": "This choice, \"countries,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "B": "This choice, \"countrys,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires."}}, {"question": "The First Folio, published in 1623, is the first collection of William Shakespeare’s plays. The collection ______ 18 plays that might otherwise have been lost, such as Julius Caesar and Macbeth. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "to be including", "B": "including", "C": "to include", "D": "includes"}, "correct": "D", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is the use of verb forms within a sentence. A main clause requires a finite (tensed) verb to perform the action of the subject (in this case, \"the collection\"), and this choice supplies the finite present tense verb \"includes\" to indicate what is in the collection.", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because it results in an ungrammatical sentence. The nonfinite to-infinitive \"to be including\" doesn’t supply the main clause with a finite verb.", "poe": {"D": "The convention being tested is the use of verb forms within a sentence. A main clause requires a finite (tensed) verb to perform the action of the subject (in this case, \"the collection\"), and this choice supplies the finite present tense verb \"includes\" to indicate what is in the collection.", "A": "Because it results in an ungrammatical sentence. The nonfinite to-infinitive \"to be including\" doesn’t supply the main clause with a finite verb.", "B": "Because it results in an ungrammatical sentence. The nonfinite participle \"including\" doesn’t supply the main clause with a finite verb.", "C": "Because it results in an ungrammatical sentence. The nonfinite to-infinitive \"to include\" doesn’t supply the main clause with a finite verb."}}, {"question": "The team celebrated ______ victory with a parade through downtown.", "choices": {"A": "their", "B": "its", "C": "it's", "D": "his"}, "correct": "B", "difficulty": "Easy", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"The team\" is a singular collective noun in this context, requiring the singular possessive \"its.\"", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "This choice, \"their,\" is a plural possessive, which does not match what the sentence requires here.", "poe": {"A": "This choice, \"their,\" is a plural possessive, which does not match what the sentence requires here.", "B": "\"The team\" is a singular collective noun in this context, requiring the singular possessive \"its.\"", "C": "This choice, \"it's,\" is the contraction \"it is,\" not a possessive, which does not match what the sentence requires here.", "D": "This choice, \"his,\" does not correctly match its antecedent, or creates an unclear reference."}}, {"question": "When they were first introduced to western Europe from Byzantium in the eleventh century, table forks were met with much resistance. The Bishop of Ostia, St. Peter Damian, condemned the eating utensils because he considered ______ dangerous and unnecessary luxury items. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "them", "B": "this", "C": "that", "D": "it"}, "correct": "A", "difficulty": "Easy", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is pronoun-antecedent agreement. The plural pronoun \"them\" agrees in number with the plural antecedent \"utensils.\"", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "Because the singular pronoun \"this\" doesn’t agree in number with the plural antecedent \"utensils.\"", "poe": {"A": "The convention being tested is pronoun-antecedent agreement. The plural pronoun \"them\" agrees in number with the plural antecedent \"utensils.\"", "B": "Because the singular pronoun \"this\" doesn’t agree in number with the plural antecedent \"utensils.\"", "C": "Because the singular pronoun \"that\" doesn’t agree in number with the plural antecedent \"utensils.\"", "D": "Because the singular pronoun \"it\" doesn’t agree in number with the plural antecedent \"utensils.\""}}, {"question": "Several ______ artwork was damaged during the museum's recent renovation.", "choices": {"C": "artist's", "D": "artists", "A": "artists'", "B": "artist"}, "correct": "A", "difficulty": "Easy", "skill": "Nouns & Apostrophes", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "Multiple artists possess the artwork collectively, so the plural possessive \"artists'\" is correct.", "tip": "Ask whether the word is showing simple plurality (no apostrophe) or ownership (apostrophe) — and for plural nouns already ending in \"s,\" the possessive apostrophe goes after the s.", "trap": "This choice, \"artist's,\" is a singular possessive, which does not match what the sentence requires here.", "poe": {"C": "This choice, \"artist's,\" is a singular possessive, which does not match what the sentence requires here.", "D": "This choice, \"artists,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "A": "Multiple artists possess the artwork collectively, so the plural possessive \"artists'\" is correct.", "B": "This choice, \"artist,\" is a plain singular form with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires."}}, {"question": "Both universities revised ______ admissions requirements this year.", "choices": {"D": "university's", "A": "universities", "B": "universities'", "C": "universitys"}, "correct": "B", "difficulty": "Easy", "skill": "Nouns & Apostrophes", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "Two universities jointly possess their requirements, so the plural possessive \"universities'\" is correct.", "tip": "Ask whether the word is showing simple plurality (no apostrophe) or ownership (apostrophe) — and for plural nouns already ending in \"s,\" the possessive apostrophe goes after the s.", "trap": "This choice, \"university's,\" is a singular possessive, which does not match what the sentence requires here.", "poe": {"D": "This choice, \"university's,\" is a singular possessive, which does not match what the sentence requires here.", "A": "This choice, \"universities,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "B": "Two universities jointly possess their requirements, so the plural possessive \"universities'\" is correct.", "C": "This choice, \"universitys,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires."}}, {"question": "The company announced ______ plans for expansion into three new countries.", "choices": {"A": "their", "B": "its", "C": "it's", "D": "our"}, "correct": "B", "difficulty": "Easy", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"The company\" is a singular entity, requiring the singular possessive \"its.\"", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "This choice, \"their,\" is a plural possessive, which does not match what the sentence requires here.", "poe": {"A": "This choice, \"their,\" is a plural possessive, which does not match what the sentence requires here.", "B": "\"The company\" is a singular entity, requiring the singular possessive \"its.\"", "C": "This choice, \"it's,\" is the contraction \"it is,\" not a possessive, which does not match what the sentence requires here.", "D": "This choice, \"our,\" is a first-person plural possessive (\"we\" form), which does not match what the sentence requires here."}}, {"question": "The novel's ending left many readers unsatisfied.", "choices": {"B": "novels'", "C": "novel's", "D": "novels", "A": "novel"}, "correct": "C", "difficulty": "Easy", "skill": "Nouns & Apostrophes", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "One novel possesses the ending, so the singular possessive \"novel's\" is correct.", "tip": "Ask whether the word is showing simple plurality (no apostrophe) or ownership (apostrophe) — and for plural nouns already ending in \"s,\" the possessive apostrophe goes after the s.", "trap": "This choice, \"novels',\" is a plural possessive, which does not match what the sentence requires here.", "poe": {"B": "This choice, \"novels',\" is a plural possessive, which does not match what the sentence requires here.", "C": "One novel possesses the ending, so the singular possessive \"novel's\" is correct.", "D": "This choice, \"novels,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "A": "This choice, \"novel,\" is a plain singular form with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires."}}, {"question": "Smaller than poppy seeds, tardigrades are tiny, but they are tough. These minuscule animals can survive for thirty years without food or water, and ______ can withstand extreme temperatures as low as minus 328 degrees and as high as 304 degrees Fahrenheit. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "that", "B": "it", "C": "they", "D": "he"}, "correct": "C", "difficulty": "Easy", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is pronoun-antecedent agreement. The plural pronoun \"they\" agrees in number with the plural antecedent \"animals,\" which refers to tardigrades.", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "Because the singular pronoun \"that\" doesn’t agree in number with the plural antecedent \"animals.\"", "poe": {"C": "The convention being tested is pronoun-antecedent agreement. The plural pronoun \"they\" agrees in number with the plural antecedent \"animals,\" which refers to tardigrades.", "A": "Because the singular pronoun \"that\" doesn’t agree in number with the plural antecedent \"animals.\"", "B": "Because the singular pronoun \"it\" doesn’t agree in number with the plural antecedent \"animals.\"", "D": "Because the singular pronoun \"he\" doesn’t agree in number with the plural antecedent \"animals.\""}}, {"question": "In the Inca Empire (1438–1533), ayllus ______ family clans that ranged in size from small groups to thousands of people. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "is", "B": "was", "C": "has been", "D": "were"}, "correct": "D", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is subject-verb agreement. The plural verb \"were\" agrees in number with the plural subject \"ayllus,\" which are described as plural \"family clans.\"", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because the singular verb \"is\" doesn’t agree in number with the plural subject \"ayllus.\"", "poe": {"D": "The convention being tested is subject-verb agreement. The plural verb \"were\" agrees in number with the plural subject \"ayllus,\" which are described as plural \"family clans.\"", "A": "Because the singular verb \"is\" doesn’t agree in number with the plural subject \"ayllus.\"", "B": "Because the singular verb \"was\" doesn’t agree in number with the plural subject \"ayllus.\"", "C": "Because the singular verb \"has been\" doesn’t agree in number with the plural subject \"ayllus.\""}}, {"question": "Each of the committee members submitted ______ report by the deadline.", "choices": {"A": "their", "B": "his or her", "C": "its", "D": "our"}, "correct": "B", "difficulty": "Easy", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"Each\" is a singular indefinite pronoun, requiring the singular \"his or her.\"", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "This choice, \"their,\" is a plural possessive, which does not match what the sentence requires here.", "poe": {"A": "This choice, \"their,\" is a plural possessive, which does not match what the sentence requires here.", "B": "\"Each\" is a singular indefinite pronoun, requiring the singular \"his or her.\"", "C": "This choice, \"its,\" is a third-person singular possessive (for a thing, not a person), which does not match what the sentence requires here.", "D": "This choice, \"our,\" is a first-person plural possessive (\"we\" form), which does not match what the sentence requires here."}}, {"question": "What is the correct pronunciation of Kiribati? In the Gilbertese language spoken by residents of the island nation, the letter combination -ti makes the -s sound; as a result, the country’s name ______ pronounced “Kiribas.” Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "are", "B": "have been", "C": "are being", "D": "is"}, "correct": "D", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is subject-verb agreement. The singular verb \"is\" agrees in number with the singular subject \"the country’s name.\"", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because the plural verb \"are\" doesn’t agree in number with the singular subject \"the country’s name.\"", "poe": {"D": "The convention being tested is subject-verb agreement. The singular verb \"is\" agrees in number with the singular subject \"the country’s name.\"", "A": "Because the plural verb \"are\" doesn’t agree in number with the singular subject \"the country’s name.\"", "B": "Because the plural verb \"have been\" doesn’t agree in number with the singular subject \"the country’s name.\"", "C": "Because the plural verb \"are being\" doesn’t agree in number with the singular subject \"the country’s name.\""}}, {"question": "The novel and its sequel share many themes, but ______ endings differ significantly.", "choices": {"B": "its", "C": "their", "D": "it's", "A": "his"}, "correct": "C", "difficulty": "Easy", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"The novel and its sequel\" is a compound, plural antecedent, requiring the plural possessive \"their.\"", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "This choice, \"its,\" is a third-person singular possessive (for a thing, not a person), which does not match what the sentence requires here.", "poe": {"B": "This choice, \"its,\" is a third-person singular possessive (for a thing, not a person), which does not match what the sentence requires here.", "C": "\"The novel and its sequel\" is a compound, plural antecedent, requiring the plural possessive \"their.\"", "D": "This choice, \"it's,\" is the contraction \"it is,\" not a possessive, which does not match what the sentence requires here.", "A": "This choice, \"his,\" does not correctly match its antecedent, or creates an unclear reference."}}, {"question": "With its towering, six-spired exterior of granitelike quartz monzonite, the Salt Lake Temple is one of the most instantly recognizable structures in the state of Utah. However, many people do not know that ______ built over the course of forty years, with construction beginning in 1853 and ending in 1893. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "it was", "B": "one was", "C": "they were", "D": "both were"}, "correct": "A", "difficulty": "Easy", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is pronoun-antecedent agreement. The singular pronoun \"it\" agrees in number with the singular antecedent \"the Salt Lake Temple.\"", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "Because the singular pronoun \"one\" is ambiguous in this context; the resulting sentence leaves unclear whether there is only one Salt Lake temple or multiple.", "poe": {"A": "The convention being tested is pronoun-antecedent agreement. The singular pronoun \"it\" agrees in number with the singular antecedent \"the Salt Lake Temple.\"", "B": "Because the singular pronoun \"one\" is ambiguous in this context; the resulting sentence leaves unclear whether there is only one Salt Lake temple or multiple.", "C": "Because the plural pronoun \"they\" doesn’t agree in number with the singular antecedent \"the Salt Lake Temple.\"", "D": "Because the plural pronoun \"both\" doesn’t agree in number with the singular antecedent \"the Salt Lake Temple.\""}}, {"question": "In January 1776, Thomas Paine published Common Sense, an appeal for freedom from the British monarchy that famously helped ignite the desire for independence among the American colonists. After the colonies achieved their independence, Paine moved to Paris, where the provocative ___ would contribute to another revolution—the French Revolution. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "authors political writings", "B": "author's political writings", "C": "author's political writing’s", "D": "authors’ political writings’"}, "correct": "B", "difficulty": "Medium", "skill": "Nouns & Apostrophes", "domain": "Standard English Conventions", "tags": [], "rule": "One author (Paine) possesses multiple political writings, requiring the singular possessive \"author's\" followed by the plural noun \"writings.\"", "tip": "Ask whether the word is showing simple plurality (no apostrophe) or ownership (apostrophe) — and for plural nouns already ending in \"s,\" the possessive apostrophe goes after the s.", "trap": "This choice, \"authors political writings,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "poe": {"A": "This choice, \"authors political writings,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "B": "One author (Paine) possesses multiple political writings, requiring the singular possessive \"author's\" followed by the plural noun \"writings.\"", "C": "This choice, \"author's political writing’s,\" does not correctly show possession or plurality here.", "D": "This choice, \"authors’ political writings’,\" is a plain singular form with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires."}}, {"question": "Light of Truth is a bronze and marble sculpture by artist Richard Hunt. It honors civil rights icon Ida B. Wells. The sculpture ______ in a tree-lined plaza in Chicago, just a few blocks from where Wells lived. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"B": "have been standing", "A": "are standing", "C": "stands", "D": "were standing"}, "correct": "C", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is subject-verb agreement. The singular verb \"stands\" agrees in number with the singular subject \"sculpture.\"", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because the plural verb \"are standing\" doesn’t agree in number with the singular subject \"sculpture.\"", "poe": {"C": "The convention being tested is subject-verb agreement. The singular verb \"stands\" agrees in number with the singular subject \"sculpture.\"", "A": "Because the plural verb \"are standing\" doesn’t agree in number with the singular subject \"sculpture.\"", "B": "Because the plural verb \"have been standing\" doesn’t agree in number with the singular subject \"sculpture.\"", "D": "Because the plural verb \"were standing\" doesn’t agree in number with the singular subject \"sculpture.\""}}, {"question": "Obsidian is a kind of volcanic glass formed when lava cools so quickly that the atoms inside it cannot arrange themselves in a crystalline structure. You ______ more about obsidian’s structure, which is classified as amorphous, in a later chapter. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "had learned", "B": "had been learning", "C": "will learn", "D": "have learned"}, "correct": "C", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is the use of verbs to express tense in a sentence. In this choice, the future tense verb “will learn,” used in conjunction with the phrase “in a later chapter,” correctly indicates that “you” (the reader) are going to learn about obsidian’s structure at some point in the future.", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because the past perfect verb “had learned” doesn’t indicate that the subject is going to learn about obsidian’s structure in the future.", "poe": {"C": "The convention being tested is the use of verbs to express tense in a sentence. In this choice, the future tense verb “will learn,” used in conjunction with the phrase “in a later chapter,” correctly indicates that “you” (the reader) are going to learn about obsidian’s structure at some point in the future.", "A": "Because the past perfect verb “had learned” doesn’t indicate that the subject is going to learn about obsidian’s structure in the future.", "B": "Because the past perfect progressive verb “had been learning” doesn’t indicate that the subject is going to learn about obsidian’s structure in the future.", "D": "Because the present perfect verb “have learned” doesn’t indicate that the subject is going to learn about obsidian’s structure in the future."}}, {"question": "In the eastern Chinese city of Suzhou, known as a hub for silk manufacturing, a unique tradition of embroidery ______ back over two thousand years—one that includes iconic double-sided stitching with different images on each side—remains popular with modern audiences, preserving the city’s cultural heritage. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "dates", "B": "date", "C": "dating", "D": "has dated"}, "correct": "A", "difficulty": "Hard", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The subject \"a unique tradition of embroidery\" is singular, requiring the singular verb \"dates.\"", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "This choice, \"date,\" does not agree in number with the true subject of this sentence.", "poe": {"A": "The subject \"a unique tradition of embroidery\" is singular, requiring the singular verb \"dates.\"", "B": "This choice, \"date,\" does not agree in number with the true subject of this sentence.", "C": "This choice uses a present participle / gerund (\"-ing\" form) (\"dating\"), which does not match the tense or verb structure the sentence actually requires here.", "D": "This choice uses a perfect-tense verb form (\"has dated\"), which does not match the tense or verb structure the sentence actually requires here."}}, {"question": "Mary Madden of Ohio ______ a fierce advocate of women’s voting rights in the late 1800s. The dedication of Madden and her fellow activists was rewarded in 1920, when the Nineteenth Amendment to the US Constitution guaranteed American women the right to vote. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "are", "B": "was", "C": "have been", "D": "were"}, "correct": "B", "difficulty": "Easy", "skill": "Subject-Verb Agreement", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is subject-verb agreement. The singular verb \"was\" agrees in number with the singular subject \"Mary Madden of Ohio.\"", "tip": "Find the true subject by mentally crossing out any phrase that sits between the subject and the verb, then check that the verb matches that subject in number.", "trap": "Because the plural verb \"are\" doesn’t agree in number with the singular subject \"Mary Madden of Ohio.\"", "poe": {"B": "The convention being tested is subject-verb agreement. The singular verb \"was\" agrees in number with the singular subject \"Mary Madden of Ohio.\"", "A": "Because the plural verb \"are\" doesn’t agree in number with the singular subject \"Mary Madden of Ohio.\"", "C": "Because the plural verb \"have been\" doesn’t agree in number with the singular subject \"Mary Madden of Ohio.\"", "D": "Because the plural verb \"were\" doesn’t agree in number with the singular subject \"Mary Madden of Ohio.\""}}, {"question": "Unsupervised machine learning is an approach that computer scientists like Nina Miolane use to engineer artificial intelligence technologies. It involves training computer algorithms to organize unlabeled data sets. Multitask learning is another approach. ______ involves training computer models to perform multiple tasks at the same time. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "Those", "B": "They", "C": "It", "D": "Some"}, "correct": "C", "difficulty": "Easy", "skill": "Pronouns", "domain": "Standard English Conventions", "tags": [], "rule": "The convention being tested is pronoun-antecedent agreement. The singular pronoun \"it\" agrees in number with the singular antecedent \"multitask learning\" and clearly indicates what multitask learning involves.", "tip": "Find the antecedent first, then check that the pronoun matches it in number — and make sure it is clear which noun the pronoun refers to.", "trap": "Because the plural demonstrative pronoun \"those\" doesn’t agree in number with the singular antecedent \"multitask learning.\"", "poe": {"C": "The convention being tested is pronoun-antecedent agreement. The singular pronoun \"it\" agrees in number with the singular antecedent \"multitask learning\" and clearly indicates what multitask learning involves.", "A": "Because the plural demonstrative pronoun \"those\" doesn’t agree in number with the singular antecedent \"multitask learning.\"", "B": "Because the plural pronoun \"they\" doesn’t agree in number with the singular antecedent \"multitask learning.\"", "D": "Because the indefinite pronoun \"some\" is ambiguous in this context; the resulting sentence leaves unclear what exactly \"involves training computer models.\""}}, {"question": "Both Arteaga, in the state of Coahuila, and Lagos de Moreno, in the state of Jalisco, have been designated by Mexico as pueblos mágicos (magical villages) to celebrate these ______ natural beauty and unique cultural traditions. Which choice completes the text so that it conforms to the conventions of Standard English?", "choices": {"A": "town", "B": "town’s", "C": "towns", "D": "towns’"}, "correct": "D", "difficulty": "Medium", "skill": "Nouns & Apostrophes", "domain": "Standard English Conventions", "tags": [], "rule": "The natural beauty and cultural traditions belong to the two towns, so the plural possessive \"towns'\" (with the apostrophe after the s) is correct.", "tip": "Ask whether the word is showing simple plurality (no apostrophe) or ownership (apostrophe) — and for plural nouns already ending in \"s,\" the possessive apostrophe goes after the s.", "trap": "This choice, \"town,\" does not correctly show possession or plurality here.", "poe": {"A": "This choice, \"town,\" does not correctly show possession or plurality here.", "B": "This choice, \"town’s,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "C": "This choice, \"towns,\" is a plain plural with no apostrophe, showing no possession at all, which does not correctly show the possession this sentence requires.", "D": "The natural beauty and cultural traditions belong to the two towns, so the plural possessive \"towns'\" (with the apostrophe after the s) is correct."}}, {"question": "The dog wagged ______ tail excitedly when its owner came home.", "choices": {"A": "it's", "B": "its", "C": "its'", "D": "their"}, "correct": "B", "difficulty": "Easy", "skill": "Nouns & Apostrophes", "domain": "Standard English Conventions", "tags": ["clc-original"], "rule": "\"The dog\" is singular, requiring the possessive \"its\" with no apostrophe.", "tip": "Ask whether the word is showing simple plurality (no apostrophe) or ownership (apostrophe) — and for plural nouns already ending in \"s,\" the possessive apostrophe goes after the s.", "trap": "This choice, \"it's,\" is the contraction \"it is,\" not a possessive, which does not match what the sentence requires here.", "poe": {"A": "This choice, \"it's,\" is the contraction \"it is,\" not a possessive, which does not match what the sentence requires here.", "B": "\"The dog\" is singular, requiring the possessive \"its\" with no apostrophe.", "C": "This choice, \"its',\" is a plural possessive, which does not match what the sentence requires here.", "D": "This choice, \"their,\" is a plural possessive, which does not match what the sentence requires here."}}];
+const STANDARD_MINUTES = 45;
+const EXTENDED_MINUTES = 56;
+const STATE = { idx:0, answers:{}, flags:{}, submitted:false, minutesChosen:STANDARD_MINUTES, secondsLeft:0, timerId:null };
+window.__CLC_TEST_STATE__ = STATE;
+
+function $(sel){ return document.querySelector(sel); }
+function $all(sel){ return document.querySelectorAll(sel); }
+
+document.addEventListener('DOMContentLoaded', function(){
+
+  $all('.timing-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      $all('.timing-card').forEach(c=>c.classList.remove('selected'));
+      card.classList.add('selected');
+      STATE.minutesChosen = parseFloat(card.dataset.minutes);
+    });
+  });
+  $('.timing-card[data-default="1"]') && $('.timing-card[data-default="1"]').classList.add('selected');
+
+  $('.start-btn').addEventListener('click', function(){
+    $('#intro-screen').classList.add('hidden');
+    $('#test-screen').classList.remove('hidden');
+    buildNav();
+    renderQuestion();
+    startTimer();
+  });
+
+  function startTimer(){
+    STATE.secondsLeft = Math.round(STATE.minutesChosen*60);
+    updateTimerDisplay();
+    STATE.timerId = setInterval(()=>{
+      STATE.secondsLeft--;
+      updateTimerDisplay();
+      if(STATE.secondsLeft<=0){
+        clearInterval(STATE.timerId);
+        STATE.submitted = true;
+        showResults();
+      }
+    }, 1000);
+  }
+  function updateTimerDisplay(){
+    const m = Math.floor(STATE.secondsLeft/60);
+    const s = STATE.secondsLeft%60;
+    const box = $('#timer-box');
+    if(!box) return;
+    box.textContent = 'Time Remaining: ' + m + ':' + (s<10?'0':'')+s;
+    box.classList.toggle('low-time', STATE.secondsLeft <= 120);
+  }
+
+  function buildNav(){
+    const nav = $('#nav-grid');
+    nav.innerHTML = '';
+    QUESTIONS.forEach((q,i)=>{
+      const btn = document.createElement('button');
+      btn.className = 'nav-btn';
+      btn.textContent = (i+1);
+      btn.addEventListener('click', ()=>{ STATE.idx = i; renderQuestion(); });
+      nav.appendChild(btn);
+    });
+  }
+
+  function renderQuestion(){
+    const q = QUESTIONS[STATE.idx];
+    $('#q-text').innerHTML = q.question.replace(/\n/g,'<br>');
+    const choicesEl = $('#choices');
+    choicesEl.innerHTML = '';
+    ['A','B','C','D'].forEach(letter=>{
+      if(!q.choices[letter]) return;
+      const row = document.createElement('div');
+      row.className = 'choice-row' + (STATE.answers[STATE.idx]===letter ? ' selected':'');
+      row.innerHTML = '<span class="choice-letter">'+letter+'</span><span class="choice-text"></span>';
+      row.querySelector('.choice-text').textContent = q.choices[letter];
+      row.addEventListener('click', ()=>{
+        STATE.answers[STATE.idx] = letter;
+        renderQuestion();
+      });
+      choicesEl.appendChild(row);
+    });
+    updateNav();
+    $('#q-counter').textContent = 'Question ' + (STATE.idx+1) + ' of ' + QUESTIONS.length;
+  }
+
+  function updateNav(){
+    $all('.nav-btn').forEach((btn,i)=>{
+      btn.classList.toggle('current', i===STATE.idx);
+      btn.classList.toggle('answered', STATE.answers[i] !== undefined);
+    });
+  }
+
+  $('#prev-btn') && $('#prev-btn').addEventListener('click', ()=>{
+    if(STATE.idx>0){ STATE.idx--; renderQuestion(); }
+  });
+  $('#next-btn') && $('#next-btn').addEventListener('click', ()=>{
+    if(STATE.idx<QUESTIONS.length-1){ STATE.idx++; renderQuestion(); }
+  });
+
+  $('#submit-btn').addEventListener('click', ()=>{
+    $('#confirm-box').classList.remove('hidden');
+  });
+  $('#cancel-submit') && $('#cancel-submit').addEventListener('click', ()=>{
+    $('#confirm-box').classList.add('hidden');
+  });
+  $('#confirm-submit').addEventListener('click', ()=>{
+    $('#confirm-box').classList.add('hidden');
+    if(STATE.timerId) clearInterval(STATE.timerId);
+    STATE.submitted = true;
+    showResults();
+  });
+
+  $('#print-btn') && $('#print-btn').addEventListener('click', ()=> window.print());
+
+  function showResults(){
+    $('#test-screen').classList.add('hidden');
+    $('#results-screen').classList.remove('hidden');
+    $('#print-btn') && $('#print-btn').classList.remove('hidden');
+    let correctCount = 0;
+    QUESTIONS.forEach((q,i)=>{ if(STATE.answers[i]===q.correct) correctCount++; });
+    $('.score-big').textContent = correctCount + ' / ' + QUESTIONS.length;
+
+    const container = $('#review-container');
+    container.innerHTML = '';
+    QUESTIONS.forEach((q,i)=>{
+      const userAns = STATE.answers[i];
+      const isCorrect = userAns === q.correct;
+      const card = document.createElement('div');
+      card.className = 'review-card ' + (isCorrect ? 'correct':'incorrect');
+
+      let html = '<div class="review-q"></div><div class="review-choices"></div>';
+      html += '<div class="review-section"><div class="review-section-label">Rule</div><div class="review-rule"></div></div>';
+      html += '<div class="review-section"><div class="review-section-label">Tip</div><div class="review-tip"></div></div>';
+      if (q.trap) {
+        html += '<div class="review-section"><div class="review-section-label">Trap</div><div class="review-trap"></div></div>';
+      }
+      html += '<div class="review-section"><div class="review-section-label">Process of Elimination</div><ul class="review-poe-list"></ul></div>';
+      card.innerHTML = html;
+
+      card.querySelector('.review-q').textContent = 'Question ' + (i+1) + ': ' + q.question.replace(/<[^>]+>/g,' ');
+      const choicesDiv = card.querySelector('.review-choices');
+      ['A','B','C','D'].forEach(letter=>{
+        if(!q.choices[letter]) return;
+        const row = document.createElement('div');
+        row.className = 'review-choice' +
+          (letter===q.correct ? ' right-answer' : '') +
+          (letter===userAns && letter!==q.correct ? ' user-wrong' : '');
+        row.innerHTML = '<span>'+letter+'.</span><span></span>';
+        row.querySelectorAll('span')[1].textContent = q.choices[letter];
+        choicesDiv.appendChild(row);
+      });
+
+      card.querySelector('.review-rule').textContent = q.rule || '';
+      card.querySelector('.review-tip').textContent = q.tip || '';
+      if (q.trap) card.querySelector('.review-trap').textContent = q.trap;
+
+      const poeList = card.querySelector('.review-poe-list');
+      ['A','B','C','D'].forEach(letter=>{
+        if(!q.poe || !q.poe[letter]) return;
+        const li = document.createElement('li');
+        li.textContent = letter + '. ' + q.poe[letter];
+        if (letter === q.correct) li.classList.add('correct-letter');
+        poeList.appendChild(li);
+      });
+
+      container.appendChild(card);
+    });
+
+    const bySkill = {};
+    QUESTIONS.forEach((q,i)=>{
+      const key = q.skill || 'General';
+      bySkill[key] = bySkill[key] || {correct:0,total:0};
+      bySkill[key].total++;
+      if(STATE.answers[i]===q.correct) bySkill[key].correct++;
+    });
+    let skillHtml = '';
+    Object.keys(bySkill).sort().forEach(s=>{
+      skillHtml += '<div>'+s+': '+bySkill[s].correct+' / '+bySkill[s].total+'</div>';
+    });
+    $('#score-by-skill').innerHTML = skillHtml;
+  }
+});
+})();
+</script>
+
+</body>
+</html>

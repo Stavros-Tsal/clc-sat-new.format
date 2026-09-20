@@ -1367,7 +1367,7 @@ window.addEventListener('DOMContentLoaded', function() {
   <button class="nav-back-btn" onclick="goScreen('screen-mode')">← Back</button>
 </div>
 
-<!-- ══ SCREEN: ENGLISH — CLC QUESTIONBANK (Foundation) ══ -->
+<!-- ══ SCREEN: ENGLISH — CLC QUESTIONBANK (Prep) ══ -->
 <div id="screen-english-questionbank" class="screen">
   <h2 class="subject-title">CLC Questionbank</h2>
   <p class="subject-sub">Standard English Conventions — original questionbanks, organized by chapter and sub-topic</p>
@@ -2233,12 +2233,12 @@ function goEnglish() {
   renderEnglishMenu();
 }
 
-// English is available for Foundation only (other sections keep the "Coming Soon" card)
+// English is available for Prep only (other sections keep the "Coming Soon" card)
 function applyEnglishGating() {
   const card = document.getElementById('english-card');
   const soon = document.getElementById('english-coming-soon');
   if (!card || !soon) return;
-  const allowed = (currentSection === 'foundation');
+  const allowed = (currentSection === 'prep');
   card.classList.toggle('disabled', !allowed);
   soon.style.display = allowed ? 'none' : 'inline-block';
 }
@@ -2251,7 +2251,7 @@ function renderEnglishMenu() {
   const container = document.getElementById('math-mode-cards');
   if (!container) return;
   const cards = [];
-  if (currentSection === 'foundation') {
+  if (currentSection === 'prep') {
     cards.push({
       icon: '🧭', label: 'CLC Questionbank',
       desc: 'Original questionbanks by chapter & sub-topic',
@@ -2394,7 +2394,7 @@ const THEORY_SPEC = {
 
 // English theory material (per section). Empty until content is uploaded.
 const THEORY_SPEC_ENGLISH = {
-  foundation: []
+  prep: []
 };
 
 function renderTheoryCards() {

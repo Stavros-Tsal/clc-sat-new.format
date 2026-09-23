@@ -44,7 +44,7 @@
   };
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-  import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged }
+  import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged }
     from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
   import { getFirestore, doc, setDoc, getDoc }
     from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
@@ -54,26 +54,23 @@
   const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
 
-  window.signIn = function () {
-    document.getElementById('status').innerHTML = 'Ανακατεύθυνση στο Google...';
-    signInWithRedirect(auth, provider);
+  window.signIn = async function () {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      document.getElementById('status').innerHTML =
+        `✅ Συνδέθηκες ως <b>${user.displayName}</b> (${user.email})<br>uid: ${user.uid}`;
+
+      await setDoc(doc(db, "users", user.uid), {
+        displayName: user.displayName,
+        email: user.email,
+        lastLogin: new Date().toISOString()
+      }, { merge: true });
+    } catch (err) {
+      document.getElementById('status').innerHTML = '❌ Σφάλμα: ' + err.message;
+      console.error(err);
+    }
   };
-
-  getRedirectResult(auth).then(async (result) => {
-    if (!result) return; // not returning from a redirect
-    const user = result.user;
-    document.getElementById('status').innerHTML =
-      `✅ Συνδέθηκες ως <b>${user.displayName}</b> (${user.email})<br>uid: ${user.uid}`;
-
-    await setDoc(doc(db, "users", user.uid), {
-      displayName: user.displayName,
-      email: user.email,
-      lastLogin: new Date().toISOString()
-    }, { merge: true });
-  }).catch((err) => {
-    document.getElementById('status').innerHTML = '❌ Σφάλμα: ' + err.message;
-    console.error(err);
-  });
 
   onAuthStateChanged(auth, (user) => {
     if (user) {

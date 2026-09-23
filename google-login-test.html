@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>CLC — Πραγματικό Google Login (τοπικό test)</title>
+<style>
+  body { font-family: Georgia, serif; max-width: 600px; margin: 60px auto; padding: 0 20px; color: #241413; }
+  h1 { color: #7B0000; }
+  button { background: #7B0000; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-size: 1rem; cursor: pointer; }
+  button:hover { opacity: 0.9; }
+  pre { background: #f4f0ec; padding: 14px; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; }
+  .status { margin-top: 20px; padding: 14px; border-radius: 8px; background: #f4f0ec; }
+  .steps { background: #fff7e6; border: 1px solid #e0c98f; padding: 16px 20px; border-radius: 8px; margin-bottom: 24px; }
+</style>
+</head>
+<body>
+
+<h1>Test: Google Sign-In (Firebase)</h1>
+
+<div class="steps">
+  <b>Πριν τρέξεις αυτό το αρχείο, χρειάζεσαι:</b>
+  <ol>
+    <li>Ένα δωρεάν Firebase project στο <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a></li>
+    <li>Authentication → Sign-in method → ενεργοποίησε "Google"</li>
+    <li>Έχεις ήδη το <code>firebaseConfig</code> σου από το project sat-greek-quiz-stavros — αντικατέστησε το placeholder object παρακάτω με τις πραγματικές τιμές</li>
+    <li>Το <code>localhost</code> είναι ήδη αυτόματα authorized domain — δεν χρειάζεται να κάνεις τίποτα άλλο</li>
+    <li>Άνοιξε αυτό το αρχείο μέσω τοπικού server (π.χ. <code>python3 -m http.server 8000</code> στο φάκελο, μετά <code>localhost:8000/real-google-login-local-test.html</code>) — <b>όχι</b> με διπλό κλικ / file://, γιατί το Google Sign-In popup δεν δουλεύει από file://</li>
+  </ol>
+</div>
+
+<button onclick="signIn()">Σύνδεση με Google (πραγματικό)</button>
+<div class="status" id="status">Δεν έχεις συνδεθεί ακόμα.</div>
+
+<script type="module">
+  // ---- 1) ΒΑΛΕ ΕΔΩ το δικό σου firebaseConfig από το Firebase Console ----
+  const firebaseConfig = {
+    apiKey: "AIzaSyAkUxve_zohtR45XPKYmfAX8VGTk_ClR5g",
+    authDomain: "sat-greek-quiz-stavros.firebaseapp.com",
+    projectId: "sat-greek-quiz-stavros",
+    storageBucket: "sat-greek-quiz-stavros.firebasestorage.app",
+    messagingSenderId: "227150541720",
+    appId: "1:227150541720:web:d07a027044f5d7470ef1ed",
+    measurementId: "G-F2L097F3E3"
+  };
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged }
+    from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc }
+    from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const provider = new GoogleAuthProvider();
+
+  window.signIn = function () {
+    document.getElementById('status').innerHTML = 'Ανακατεύθυνση στο Google...';
+    signInWithRedirect(auth, provider);
+  };
+
+  getRedirectResult(auth).then(async (result) => {
+    if (!result) return; // not returning from a redirect
+    const user = result.user;
+    document.getElementById('status').innerHTML =
+      `✅ Συνδέθηκες ως <b>${user.displayName}</b> (${user.email})<br>uid: ${user.uid}`;
+
+    await setDoc(doc(db, "users", user.uid), {
+      displayName: user.displayName,
+      email: user.email,
+      lastLogin: new Date().toISOString()
+    }, { merge: true });
+  }).catch((err) => {
+    document.getElementById('status').innerHTML = '❌ Σφάλμα: ' + err.message;
+    console.error(err);
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      document.getElementById('status').innerHTML =
+        `Ήδη συνδεδεμένος ως <b>${user.displayName}</b> (${user.email})`;
+    }
+  });
+</script>
+
+</body>
+</html>

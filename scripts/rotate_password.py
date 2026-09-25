@@ -3,12 +3,14 @@
 Weekly password rotation for the CLC SAT Quiz site.
 
 What this does, in order:
-  1. Generates a new random shared password.
-  2. Writes its SHA-256 hash into auth-config.js (the site reads this at runtime).
-  3. Builds a small Word document with the site link + the new password,
-     and encrypts it (password-protects it) with that same password.
+  1. Generates 4 new random passwords: the main site password, plus one each
+     for the Foundation / Preparation / Resit sections.
+  2. Writes their SHA-256 hashes into auth-config.js (PASSWORD_HASH + SECTION_HASHES —
+     the site reads these at runtime).
+  3. Builds a small Word document with the site link + all 4 new passwords,
+     and encrypts it (password-protects it) with the site password.
   4. Uploads/replaces that Word document in a shared Google Drive folder.
-  5. Emails the new password to the configured recipient(s).
+  5. Emails all 4 new passwords to the configured recipient(s).
 
 Secrets/config are read from environment variables (see .github/workflows/rotate-password.yml):
   GMAIL_ADDRESS                 - sender Gmail address
@@ -43,6 +45,10 @@ PASSWORD_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789"
 PASSWORD_LENGTH = 10
 
 
+SECTIONS = ["foundation", "prep", "resit"]
+SECTION_LABELS = {"foundation": "Foundation", "prep": "Preparation", "resit": "Resit"}
+
+
 def generate_password():
     return "".join(secrets.choice(PASSWORD_ALPHABET) for _ in range(PASSWORD_LENGTH))
 
@@ -51,17 +57,25 @@ def sha256_hex(text):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
-def update_auth_config(password_hash):
+def update_auth_config(password_hash, section_hashes):
+    section_lines = ",\n".join(
+        f'  {name}: "{section_hashes[name]}"' for name in SECTIONS
+    )
     content = (
         "// Auto-updated weekly by GitHub Actions — do not edit by hand.\n"
         "// Holds the SHA-256 hash of the current shared student password.\n"
         f'const PASSWORD_HASH = "{password_hash}";\n'
+        "\n"
+        "// Layer-2 (per-section) code hashes. Rotates weekly along with PASSWORD_HASH.\n"
+        "const SECTION_HASHES = {\n"
+        f"{section_lines}\n"
+        "};\n"
     )
     with open(AUTH_CONFIG_PATH, "w", encoding="utf-8") as f:
         f.write(content)
 
 
-def build_encrypted_docx(password):
+def build_encrypted_docx(site_password, section_passwords):
     doc = Document()
 
     title = doc.add_paragraph()
@@ -77,15 +91,23 @@ def build_encrypted_docx(password):
     p1.add_run(SITE_URL)
 
     p2 = doc.add_paragraph()
-    p2.add_run("Password αυτής της εβδομάδας: ").bold = True
-    run_pw = p2.add_run(password)
+    p2.add_run("Site password αυτής της εβδομάδας: ").bold = True
+    run_pw = p2.add_run(site_password)
     run_pw.bold = True
     run_pw.font.size = Pt(14)
 
     doc.add_paragraph()
+    for name in SECTIONS:
+        p = doc.add_paragraph()
+        p.add_run(f"{SECTION_LABELS[name]} password: ").bold = True
+        run_sp = p.add_run(section_passwords[name])
+        run_sp.bold = True
+        run_sp.font.size = Pt(14)
+
+    doc.add_paragraph()
     note = doc.add_paragraph(
-        "Το password αυτό ανανεώνεται αυτόματα κάθε Δευτέρα. "
-        "Αυτό το αρχείο ενημερώνεται μαζί του."
+        "Τα passwords αυτά ανανεώνονται αυτόματα κάθε Παρασκευή 14:00. "
+        "Αυτό το αρχείο ενημερώνεται μαζί τους."
     )
     note.runs[0].italic = True
 
@@ -95,7 +117,7 @@ def build_encrypted_docx(password):
 
     office_file = OOXMLFile(plain_buf)
     encrypted_buf = io.BytesIO()
-    office_file.encrypt(password, encrypted_buf)
+    office_file.encrypt(site_password, encrypted_buf)
     encrypted_buf.seek(0)
     return encrypted_buf
 
@@ -150,17 +172,22 @@ def upload_to_drive(encrypted_buf, folder_id, service_account_json):
         print(f"Created new Drive file: {created.get('id')}")
 
 
-def send_email(password, recipients, gmail_address, gmail_app_password):
+def send_email(site_password, section_passwords, recipients, gmail_address, gmail_app_password):
+    section_lines = "\n".join(
+        f"    {SECTION_LABELS[name]}: {section_passwords[name]}" for name in SECTIONS
+    )
     body = (
-        f"Νέο password για το CLC SAT Quiz αυτής της εβδομάδας:\n\n"
-        f"    {password}\n\n"
+        f"Νέα passwords για το CLC SAT Quiz αυτής της εβδομάδας:\n\n"
+        f"    Site: {site_password}\n"
+        f"{section_lines}\n\n"
         f"Site: {SITE_URL}\n\n"
-        f"Το ίδιο password ανοίγει και το Word doc στον Drive φάκελο "
+        f"Το site password ανοίγει και το Word doc στον Drive φάκελο "
         f"(\"{DOCX_FILENAME}\").\n\n"
-        f"— Αυτόματο μήνυμα από το clc-sat-quiz repo"
+        f"Ισχύουν από τώρα μέχρι την επόμενη Παρασκευή 14:00.\n\n"
+        f"— Αυτόματο μήνυμα από το clc-sat-new.format repo"
     )
     msg = MIMEText(body, "plain", "utf-8")
-    msg["Subject"] = "CLC SAT Quiz — Νέο password εβδομάδας"
+    msg["Subject"] = "CLC SAT Quiz — Νέα passwords εβδομάδας (Site + Foundation/Prep/Resit)"
     msg["From"] = gmail_address
     msg["To"] = ", ".join(recipients)
 
@@ -176,21 +203,25 @@ def main():
     folder_id = os.environ["GDRIVE_FOLDER_ID"]
     recipients = [e.strip() for e in os.environ["PASSWORD_RECIPIENT_EMAILS"].split(",") if e.strip()]
 
-    password = generate_password()
-    password_hash = sha256_hex(password)
-    print(f"Generated new password (hash only logged): {password_hash}")
+    site_password = generate_password()
+    section_passwords = {name: generate_password() for name in SECTIONS}
 
-    update_auth_config(password_hash)
+    password_hash = sha256_hex(site_password)
+    section_hashes = {name: sha256_hex(pw) for name, pw in section_passwords.items()}
+    print(f"Generated new passwords (hashes only logged): {password_hash}, "
+          f"{ {k: v for k, v in section_hashes.items()} }")
+
+    update_auth_config(password_hash, section_hashes)
     print("Updated auth-config.js")
 
-    encrypted_docx = build_encrypted_docx(password)
+    encrypted_docx = build_encrypted_docx(site_password, section_passwords)
     print("Built encrypted Word document")
 
     upload_to_drive(encrypted_docx, folder_id, sa_json)
     print("Uploaded to Google Drive")
 
-    send_email(password, recipients, gmail_address, gmail_app_password)
-    print(f"Emailed new password to: {', '.join(recipients)}")
+    send_email(site_password, section_passwords, recipients, gmail_address, gmail_app_password)
+    print(f"Emailed new passwords to: {', '.join(recipients)}")
 
 
 if __name__ == "__main__":

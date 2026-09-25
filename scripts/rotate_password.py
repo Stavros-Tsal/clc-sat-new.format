@@ -36,7 +36,7 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 
-SITE_URL = "https://stavros-tsal.github.io/clc-sat-quiz/"
+SITE_URL = "https://stavros-tsal.github.io/clc-sat-new.format/"
 AUTH_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "..", "auth-config.js")
 DOCX_FILENAME = "CLC SAT Quiz - Access.docx"
 
